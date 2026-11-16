@@ -40,7 +40,7 @@
       "developerAgeRatingInfoUrl": null
     },
     "release": {
-      "automaticRelease": false
+      "automaticRelease": true
     },
     "review": {
       "firstName": "",
