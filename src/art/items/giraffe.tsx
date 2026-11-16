@@ -7,7 +7,7 @@ const P = COLORS.brown;
 const HI = tone(C, 0.45);
 const LEGS = [46, 57, 68, 79];
 
-/** Giraffe: big round head on a long neck, small chunky body. */
+/** Giraffe: big round head on a sturdy neck, small chunky body. Spots stay inside the outline and off the face. */
 export default function Giraffe({ size }: ArtProps) {
   return (
     <Art size={size}>
@@ -21,15 +21,15 @@ export default function Giraffe({ size }: ArtProps) {
       {/* tail */}
       <Path d="M84 70 C90 72 92 78 90 83" fill="none" {...S3} />
       {/* long neck, under body and head */}
-      <Path d="M36 74 C34 62 30 50 26 40 L44 36 C46 48 50 58 56 68 Z" fill={C} {...S} />
+      <Path d="M33 76 C31 62 28 50 26 38 L47 36 C47 48 50 58 57 68 Z" fill={C} {...S} />
       {/* body */}
       <Ellipse cx={62} cy={73} rx={24} ry={13} fill={C} {...S} />
       <Path d="M44 80 C52 85 70 86 80 80" fill="none" stroke={tone(C, -0.1)} strokeWidth={4} strokeLinecap="round" />
       {/* cover the neck/body join so it reads as one animal */}
-      <Path d="M38 70 C42 64 50 62 54 66 L50 76 L40 76 Z" fill={C} />
+      <Path d="M36.5 72 C40 64 49 61 55 65 L52 78 L38 78 Z" fill={C} />
       {/* spots */}
-      <Circle cx={36} cy={52} r={3.6} fill={P} />
-      <Circle cx={43} cy={63} r={3.4} fill={P} />
+      <Circle cx={37} cy={52} r={3.8} fill={P} />
+      <Circle cx={42} cy={64} r={3.4} fill={P} />
       <Circle cx={62} cy={70} r={4.4} fill={P} />
       <Circle cx={75} cy={74} r={3.4} fill={P} />
       {/* ossicones */}

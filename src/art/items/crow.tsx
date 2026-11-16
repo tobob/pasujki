@@ -1,32 +1,37 @@
-import { Ellipse, Path } from 'react-native-svg';
+import { Circle, Ellipse, Path } from 'react-native-svg';
 
-import { Art, COLORS, Eyes, L3, S, tone, type ArtProps } from '../kit';
+import { Art, Cheeks, COLORS, Eyes, L3, S, tone, type ArtProps } from '../kit';
 
 const C = COLORS.black;
 const BEAK = COLORS.orange;
 
-/** Friendly crow: round body, big soft eyes, orange beak. */
+/**
+ * Friendly crow: round body with a big head on top, white eye discs so the eyes read on black.
+ * The beak grows out of the head (drawn first, the head outline covers its base) and replaces the
+ * mouth: no smile on beaked animals (docs/ART_STYLE.md).
+ */
 export default function Crow({ size }: ArtProps) {
   return (
     <Art size={size}>
       {/* tail */}
-      <Path d="M24 66 L8 76 L12 62 Z" fill={C} {...S} />
+      <Path d="M26 66 L10 74 L14 60 Z" fill={C} {...S} />
       {/* feet */}
-      <Path d="M44 84 V92 M56 84 V92 M40 92 H48 M52 92 H60" {...L3} stroke={BEAK} strokeWidth={4} />
+      <Path d="M44 84 V91 M39 91 H49 M56 84 V91 M51 91 H61" {...L3} stroke={BEAK} strokeWidth={4} />
       {/* body */}
-      <Ellipse cx={48} cy={60} rx={28} ry={26} fill={C} {...S} />
-      {/* head */}
-      <Ellipse cx={54} cy={34} rx={24} ry={22} fill={C} {...S} />
-      <Path d="M46 14 C48 8 54 8 54 13" {...L3} />
+      <Ellipse cx={48} cy={63} rx={27} ry={23} fill={C} {...S} />
       {/* wing */}
-      <Path d="M30 58 C34 72 46 78 58 74 C50 68 40 60 30 58 Z" fill={tone(C, 0.2)} {...S} strokeWidth={3} />
-      {/* eyes: white discs so they read on black */}
-      <Ellipse cx={46} cy={32} rx={7} ry={7.5} fill={COLORS.white} />
-      <Ellipse cx={64} cy={32} rx={7} ry={7.5} fill={COLORS.white} />
-      <Eyes x1={47} x2={65} y={33} r={3.8} />
-      {/* beak */}
-      <Path d="M70 38 L92 44 L70 52 C64 50 64 40 70 38 Z" fill={BEAK} {...S} />
-      <Ellipse cx={40} cy={44} rx={4} ry={2.6} fill="#F4A3B4" opacity={0.7} />
+      <Path d="M30 60 C33 73 45 79 57 75 C50 68 40 61 30 60 Z" fill={tone(C, 0.22)} {...S} strokeWidth={3} />
+      {/* beak: base hidden under the head */}
+      <Path d="M68 33 C76 32 85 34 91 38 C85 42 76 45 68 44 Z" fill={BEAK} {...S} strokeWidth={3.5} />
+      <Path d="M72 38.5 H86" stroke={tone(BEAK, -0.25)} strokeWidth={2} strokeLinecap="round" />
+      {/* head */}
+      <Circle cx={56} cy={36} r={21} fill={C} {...S} />
+      <Path d="M44 22 C47 18 51 16 55 16" fill="none" stroke={tone(C, 0.3)} strokeWidth={4} strokeLinecap="round" />
+      {/* eyes on white discs */}
+      <Ellipse cx={50} cy={34} rx={6.5} ry={7} fill={COLORS.white} />
+      <Ellipse cx={65} cy={34} rx={6.5} ry={7} fill={COLORS.white} />
+      <Eyes x1={51} x2={66} y={35} r={3.6} />
+      <Cheeks x1={44} x2={44} y={45} r={3.4} />
     </Art>
   );
 }

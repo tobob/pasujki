@@ -18,7 +18,7 @@ export default function Penguin({ size }: ArtProps) {
       <Path d="M30 22 C34 16 40 13 46 12" fill="none" stroke={tone(C, 0.3)} strokeWidth={4} strokeLinecap="round" />
       {/* white face mask + small belly */}
       <Path d="M50 28 C44 21 32 23 32 34 C32 40 36 44 40 48 C38 62 41 78 50 78 C59 78 62 62 60 48 C64 44 68 40 68 34 C68 23 56 21 50 28 Z" fill={W} />
-      <Face cx={50} cy={36} gap={18} eyeR={4.4} mouthDy={11} />
+      <Face cx={50} cy={36} gap={18} eyeR={4.4} mouthDy={11} mouth={false} />
       <Path d="M45 42 L55 42 L50 48 Z" fill={O} {...S} strokeWidth={3} />
     </Art>
   );

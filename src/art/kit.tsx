@@ -96,7 +96,10 @@ export function Cheeks({ x1, x2, y, r = 3.6 }: { x1: number; x2: number; y: numb
   );
 }
 
-/** A friendly face: eyes, smile, optional cheeks. */
+/**
+ * A friendly face: eyes, smile, optional cheeks.
+ * Pass `mouth={false}` for animals with a beak: the beak IS the mouth, never draw both (docs/ART_STYLE.md).
+ */
 export function Face({
   cx,
   cy,
@@ -104,6 +107,7 @@ export function Face({
   eyeR = 3.4,
   mouthDy = 8,
   cheeks = true,
+  mouth = true,
 }: {
   cx: number;
   cy: number;
@@ -111,12 +115,13 @@ export function Face({
   eyeR?: number;
   mouthDy?: number;
   cheeks?: boolean;
+  mouth?: boolean;
 }) {
   return (
     <>
       {cheeks && <Cheeks x1={cx - gap * 0.85} x2={cx + gap * 0.85} y={cy + mouthDy * 0.6} />}
       <Eyes x1={cx - gap / 2} x2={cx + gap / 2} y={cy} r={eyeR} />
-      <Smile cx={cx} cy={cy + mouthDy} />
+      {mouth && <Smile cx={cx} cy={cy + mouthDy} />}
     </>
   );
 }
