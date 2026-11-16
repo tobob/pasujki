@@ -374,7 +374,7 @@ Use a physical iPhone with the TestFlight build, then repeat steps 1–6 on an i
 | 22 | Toggle **Sounds** off, play a round | No effect sounds (taps, success, try again). Music is unaffected. Turn it back on. |
 | 23 | Toggle **Show hints** on, play a round | A short text line appears above the board (e.g. "What is yellow?" / "Co jest żółte?"). Off by default. |
 | 24 | Toggle **Unlock all levels** on → Map | Every world and every level is open (no lock icons). |
-| 25 | Scroll down in the parents' area | "About" text with the version number (1.0.0), then the **privacy policy** in full (Polish and English sections), rendered in-app. There are no links that leave the app. Check that the developer name, contact and date are filled in, not `[NAZWA DEWELOPERA]`. |
+| 25 | Scroll down in the parents' area | "About" text with the version number (1.0.0), then the **privacy policy** in full, in the device language, rendered in-app. There are no links that leave the app. Check that the developer name, contact and date are filled in, not `[NAZWA DEWELOPERA]`. |
 | 26 | Tap **Reset progress** | A confirmation alert ("Reset progress?" with Cancel / Reset). **Cancel** changes nothing. **Reset** removes the stars and unlocked levels. The settings toggles stay as they are. If Unlock all is on, everything is still open, and turning it off shows only World 1 open again. |
 | 27 | Rule check, **W1 The same** | The centre picture is identical to one corner picture. |
 | 28 | Rule check, **W2 Colours** | The centre is a colour blob; the answer is the item of that colour. Early levels never pair confusable colours (red/pink, orange/yellow). |
@@ -382,7 +382,7 @@ Use a physical iPhone with the TestFlight build, then repeat steps 1–6 on an i
 | 30 | Rule check, **W4 Shadows** | The centre is a dark silhouette; the answer is the same item in colour. |
 | 31 | Rule check, **W5 Patterns** | The centre is a texture (stripes, spots, wool, scales…); the answer is the animal or object it belongs to. |
 | 32 | Rule check, **W6 Who goes with whom?** | A mix of mother → baby, animal → food and animal → home rounds. Exactly one corner is plausible. |
-| 33 | Rule check, **W7 Weather and pairs** | Weather → what helps (rain → umbrella), and pairs (toothbrush → toothpaste, etc.). |
+| 33 | Rule check, **W7 Weather and pairs** | Weather → what helps (rain → umbrella), and pairs (sock → shoe, spoon → cup, etc.). |
 | 34 | Rule check, **W8 Make-believe** | 4 corners. **Every corner is accepted and celebrated.** No misses and no glow hints. The level always ends with 3 stars. |
 | 35 | While music plays, swipe up to the iOS Home Screen (background the app) | Music **stops immediately**. Nothing plays in the background, and there's no Now Playing entry. |
 | 36 | Reopen the app | Music fades back in (if on). Progress and settings are kept. |
