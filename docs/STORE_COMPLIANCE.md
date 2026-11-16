@@ -168,7 +168,7 @@ After `npx expo prebuild --clean` (or in the EAS build log), verify: no `NSMicro
 - Keywords: no competitor or trademark names (e.g. Toca Boca, Sago Mini, Pok Pok, Peppa, Montessori as a brand claim), no "free", no prices (2.3.7).
 - Description: describe what's actually there (worlds, drag/tap matching, calm design, offline, no ads/IAP/data). **Avoid unverifiable educational claims** ("boosts IQ", "clinically proven", "recommended by teachers/psychologists") (2.3.1/2.3.7). "Practises colours, shapes and matching" is fine.
 - Screenshots (2.3.3, A8): real gameplay, not splash/title art. Required: iPhone 6.9" (1320×2868 / 1290×2796 / 1260×2736) or 6.5" fallback, plus at least one 6.1"-class (1179×2556 / 1206×2622) per A8's "required device sizes", plus iPad 13" (2064×2752 / 2048×2732) if `supportsTablet`. 1–10 per size, PNG/JPEG, **no alpha**. Must be 4+-appropriate (2.3.8). Don't show Android devices or other stores (2.3.10).
-- Privacy Policy URL (required, A6): `https://marchew.work/pasujki/privacy.html`. Support URL: required in ASC (UNVERIFIED that it can equal the policy page; better a small support page).
+- Privacy Policy URL (required, A6): `https://tobob.github.io/pasujki-site/privacy/`. Support URL: required in ASC (UNVERIFIED that it can equal the policy page; better a small support page).
 - Optional "Age Suitability URL" (A3) can point to the same site.
 - Localise listing PL + EN.
 
@@ -180,7 +180,7 @@ After `npx expo prebuild --clean` (or in the EAS build log), verify: no `NSMicro
 - Childlike listing art is **fine** because we target 5 and under; Google only flags it when the declared audience doesn't include children (G2).
 - Mention the Teacher Approved badge only once it's actually awarded.
 
-### 2.4 Privacy policy (host at `https://marchew.work/pasujki/privacy.html`)
+### 2.4 Privacy policy (host at `https://tobob.github.io/pasujki-site/privacy/`)
 
 Requirements it must meet: what data is collected (none) and how it's used; third parties (none); retention/deletion; how to revoke consent or request deletion (A1 5.1.1(i)). Developer identity + privacy contact, clearly titled "Privacy Policy", names the app, public non-PDF non-geofenced URL (G5). Replace the `[…]` placeholders (developer name exactly as shown in both store listings, contact e-mail) before publishing.
 
@@ -345,7 +345,7 @@ Record on a **physical iPhone** (Control Centre → Screen Recording, with mic o
 8. Parents' area: toggle music/sounds, open the in-app privacy policy, go back.
 9. Home button → reopen → progress kept.
 
-Host as an **unlisted** video or a file link that works without login (e.g. unlisted YouTube or a direct mp4 on marchew.work), put the link in the notes, keep the file for Resolution Center replies.
+Host as an **unlisted** video or a file link that works without login (e.g. unlisted YouTube or a direct mp4 link), put the link in the notes, keep the file for Resolution Center replies.
 
 ---
 
@@ -382,6 +382,6 @@ Host as an **unlisted** video or a file link that works without login (e.g. unli
 - [ ] Parental gate implemented and protecting settings + policy + any link (C-3, C-4)
 - [ ] Proxy test: zero network traffic; airplane mode works end-to-end (C-5)
 - [ ] Full content progression in v1.0 (C-9)
-- [ ] Privacy policy live at marchew.work/pasujki/privacy.html (PL + EN) and in-app
+- [ ] Privacy policy live at tobob.github.io/pasujki-site/privacy/ (PL + EN) and in-app
 - [ ] ASC: age rating (Made for Kids, 5 and under), App Privacy "not collected", screenshots 6.9"/6.1"(/13"), notes + recording link
 - [ ] Play: account + identity verification, closed test 12+ testers × 14 days, Data safety "No", target audience 5 & under, ads No, AD_ID No, IARC, listing assets

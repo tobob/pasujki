@@ -8,7 +8,7 @@ Plik studia: czytaj go zanim zaczniesz pracę nad aplikacją, a po każdej istot
 | iOS bundle ID | `com.tobob.pasujki` |
 | Android package | `com.tobob.pasujki` |
 | EAS | konto `tobobu`, projectId w `app.json` → `extra.eas.projectId` (`studio link pasujki`) |
-| Repo | `github.com/tobob/pasujki` (do założenia) |
+| Repo | [github.com/tobob/pasujki](https://github.com/tobob/pasujki) (publiczne, MIT) · strona: tobob/pasujki-site |
 | Utworzona | 2026-11-16 |
 
 ## Co robi
@@ -28,9 +28,10 @@ Spokojna gra w dopasowywanie dla dzieci 2–4 lat. Ekran podzielony na 4 ćwiart
 
 ## Sklepy
 
-- **iOS:** nie wydana. Plan: Kids Category, przedział „5 i mniej”, 4+ (nieodwracalne po zatwierdzeniu).
+- **iOS:** 1.0 (build 2) wysłana do App Review 2026-11-16, wydanie automatyczne po akceptacji. ASC app 6835474239.
 - **Android:** nie wydana. Plan: grupa docelowa „5 i mniej”, Families Policy. Wymaga konta Google Play + zamkniętego testu 12+ testerów przez 14 dni.
 
 ## Historia
 - 2026-11-16 — v0.1: 6 agentów równolegle (poziomy, grafika, audio, silnik, zgodność ze sklepami, badania spokojnego designu + biblioteki); działa na symulatorze iPhone i iPad
 - 2026-11-16 — v0.2: 68 poziomów / 8 światów (nowy świat „Cienie”, sylwetki), reguły różnorodności w walidatorze, 20 nowych obrazków, przyjaźniejsze proporcje zwierząt; fix bramki rodzica (porównanie z iloczynem)
+- 2026-11-16 — 1.0: 8 języków, strona tobob.github.io/pasujki-site, wysłane do App Review (build 2); repo publiczne (MIT), historia oczyszczona z danych kontaktowych

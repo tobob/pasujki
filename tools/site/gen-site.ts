@@ -21,6 +21,7 @@ const ORDER: Lang[] = ['en', 'pl', 'de', 'fr', 'it', 'es', 'pt', 'nl'];
 type Kind = 'support' | 'privacy' | 'terms';
 const KINDS: Kind[] = ['support', 'privacy', 'terms'];
 const ISSUES = `https://${CONTACT}`;
+const REPO = 'https://github.com/tobob/pasujki';
 const YEAR = 2026;
 
 /** Path of a page relative to the site root, always ending with '/' (or '' for the root). */
@@ -33,6 +34,7 @@ const issuesLink = `<a href="${ISSUES}">${CONTACT}</a>`;
 const rich = (lang: Lang, text: string) =>
   esc(text)
     .replace(CONTACT, issuesLink)
+    .replace(/github\.com\/tobob\/pasujki(?!-)/, `<a href="${REPO}">github.com/tobob/pasujki</a>`)
     .replace('{eula}', `<a href="${EULA_URL}">${esc(EULA_NAME[lang])}</a>`);
 
 const css = `
@@ -100,7 +102,7 @@ ${suggest}<header><div class="wrap"><a class="brand" href="${link('support')}"><
 <nav>${KINDS.map(navItem).join('')}</nav>
 <details class="lang"><summary>${esc(t.language)}: ${esc(LOCALES[lang].name)} ▾</summary><ul>${langs}</ul></details></div></header>
 <main><div class="wrap">${body}</div></main>
-<footer><div class="wrap"><span>© ${YEAR} tobob · ${esc(t.footer)}</span>${KINDS.map((k) => `<a href="${link(k)}">${esc(t.nav[k])}</a>`).join('')}<a href="${ISSUES}">GitHub</a></div></footer>
+<footer><div class="wrap"><span>© ${YEAR} tobob · ${esc(t.footer)}</span>${KINDS.map((k) => `<a href="${link(k)}">${esc(t.nav[k])}</a>`).join('')}<a href="${REPO}">GitHub</a></div></footer>
 </body></html>
 `;
 }

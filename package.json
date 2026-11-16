@@ -42,7 +42,12 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "typecheck": "tsc --noEmit",
+    "validate-levels": "npx tsx scripts/validate-levels.ts",
+    "check-i18n": "npx tsx scripts/check-i18n.ts",
+    "check": "npm run lint && npm run typecheck && npm run validate-levels && npm run check-i18n",
+    "site": "npx tsx tools/site/gen-site.ts"
   },
   "private": true
 }
