@@ -77,6 +77,7 @@ npm run lint             # expo lint
 npm run typecheck        # tsc --noEmit
 npm run validate-levels  # every round has exactly one fair answer; variety rules; age bands
 npm run check-i18n       # all 8 languages are complete
+npm run check-art        # illustration rules (docs/ART_STYLE.md)
 ```
 
 ## Project structure

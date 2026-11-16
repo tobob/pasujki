@@ -1,6 +1,6 @@
 /**
  * Static checks for the illustration style rules in docs/ART_STYLE.md that can be checked from source.
- * Run: npx tsx scripts/check-art-style.ts   (part of `npm run check`)
+ * Run: npx tsx tools/art/check-art-style.ts   (part of `npm run check`)
  *
  * - Beaked animals: the beak IS the mouth. No <Smile>, and every <Face> passes mouth={false}.
  * - Patterned animals (stripes/spots on the head): pattern shapes must be clipped to the head
@@ -9,7 +9,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const DIR = join(__dirname, '../src/art/items');
+const DIR = join(__dirname, '../../src/art/items');
 const BEAKED = ['hen', 'chick', 'duck', 'duckling', 'crow', 'bird', 'owl', 'penguin', 'parrot', 'flamingo'];
 const CLIPPED_PATTERN = ['zebra'];
 

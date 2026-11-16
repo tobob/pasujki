@@ -1,6 +1,6 @@
 # Illustration style rules
 
-Every picture in `src/art/items/` follows these rules. They come from the design brief ([DESIGN.md](DESIGN.md)), from research on what makes a face read as "cute" to small children and adults, and from how good flat icon sets handle faces. `npm run check-art` checks the rules that can be checked from source. For the rest, render the contact sheet (see the end of this file) and look at it.
+Every picture in `src/art/items/` follows these rules. They come from the design brief ([DESIGN.md](DESIGN.md)), from research on what makes a face read as "cute" to small children and adults, and from how good flat icon sets handle faces. `npm run check-art` (`tools/art/check-art-style.ts`) checks the rules that can be checked from source. For the rest, render the contact sheet (see the end of this file) and look at it.
 
 ## 1. The face zone stays clear
 
