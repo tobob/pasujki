@@ -13,6 +13,7 @@ Owner: the levels agent. Files: `src/game/levels.ts`, `src/game/item-attributes.
 | **Thematic association** (dog → bone, bee → hive) | 34-month-olds recognise more thematic links than 26-month-olds. At 3–4 y thematic grouping is the most common spontaneous strategy (about 45 % in a free-sorting study). Taxonomic and flexible sorting grows at 4–5 y | Food, home and mother→baby (W5) start at 3+ with 3 corners and go to 4+ with 4 corners. Mother→baby comes first because the baby looks like its mother, so there is a perceptual cue. |
 | **Context switching and resisting a salient cue** | Flexibility between relations is still weak at 4 y and better at 5 y | W6 ends with **lures**: the distractors share the answer's colour, so the child has to use the relation and not the colour. These levels are marked 5+. |
 | **Working memory and screen load** | Learning from a touchscreen is demanding for toddlers and depends on working memory. App usability has to match the child's ability | The number of choices grows slowly: **2 → 3 → 4** active corners. Empty corners "sleep" (`null`). The same pattern repeats inside every world: 2 or 3 corners at the start, 4 at the end. Levels have **6 rounds** (about 2–3 min, per docs/CALM_DESIGN_RESEARCH.md). |
+| **Silhouette matching** (shadow → picture) | Recognising objects from outline alone develops through the preschool years; matching a silhouette to its picture is a classic 3–4 y puzzle activity | W4 "Cienie" sits after shapes: the same "outline" skill, applied to real objects. Early levels use outlines from different families (animal vs vehicle); later levels use similar outlines (four-legged animals together). Only items on the art agent's `SILHOUETTE_CLEAR` list are used. |
 | **Pretend / imaginative play** | Rich from 2–3 y | W7 "Wymyślanki" has no right answer: every choice is celebrated. It is a low-pressure world that any child can play. |
 
 Sources:
@@ -24,39 +25,60 @@ Sources:
 
 Caveat: no study gives an exact "best number of choices per age". The 2 → 3 → 4 ramp is a design decision based on the working-memory and usability findings above. The data should be tuned with real play-testing (watch for random tapping, which means the level is too hard).
 
-## 2. Worlds and the difficulty curve
+## 2. Worlds and the difficulty curve (v0.2)
 
-7 worlds, 34 levels, 204 rounds. Every level has 6 rounds.
+8 worlds, 68 levels, 408 rounds. Every level has 6 rounds.
 
 | World | Title (PL / EN) | Levels | Age | Corners | What changes |
 |---|---|---|---|---|---|
-| 1 | Takie same / The same | 5 | 2+ | 2 → 2 → 3 → 3 → 4 | Identical picture. Distractors come from another category and have a different colour; from L4 the category can be the same. |
-| 2 | Kolory / Colours | 5 | 2+ → 3+ | 2 → 2 → 3 → 3 → 4 | Red/yellow/blue/green, then orange, then pink/purple/brown/white, then black/grey. Every corner has a different colour, and early levels never use confusable hues. |
-| 3 | Kształty / Shapes | 4 | 3+ → 4+ | 2 → 3 → 3 → 4 | Circle/star/heart vs shapeless animals. Then triangle and crescent, then oval and rectangle. The last level uses other clear shapes as distractors (4+). |
-| 4 | Wzorki / Patterns | 4 | 3+ → 4+ | 2 → 3 → 4 → 4 | Stripes, spots, wool and scales. Then feathers and fur. Then materials (wood, waves, bricks, ice, honeycomb). The last level has same-colour lures (stripes → tiger next to an orange squirrel). |
-| 5 | Kto z kim? / Who goes with whom? | 6 | 3+ → 4+ | 3 → 3 → 3 → 4 → 4 → 4 | Mother & baby (easy distractors are wild animals), who eats what, where it lives. Then the same relations with 4 corners: other farm mothers, other animals, other homes. |
-| 6 | Pogoda i pary / Weather and pairs | 6 | 4+ → 5+ | 3 → 4 → 3 → 4 → 4 → 4 | Weather → what we need. Things that go together. Then **lures**: distractors share the answer's colour. The finale mixes all rules. |
-| 7 | Wymyślanki / Make-believe | 4 | 3+ (all ages) | 4 | Rule `free`, answer `null`. A colour, pattern, shape or present next to four animals, none of which truly fits ("Kto lubi kolor fioletowy?"). Every choice is celebrated. |
+| 1 | Takie same / The same | 8 | 2+ | 2,2,2 → 3,3,3 → 4,4 | Identical picture. Distractors come from another category with a clearly different colour; from L6 the category can be the same. 48 different pictures, none repeated in the world. |
+| 2 | Kolory / Colours | 8 | 2+ → 3+ → 4+ | 2,2 → 3,3,3 → 4,4,4 | Six different colours per level. Easy levels never show confusable hues, and every corner has a different colour. The last level uses confusable hues as lures (4+). |
+| 3 | Kształty / Shapes | 7 | 3+ → 4+ | 2,2 → 3,3,3 → 4,4 | Six different shapes per level (square via gift/block, triangle via carrot/party hat). Shapeless animals as distractors first, then other clear shapes. |
+| 4 | **Cienie / Shadows** (new) | 6 | 3+ → 4+ | 2 → 3,3 → 4,4,4 | Dark silhouette → the item in colour. Easy levels use other silhouette families; hard levels use the same family (cat among horse and mouse). Look-alike outlines (ball/orange, sock/boot, cat/fox…) are never shown together. |
+| 5 | Wzorki / Patterns | 8 | 3+ → 4+ | 2,2 → 3,3,3 → 4,4,4 | Stripes, spots, wool, scales, feathers, fur, then materials (wood, waves, bricks, ice, honeycomb). The last two levels add same-colour lures. |
+| 6 | Kto z kim? / Who goes with whom? | 12 | 3+ → 4+ | 3 ×6 → 4 ×6 | Every level mixes mother & baby, food and homes (2–4 rounds of each), so the six mother/baby pairs never fill a level on their own. Easy → medium (same domain) → hard (colour lures). |
+| 7 | Pogoda i pary / Weather and pairs | 10 | 4+ → 5+ | 3 ×4 → 4 ×6 | Weather (max. 3 per level, since there are only 4 weather prompts) mixed with pairs (party set, beach set, bedtime, bathroom, clothes). Then lures, then a finale that mixes all rules. |
+| 8 | Wymyślanki / Make-believe | 9 | 3+ (all ages) | 4 | Rule `free`, answer `null`, themed: "Kto lubi ten kolor?", "Czyje wzorki?", "Komu prezent?", "Co zje dinozaur?", "Kto by tu zamieszkał?", "Wymyśl sam", "Co założymy?", "Komu ten kolor?", "Pobawmy się!". Nothing truly fits, and every choice is celebrated. |
 
 Distractor difficulty is set per level in `levels.ts` (`diff`):
-- **easy**: clearly wrong. A different category where it makes sense, a different and non-confusable colour from the answer, and every corner a different colour.
-- **medium**: same domain (other homes, other mothers, other clothes), still a different colour from the answer.
-- **hard**: colour lures. In relation rounds, up to 2 distractors share the answer's colour. In colour rounds they have a confusable hue.
+- **easy**: clearly wrong. Another category or silhouette family, a different and non-confusable colour from the answer, and every corner a different colour.
+- **medium**: same domain (other homes, other farm animals, other clothes), still a different colour from the answer.
+- **hard**: lures. Up to 2 distractors share the answer's colour; in colour rounds they have a confusable hue, and in shadow rounds they come from the same silhouette family.
 
-General rules (enforced by the generator and checked by the validator):
+### Variety rules (v0.2, enforced by the validator)
+- Within a level an item appears **at most 2×** in total across prompts and targets. A `same` or `shadow` round already uses both slots for its item.
+- An answer item is never reused as an answer in the same level, and **no prompt repeats** within a level.
+- Consecutive levels (in play order, across world borders too) share **at most 50 %** of their answer items. Currently the maximum is 33 %.
+- The generator prefers items shown least often in the current world and avoids the previous level's answers.
+
+Spread per world (all appearances, prompts + targets):
+
+| World | Distinct items | Max appearances of one item in the world |
+|---|---|---|
+| W1 Takie same | 117 | 3 |
+| W2 Kolory | 119 | 2 |
+| W3 Kształty | 58 | 5 (heart_toy: the only heart) |
+| W4 Cienie | 80 | 3 |
+| W5 Wzorki | 74 | 4 |
+| W6 Kto z kim? | 68 | 10 (sheep/cow/hen: 6 mothers × 12 levels) |
+| W7 Pogoda i pary | 105 | 7 (snowflake: one of 4 weather prompts) |
+| W8 Wymyślanki | 81 | 7 |
+
+General rules:
 - Answer corners are balanced per level (counts differ by at most 1) and never the same corner twice in a row.
-- A prompt is never repeated in consecutive rounds. Pinned answers are not repeated consecutively either.
-- Every distractor is **implausible**, not just "not the official answer". The relation maps are deliberately generous (a horse also eats carrots, a hen also lives in a nest, a pig eats nearly everything), and look-alikes are blocked: two-tone items in colour rounds, roundish items in shape rounds, "also has" textures, a hat in the sun, a cat next to a kitten.
-- Two-tone items (cow, zebra, penguin, calf, watermelon, house) never appear in colour rounds.
+- Every distractor is **implausible**, not just "not the official answer". The relation maps are deliberately generous (a horse also eats carrots and hay, a duck also nests, a pig eats nearly everything), and look-alikes are blocked: two-tone items in colour rounds, roundish items in shape rounds, "also has" textures, a hat in the sun, a cat next to a kitten, near-identical silhouettes.
+- Two-tone items (cow, zebra, penguin, calf, watermelon, house, rainbow) never appear in colour rounds.
+- No food appears as a distractor in pair rounds (fruit next to a cake or a spoon would read as "goes together").
 
 ## 3. Data model
 
 - `src/game/item-attributes.ts`
   - `ITEM_ATTRS[id]`: dominant `color` (the illustrator's contract, see the table at the top of the file and `src/art/dominant.ts`), `colorFair`, `color2`, `outline` (ShapeId or null), `shapeAmbiguous`, category `tags`, and the Polish name with gender, genitive and accusative forms for hints, plus the English name.
   - Relation maps: `EATS`, `LIVES_IN`, `BABY_OF`, `TEXTURE_OF` (`owners` + `alsoHas`), `WEATHER_NEEDS` (+ `WEATHER_MAYBE` look-alikes), `PAIRS` (symmetric).
+  - Silhouettes: `SIL_FAMILY` (similar outlines, used as hard lures) and `silhouetteTwins()` (near-identical outlines, never together).
   - `satisfies(rule, prompt, item)` (the intended answer), `plausible(...)` (answer or look-alike, never allowed as a distractor), `relatesUnderAnyRule(...)` (for the abstract world).
-- `src/game/levels.ts`: a declarative `WORLD_SPECS` table plus a small deterministic generator. A seeded shuffle per level id picks the distractors, corners and order, and `WORLDS` is plain data. To add a level, add an entry to `WORLD_SPECS` (pin an `answer` when several are possible and one is the iconic one, e.g. acorn → squirrel), then run the validator.
-- Hints: short Polish, child-directed lines ("Co jest żółte?", "Gdzie jest mama kurczaczka?", "Kto lubi marchewkę?", "Pada deszczyk! Co się przyda?") with English equivalents.
+- `src/game/levels.ts`: a declarative `WORLD_SPECS` table plus a small deterministic generator. A seeded shuffle per level id picks the distractors, corners and order, plus the shadow items (from `SILHOUETTE_CLEAR`). It keeps per-level and per-world usage counts for variety, and `WORLDS` is plain data. To add a level, add an entry to `WORLD_SPECS` (pin an `answer` when several are possible and one is the iconic one, e.g. acorn → squirrel), then run the validator.
+- Hints: short Polish, child-directed lines ("Co jest żółte?", "Czyj to cień?", "Gdzie jest mama kurczaczka?", "Kto lubi marchewkę?", "Pada deszczyk! Co się przyda?", "Co zje dinozaur?") with English equivalents.
 
 ## 4. Validation
 
@@ -64,11 +86,13 @@ General rules (enforced by the generator and checked by the validator):
 npx tsx scripts/validate-levels.ts
 ```
 
-The validator checks: 4 targets per round; every id exists in the contract; graded rounds point to a non-null corner whose item satisfies the rule; no other corner is plausible (unambiguous); `free` rounds have `answer: null`, 4 targets and nothing that truly fits; no duplicate targets; no identical consecutive rounds; 5–6 rounds per level; balanced answer corners; hints and titles are present; `ITEM_ATTRS` colours agree with the illustrator's `src/art/dominant.ts`. It exits with code 1 on any error.
+Correctness checks: 4 targets per round; every id exists in the contract; graded rounds point to a non-null corner whose item satisfies the rule; no other corner is plausible (unambiguous); `free` rounds have `answer: null`, 4 targets and nothing that truly fits; shadow rounds use only `SILHOUETTE_CLEAR` items; no duplicate targets; 5–6 rounds per level; balanced answer corners; hints and titles are present; `ITEM_ATTRS` colours agree with `src/art/dominant.ts`.
+
+Variety checks: the rules above. The validator also prints spread statistics per world and exits with code 1 on any error.
 
 ## 5. Known gaps / proposals for the contract
 
-- **No clean square item.** The pillow and the book are drawn as rounded or near-square rectangles, so `square` is only used in the abstract world. Proposal: add a `gift` (square present box) or `block` (toy cube) item, or draw `pillow` as a clear square.
-- **Only one clean triangle (`carrot`).** The cheese is a 3-D wedge and the watermelon is drawn as a half-round slice. Proposal: add `party_hat` or `sandwich` (triangle half), or draw `cheese` as a flat triangle.
-- **Black has a single fair item (`sunglasses`).** The penguin is two-tone. Proposal: add a black item such as `cat_black`, `crow` or `top_hat`, if colour levels need more variety.
-- **Nice-to-have for relations:** `grass`/`hay` as an item (cow, sheep and horse food), `nuts`, and a generic `bird` (nest owner).
+- Done in v0.2: square (gift, block), triangle (party_hat), a second black item (crow), grass food (hay), a generic bird.
+- Only one heart (`heart_toy`), one star (`star`) and one rectangle (`soap`) answer exist, so these items recur across shape levels. A second heart (e.g. `cookie_heart`) and rectangle (e.g. `domino`, `brick`) would spread W3 further.
+- Weather has only 4 prompts (sun, rain, cloud, snow). Adding `wind` (→ kite) and `rainbow`-related needs would allow pure weather levels.
+- Mother/baby has only 6 pairs, so mothers recur across W6. More pairs (`horse` → `foal`, `pig` → `piglet`, `rabbit` → `bunny`) would help.

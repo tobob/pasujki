@@ -16,25 +16,32 @@ import ItemBed from './items/bed';
 import ItemBee from './items/bee';
 import ItemBeehive from './items/beehive';
 import ItemBicycle from './items/bicycle';
+import ItemBird from './items/bird';
+import ItemBlock from './items/block';
 import ItemBlueberries from './items/blueberries';
 import ItemBoat from './items/boat';
 import ItemBone from './items/bone';
 import ItemBook from './items/book';
 import ItemBoot from './items/boot';
 import ItemBread from './items/bread';
+import ItemBucket from './items/bucket';
 import ItemButterfly from './items/butterfly';
+import ItemCake from './items/cake';
 import ItemCalf from './items/calf';
 import ItemCar from './items/car';
 import ItemCarrot from './items/carrot';
 import ItemCat from './items/cat';
 import ItemCheese from './items/cheese';
+import ItemCherry from './items/cherry';
 import ItemChick from './items/chick';
 import ItemClock from './items/clock';
 import ItemCloud from './items/cloud';
 import ItemCorn from './items/corn';
 import ItemCow from './items/cow';
 import ItemCrayon from './items/crayon';
+import ItemCrow from './items/crow';
 import ItemCup from './items/cup';
+import ItemDinosaur from './items/dinosaur';
 import ItemDog from './items/dog';
 import ItemDoghouse from './items/doghouse';
 import ItemDrum from './items/drum';
@@ -45,11 +52,15 @@ import ItemElephant from './items/elephant';
 import ItemFish from './items/fish';
 import ItemFlamingo from './items/flamingo';
 import ItemFlower from './items/flower';
+import ItemFox from './items/fox';
 import ItemFrog from './items/frog';
+import ItemGift from './items/gift';
 import ItemGiraffe from './items/giraffe';
 import ItemGrapes from './items/grapes';
 import ItemHat from './items/hat';
+import ItemHay from './items/hay';
 import ItemHeartToy from './items/heart_toy';
+import ItemHedgehog from './items/hedgehog';
 import ItemHen from './items/hen';
 import ItemHoney from './items/honey';
 import ItemHorse from './items/horse';
@@ -58,6 +69,7 @@ import ItemHutch from './items/hutch';
 import ItemIceberg from './items/iceberg';
 import ItemKennelBowl from './items/kennel_bowl';
 import ItemKey from './items/key';
+import ItemKite from './items/kite';
 import ItemKitten from './items/kitten';
 import ItemLadybug from './items/ladybug';
 import ItemLamb from './items/lamb';
@@ -70,23 +82,31 @@ import ItemMitten from './items/mitten';
 import ItemMonkey from './items/monkey';
 import ItemMoon from './items/moon';
 import ItemMouse from './items/mouse';
+import ItemMushroom from './items/mushroom';
 import ItemNest from './items/nest';
+import ItemOctopus from './items/octopus';
 import ItemOrange from './items/orange';
 import ItemOwl from './items/owl';
 import ItemParrot from './items/parrot';
+import ItemPartyHat from './items/party_hat';
 import ItemPear from './items/pear';
+import ItemPeas from './items/peas';
 import ItemPenguin from './items/penguin';
 import ItemPig from './items/pig';
 import ItemPillow from './items/pillow';
+import ItemPlum from './items/plum';
 import ItemPond from './items/pond';
 import ItemPumpkin from './items/pumpkin';
 import ItemPuppy from './items/puppy';
 import ItemRabbit from './items/rabbit';
+import ItemRainbow from './items/rainbow';
 import ItemRaindrop from './items/raindrop';
+import ItemSandwich from './items/sandwich';
 import ItemScarf from './items/scarf';
 import ItemSea from './items/sea';
 import ItemSheep from './items/sheep';
 import ItemShoe from './items/shoe';
+import ItemShovel from './items/shovel';
 import ItemSnail from './items/snail';
 import ItemSnowflake from './items/snowflake';
 import ItemSnowman from './items/snowman';
@@ -143,25 +163,32 @@ export const ITEMS: Record<ItemId, ArtComponent> = {
   bee: ItemBee,
   beehive: ItemBeehive,
   bicycle: ItemBicycle,
+  bird: ItemBird,
+  block: ItemBlock,
   blueberries: ItemBlueberries,
   boat: ItemBoat,
   bone: ItemBone,
   book: ItemBook,
   boot: ItemBoot,
   bread: ItemBread,
+  bucket: ItemBucket,
   butterfly: ItemButterfly,
+  cake: ItemCake,
   calf: ItemCalf,
   car: ItemCar,
   carrot: ItemCarrot,
   cat: ItemCat,
   cheese: ItemCheese,
+  cherry: ItemCherry,
   chick: ItemChick,
   clock: ItemClock,
   cloud: ItemCloud,
   corn: ItemCorn,
   cow: ItemCow,
   crayon: ItemCrayon,
+  crow: ItemCrow,
   cup: ItemCup,
+  dinosaur: ItemDinosaur,
   dog: ItemDog,
   doghouse: ItemDoghouse,
   drum: ItemDrum,
@@ -172,11 +199,15 @@ export const ITEMS: Record<ItemId, ArtComponent> = {
   fish: ItemFish,
   flamingo: ItemFlamingo,
   flower: ItemFlower,
+  fox: ItemFox,
   frog: ItemFrog,
+  gift: ItemGift,
   giraffe: ItemGiraffe,
   grapes: ItemGrapes,
   hat: ItemHat,
+  hay: ItemHay,
   heart_toy: ItemHeartToy,
+  hedgehog: ItemHedgehog,
   hen: ItemHen,
   honey: ItemHoney,
   horse: ItemHorse,
@@ -185,6 +216,7 @@ export const ITEMS: Record<ItemId, ArtComponent> = {
   iceberg: ItemIceberg,
   kennel_bowl: ItemKennelBowl,
   key: ItemKey,
+  kite: ItemKite,
   kitten: ItemKitten,
   ladybug: ItemLadybug,
   lamb: ItemLamb,
@@ -197,23 +229,31 @@ export const ITEMS: Record<ItemId, ArtComponent> = {
   monkey: ItemMonkey,
   moon: ItemMoon,
   mouse: ItemMouse,
+  mushroom: ItemMushroom,
   nest: ItemNest,
+  octopus: ItemOctopus,
   orange: ItemOrange,
   owl: ItemOwl,
   parrot: ItemParrot,
+  party_hat: ItemPartyHat,
   pear: ItemPear,
+  peas: ItemPeas,
   penguin: ItemPenguin,
   pig: ItemPig,
   pillow: ItemPillow,
+  plum: ItemPlum,
   pond: ItemPond,
   pumpkin: ItemPumpkin,
   puppy: ItemPuppy,
   rabbit: ItemRabbit,
+  rainbow: ItemRainbow,
   raindrop: ItemRaindrop,
+  sandwich: ItemSandwich,
   scarf: ItemScarf,
   sea: ItemSea,
   sheep: ItemSheep,
   shoe: ItemShoe,
+  shovel: ItemShovel,
   snail: ItemSnail,
   snowflake: ItemSnowflake,
   snowman: ItemSnowman,

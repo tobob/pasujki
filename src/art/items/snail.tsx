@@ -1,26 +1,25 @@
 import { Circle, Path } from 'react-native-svg';
 
-import { Art, COLORS, Cheeks, Eyes, L, S, S3, Smile, tone, type ArtProps } from '../kit';
+import { Art, COLORS, Face, L, S, tone, type ArtProps } from '../kit';
 
 const C = COLORS.orange;
 const B = tone(COLORS.yellow, 0.45);
 
+/** Snail: big round swirl shell, chubby soft body with a big head. */
 export default function Snail({ size }: ArtProps) {
   return (
     <Art size={size}>
-      {/* body */}
-      <Path d="M14 86 C10 86 8 82 10 78 C12 74 14 60 16 52 C18 40 36 40 36 52 L36 72 L90 76 C94 78 94 86 90 86 Z" fill={B} {...S} />
       {/* eye stalks */}
-      <Path d="M20 44 L14 28 M30 44 L34 28" {...L} />
-      <Circle cx={14} cy={26} r={4} fill={B} {...S3} />
-      <Circle cx={34} cy={26} r={4} fill={B} {...S3} />
-      <Cheeks x1={17} x2={33} y={60} r={2.6} />
-      <Eyes x1={20} x2={30} y={53} r={3} />
-      <Smile cx={25} cy={60} w={3} />
+      <Path d="M20 34 L14 18 M32 34 L36 18" {...L} />
+      <Circle cx={14} cy={16} r={4.2} fill={B} {...S} strokeWidth={3} />
+      <Circle cx={36} cy={16} r={4.2} fill={B} {...S} strokeWidth={3} />
+      {/* body */}
+      <Path d="M12 86 C7 86 6 80 8 74 C10 66 10 56 12 46 C14 30 40 30 40 46 L40 70 L88 74 C94 76 94 86 88 86 Z" fill={B} {...S} />
+      <Face cx={25} cy={50} gap={13} eyeR={3.6} mouthDy={8} />
       {/* shell */}
-      <Circle cx={62} cy={52} r={28} fill={C} {...S} />
-      <Path d="M62 52 C62 46 70 46 70 52 C70 60 56 62 54 52 C52 40 72 38 76 50 C80 64 62 74 50 66" {...L} stroke={tone(C, -0.3)} />
-      <Path d="M44 36 C48 30 54 28 58 28" fill="none" stroke={tone(C, 0.4)} strokeWidth={4} strokeLinecap="round" />
+      <Circle cx={64} cy={50} r={28} fill={C} {...S} />
+      <Path d="M64 50 C64 44 72 44 72 50 C72 58 58 60 56 50 C54 38 74 36 78 48 C82 62 64 72 52 64" {...L} stroke={tone(C, -0.25)} />
+      <Path d="M46 34 C50 28 56 26 60 26" fill="none" stroke={tone(C, 0.4)} strokeWidth={4} strokeLinecap="round" />
     </Art>
   );
 }

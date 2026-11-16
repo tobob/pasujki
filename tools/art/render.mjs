@@ -33,12 +33,16 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { ITEM_IDS, TEXTURE_IDS, SHAPE_IDS } from '@/game/types';
 import { COLORS, UI } from '@/game/palette';
 import { ITEM_DOMINANT } from '@/art/dominant';
+import { SilhouetteContext } from '@/art/kit';
+import { SILHOUETTE_CLEAR } from '@/art/silhouette-ok';
 ${items.map((id) => `import I_${id} from '@/art/items/${id}';`).join('\n')}
 ${textures.map((id) => `import T_${id} from '@/art/textures/${id}';`).join('\n')}
 ${hasShapes ? `import * as SH from '@/art/shapes';` : 'const SH = null;'}
 const r = (C, p) => renderToStaticMarkup(createElement(C, { size: 100, ...p }));
+const rs = (C, id) => renderToStaticMarkup(createElement(SilhouetteContext.Provider, { value: true }, createElement(C, { size: 100 }))).replaceAll('pasujki-sil-', 'pasujki-sil-' + id);
 export const data = {
-  ITEM_IDS, TEXTURE_IDS, SHAPE_IDS, COLORS, UI, ITEM_DOMINANT,
+  ITEM_IDS, TEXTURE_IDS, SHAPE_IDS, COLORS, UI, ITEM_DOMINANT, SILHOUETTE_CLEAR,
+  sil: { ${items.map((id) => `${JSON.stringify(id)}: rs(I_${id}, ${JSON.stringify(id)})`).join(',')} },
   items: { ${items.map((id) => `${JSON.stringify(id)}: r(I_${id})`).join(',')} },
   textures: { ${textures.map((id) => `${JSON.stringify(id)}: r(T_${id})`).join(',')} },
   shapes: SH ? Object.fromEntries(SHAPE_IDS.map((id, i) => [id, r(SH.ShapeArt, { id, color: Object.keys(COLORS)[i % 9] })])) : {},
@@ -67,7 +71,7 @@ const unknown = items.filter((id) => !data.ITEM_IDS.includes(id));
 if (unknown.length) problems.push(`unknown item files: ${unknown.join(', ')}`);
 
 // --- standalone svgs ---
-for (const [kind, map] of [['items', data.items], ['textures', data.textures], ['shapes', data.shapes]]) {
+for (const [kind, map] of [['items', data.items], ['silhouettes', data.sil], ['textures', data.textures], ['shapes', data.shapes]]) {
   fs.mkdirSync(path.join(outDir, kind), { recursive: true });
   for (const [id, svg] of Object.entries(map)) fs.writeFileSync(path.join(outDir, kind, `${id}.svg`), svg);
 }
@@ -96,11 +100,15 @@ const itemEntries = data.ITEM_IDS.map((id) => [id, data.items[id], data.COLORS[d
 const texEntries = data.TEXTURE_IDS.map((id) => [id, data.textures[id]]);
 const shapeEntries = data.SHAPE_IDS.map((id) => [id, data.shapes[id]]);
 const all = [...itemEntries, ...texEntries, ...shapeEntries];
-png(sheet(all, 15, 120, 'Pasujki — items, textures, shapes'), path.join(here, 'contact-sheet.png'));
+png(sheet(all, 16, 120, 'Pasujki — items, textures, shapes'), path.join(here, 'contact-sheet.png'));
 // zoomed section sheets for review
 const chunk = 30;
 for (let i = 0; i < itemEntries.length; i += chunk) png(sheet(itemEntries.slice(i, i + chunk), 6, 170), path.join(outDir, `items-${i / chunk + 1}.png`));
 png(sheet([...texEntries, ...shapeEntries], 6, 170), path.join(outDir, 'textures-shapes.png'));
+// silhouette sheet: green dot = listed in SILHOUETTE_CLEAR
+const silEntries = data.ITEM_IDS.map((id) => [id, data.sil[id], data.SILHOUETTE_CLEAR.includes(id) ? '#5BB36A' : '#FFFFFF']);
+png(sheet(silEntries, 14, 120, 'Pasujki — silhouettes (green dot = SILHOUETTE_CLEAR)'), path.join(here, 'silhouette-sheet.png'));
+for (let i = 0; i < silEntries.length; i += 42) png(sheet(silEntries.slice(i, i + 42), 7, 150), path.join(outDir, `sil-${i / 42 + 1}.png`));
 
 console.log(`items ${Object.keys(data.items).length}/${data.ITEM_IDS.length}, textures ${Object.keys(data.textures).length}/${data.TEXTURE_IDS.length}, shapes ${Object.keys(data.shapes).length}/${data.SHAPE_IDS.length}`);
 if (problems.length) { console.log('PROBLEMS:\n  ' + problems.join('\n  ')); process.exitCode = 1; } else console.log('all checks OK');

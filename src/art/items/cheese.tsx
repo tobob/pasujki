@@ -4,18 +4,18 @@ import { Art, COLORS, S, tone, type ArtProps } from '../kit';
 
 const C = COLORS.yellow;
 
+/** A clear triangular cheese wedge (side view), soft holes. */
 export default function Cheese({ size }: ArtProps) {
+  const hole = tone(C, -0.16);
   return (
     <Art size={size}>
-      {/* side */}
-      <Path d="M10 46 L90 34 L90 74 L10 84 Z" fill={C} {...S} />
-      {/* top */}
-      <Path d="M10 46 L62 16 L90 34 Z" fill={tone(C, 0.4)} {...S} />
-      <Circle cx={28} cy={64} r={6} fill={tone(C, -0.18)} />
-      <Circle cx={52} cy={56} r={4} fill={tone(C, -0.18)} />
-      <Circle cx={70} cy={66} r={7} fill={tone(C, -0.18)} />
-      <Circle cx={46} cy={74} r={3} fill={tone(C, -0.18)} />
-      <Circle cx={62} cy={28} r={3} fill={tone(C, -0.05)} />
+      <Path d="M12 84 L85 22 C88 20 92 22 92 26 L92 80 C92 82 90 84 88 84 Z" fill={C} {...S} />
+      {/* soft highlight along the top edge */}
+      <Path d="M30 72 L80 30" fill="none" stroke={tone(C, 0.45)} strokeWidth={4} strokeLinecap="round" />
+      <Circle cx={74} cy={64} r={7} fill={hole} />
+      <Circle cx={56} cy={74} r={4.5} fill={hole} />
+      <Circle cx={80} cy={44} r={4} fill={hole} />
+      <Circle cx={38} cy={78} r={3} fill={hole} />
     </Art>
   );
 }

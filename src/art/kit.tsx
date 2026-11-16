@@ -2,8 +2,8 @@
  * Shared drawing kit for Pasujki illustrations (viewBox 0 0 100 100).
  * Every item uses the same outline colour/width and round caps so the set feels consistent.
  */
-import type { ReactNode } from 'react';
-import Svg, { Circle, Ellipse, Path } from 'react-native-svg';
+import { createContext, useContext, useId, type ReactNode } from 'react';
+import Svg, { Circle, Defs, Ellipse, Mask, Path, Rect } from 'react-native-svg';
 
 import { COLORS, UI } from '@/game/palette';
 
@@ -25,10 +25,31 @@ export const L3 = { ...S3, fill: 'none' };
 
 export type ArtProps = { size: number };
 
+/** When true, every <Art> below renders as a flat soft-charcoal silhouette (shadow rounds). */
+export const SilhouetteContext = createContext(false);
+export const SILHOUETTE_FILL = UI.outline;
+export const SILHOUETTE_OPACITY = 0.85;
+
 export function Art({ size, children }: { size: number; children: ReactNode }) {
+  const silhouette = useContext(SilhouetteContext);
+  const maskId = 'pasujki-sil-' + useId().replace(/[^a-zA-Z0-9_-]/g, '');
+  if (!silhouette) {
+    return (
+      <Svg width={size} height={size} viewBox="0 0 100 100">
+        {children}
+      </Svg>
+    );
+  }
+  // Alpha mask: the drawing's coverage (fills + outlines) cuts a single flat shape out of one Rect,
+  // so faces and inner details vanish. style.maskType covers react-native-web (CSS mask-type).
   return (
     <Svg width={size} height={size} viewBox="0 0 100 100">
-      {children}
+      <Defs>
+        <Mask id={maskId} maskUnits="userSpaceOnUse" x={0} y={0} width={100} height={100} maskType="alpha" style={{ maskType: 'alpha' }}>
+          {children}
+        </Mask>
+      </Defs>
+      <Rect x={0} y={0} width={100} height={100} fill={SILHOUETTE_FILL} opacity={SILHOUETTE_OPACITY} mask={`url(#${maskId})`} />
     </Svg>
   );
 }

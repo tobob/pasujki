@@ -19,10 +19,11 @@ export default function Lion({ size }: ArtProps) {
       <Circle cx={28} cy={30} r={9} fill={C} {...S} />
       <Circle cx={72} cy={30} r={9} fill={C} {...S} />
       {/* face */}
-      <Circle cx={50} cy={54} r={29} fill={C} {...S} />
+      <Circle cx={50} cy={54} r={30} fill={C} {...S} />
+      <Path d="M30 42 C33 34 39 29 46 28" fill="none" stroke={tone(C, 0.45)} strokeWidth={4} strokeLinecap="round" />
       <Ellipse cx={50} cy={64} rx={11} ry={8} fill={tone(C, 0.5)} />
-      <Cheeks x1={33} x2={67} y={60} />
-      <Eyes x1={41} x2={59} y={48} r={3.8} />
+      <Cheeks x1={32} x2={68} y={61} r={4} />
+      <Eyes x1={40} x2={60} y={49} r={4.4} />
       <Path d="M46 58 H54 L50 62 Z" fill={OUT} {...S3} />
       <Path d="M50 62 V65 M45 67 Q50 70 50 65 Q50 70 55 67" {...L3} />
     </Art>

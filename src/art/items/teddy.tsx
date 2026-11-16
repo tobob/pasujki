@@ -1,4 +1,4 @@
-import { Circle, Ellipse } from 'react-native-svg';
+import { Circle, Ellipse, Path } from 'react-native-svg';
 
 import { Art, COLORS, Eyes, OUT, S, Smile, tone, type ArtProps } from '../kit';
 
@@ -18,11 +18,14 @@ export default function Teddy({ size }: ArtProps) {
       <Circle cx={74} cy={18} r={10} fill={C} {...S} />
       <Circle cx={26} cy={18} r={4.5} fill={Lt} />
       <Circle cx={74} cy={18} r={4.5} fill={Lt} />
-      <Circle cx={50} cy={36} r={25} fill={C} {...S} />
-      <Ellipse cx={50} cy={45} rx={11} ry={8} fill={Lt} />
-      <Ellipse cx={50} cy={41} rx={3.5} ry={2.6} fill={OUT} />
-      <Smile cx={50} cy={46} w={3.5} d={2.5} />
-      <Eyes x1={41} x2={59} y={32} r={3.2} />
+      <Circle cx={50} cy={37} r={27} fill={C} {...S} />
+      <Path d="M30 28 C33 21 38 17 44 15" fill="none" stroke={tone(C, 0.35)} strokeWidth={4} strokeLinecap="round" />
+      <Ellipse cx={36} cy={47} rx={4} ry={2.8} fill="#F4A3B4" opacity={0.7} />
+      <Ellipse cx={64} cy={47} rx={4} ry={2.8} fill="#F4A3B4" opacity={0.7} />
+      <Ellipse cx={50} cy={47} rx={12} ry={8.5} fill={Lt} />
+      <Ellipse cx={50} cy={43} rx={3.8} ry={2.8} fill={OUT} />
+      <Smile cx={50} cy={48} w={3.5} d={2.5} />
+      <Eyes x1={40} x2={60} y={35} r={4} />
     </Art>
   );
 }

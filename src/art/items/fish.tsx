@@ -1,26 +1,26 @@
-import { Circle, Path } from 'react-native-svg';
+import { Path } from 'react-native-svg';
 
-import { Art, COLORS, Cheeks, Eyes, L3, S, S3, Smile, tone, type ArtProps } from '../kit';
+import { Art, COLORS, Face, S, tone, type ArtProps } from '../kit';
 
 const C = COLORS.orange;
+const D = tone(C, -0.12);
 
+/** Goldfish: round chubby body, soft tail, friendly face. */
 export default function Fish({ size }: ArtProps) {
   return (
     <Art size={size}>
       {/* tail */}
-      <Path d="M70 50 L92 30 C96 42 96 58 92 70 Z" fill={tone(C, -0.12)} {...S} />
-      {/* top fin */}
-      <Path d="M36 30 C42 18 58 16 64 30 Z" fill={tone(C, -0.12)} {...S} />
+      <Path d="M70 50 C78 38 86 30 93 30 C96 42 96 58 93 70 C86 70 78 62 70 50 Z" fill={D} {...S} />
+      {/* top + bottom fins */}
+      <Path d="M30 26 C34 10 52 6 62 24 Z" fill={D} {...S} />
+      <Path d="M40 76 C42 84 50 86 54 78 Z" fill={D} {...S} />
       {/* body */}
-      <Path d="M8 50 C8 34 26 24 44 24 C62 24 74 38 76 50 C74 62 62 76 44 76 C26 76 8 66 8 50 Z" fill={C} {...S} />
-      <Path d="M48 34 C56 40 56 60 48 66" {...L3} stroke={tone(C, -0.25)} />
-      <Path d="M42 62 C46 68 54 68 56 64" {...L3} stroke={tone(C, 0.4)} strokeWidth={4} />
-      <Cheeks x1={22} x2={22} y={56} />
-      <Eyes x1={26} x2={26} y={44} r={4.2} />
-      <Smile cx={17} cy={56} w={4} />
-      {/* bubbles */}
-      <Circle cx={10} cy={20} r={4} fill="#FFFFFF" {...S3} strokeWidth={2.5} />
-      <Circle cx={18} cy={10} r={2.6} fill="#FFFFFF" {...S3} strokeWidth={2.5} />
+      <Path d="M8 52 C8 32 24 20 42 20 C60 20 74 34 76 50 C74 68 60 82 42 82 C24 82 8 72 8 52 Z" fill={C} {...S} />
+      {/* shade + highlight */}
+      <Path d="M20 70 C28 77 44 79 58 74" fill="none" stroke={D} strokeWidth={4} strokeLinecap="round" />
+      <Path d="M24 30 C30 25 36 24 42 24" fill="none" stroke={tone(C, 0.4)} strokeWidth={4} strokeLinecap="round" />
+      <Path d="M56 36 C62 44 62 58 56 66" fill="none" stroke={D} strokeWidth={3} strokeLinecap="round" />
+      <Face cx={32} cy={48} gap={17} eyeR={4.2} mouthDy={10} />
     </Art>
   );
 }

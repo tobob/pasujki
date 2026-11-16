@@ -18,8 +18,8 @@ export default function Whale({ size }: ArtProps) {
       {/* belly */}
       <Path d="M14 68 C22 78 40 80 56 76 C46 72 28 70 14 68 Z" fill={tone(C, 0.55)} />
       <Path d="M16 46 C20 40 26 36 32 35" fill="none" stroke={tone(C, 0.35)} strokeWidth={4} strokeLinecap="round" />
-      <Cheeks x1={20} x2={42} y={62} />
-      <Eyes x1={24} x2={38} y={54} r={3.6} />
+      <Cheeks x1={18} x2={44} y={62} r={4} />
+      <Eyes x1={23} x2={39} y={54} r={4.3} />
       <Smile cx={31} cy={62} w={5} />
     </Art>
   );

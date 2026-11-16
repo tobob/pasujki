@@ -22,5 +22,6 @@ export const ClipPath = el('clipPath');
 export const LinearGradient = el('linearGradient');
 export const RadialGradient = el('radialGradient');
 export const Stop = el('stop');
-export const Mask = el('mask');
+export const Mask = ({ maskType, style, children, ...p }) => createElement('mask', { ...p, 'mask-type': maskType, style: maskType ? { maskType } : style }, children);
+export const SilhouetteMaskOK = true;
 export const Text = el('text');

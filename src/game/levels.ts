@@ -5,12 +5,18 @@
  * distractors are) and expanded into plain `Round` data at module load by a small deterministic
  * generator (seeded shuffle per level id: same output on every run / device). `WORLDS` itself is plain
  * data; nothing in it is a function. Validate with: npx tsx scripts/validate-levels.ts
+ *
+ * Variety (v0.2): within a level an item appears at most twice (prompt + targets), an answer item is
+ * never reused as an answer in the same level, prompts never repeat in a level, and the generator
+ * prefers items that were used least in the current world and avoids the previous level's answers.
  */
+import { SILHOUETTE_CLEAR } from '../art/silhouette-ok';
 import {
   BABY_OF,
   ITEM_ATTRS,
   LIVES_IN,
   PAIRS,
+  SIL_FAMILY,
   WEATHER_NEEDS,
   plausible,
   relatesUnderAnyRule,
@@ -113,6 +119,30 @@ const WEATHER_HINTS: Partial<Record<ItemId, [string, string]>> = {
   cloud: ['Chmurka! Zaraz będzie padać. Co się przyda?', 'A cloud! Rain is coming. What do we need?'],
   snowflake: ['Pada śnieżek! Co się przyda?', "It's snowing! What do we need?"],
 };
+const SHADOW_HINTS: [string, string][] = [
+  ['Czyj to cień?', 'Whose shadow is this?'],
+  ['Kto się schował w cieniu?', 'Who is hiding in the shadow?'],
+  ['Do kogo pasuje ten cień?', 'Who does this shadow belong to?'],
+];
+/** Themed lines for abstract ("free") levels. */
+type FreeTheme = 'default' | 'gift' | 'eat' | 'live' | 'wear' | 'play';
+const FREE_LINES: Record<Exclude<FreeTheme, 'default' | 'eat' | 'gift'>, [string, string][]> = {
+  live: [
+    ['Kto by tu zamieszkał?', 'Who would live here?'],
+    ['Czyj to będzie domek?', 'Whose home will this be?'],
+    ['Kto się tu wprowadzi?', 'Who will move in here?'],
+  ],
+  wear: [
+    ['Kto to założy?', 'Who will wear this?'],
+    ['Komu to pasuje?', 'Who does this suit?'],
+    ['Kto się w to przebierze?', 'Who will dress up in this?'],
+  ],
+  play: [
+    ['Kto się tym pobawi?', 'Who will play with this?'],
+    ['Komu to dasz?', 'Who will you give it to?'],
+    ['Kto chce się bawić?', 'Who wants to play?'],
+  ],
+};
 const TAKI_SAM: Record<PlGender, string> = { m: 'taki sam', f: 'taka sama', n: 'takie samo', pl: 'takie same' };
 const jest = (g: PlGender) => (g === 'pl' ? 'są' : 'jest');
 
@@ -121,28 +151,34 @@ function need<T>(v: T | undefined, what: string): T {
   return v;
 }
 
-function hintFor(rule: MatchRule, p: Prompt, freeIdx: number): [string, string] {
-  if (rule === 'free') {
-    switch (p.kind) {
-      case 'color': {
-        const w = COLOR_WORDS[p.id];
-        return [`Kto lubi kolor ${w.m}?`, `Who likes ${w.en}?`];
-      }
-      case 'texture':
-        return FREE_TEXTURE_HINTS[p.id] ?? TEXTURE_HINTS[p.id];
-      case 'shape':
-        return [`Komu dasz ${SHAPE_WORDS[p.id].acc}?`, `Who gets ${SHAPE_WORDS[p.id].en}?`];
-      case 'item': {
-        const at = ITEM_ATTRS[p.id];
-        const lines: [string, string][] = [
-          ['Komu to pasuje?', 'Who does this suit?'],
-          [`Kto chce ${need(at.acc, p.id + '.acc')}?`, `Who wants the ${at.en}?`],
-          ['Komu to dasz?', 'Who will you give it to?'],
-        ];
-        return lines[freeIdx % lines.length];
-      }
+function freeHint(theme: FreeTheme, p: Prompt, k: number): [string, string] {
+  switch (p.kind) {
+    case 'color': {
+      const w = COLOR_WORDS[p.id];
+      return k % 2 === 0 ? [`Kto lubi kolor ${w.m}?`, `Who likes ${w.en}?`] : [`Komu pasuje kolor ${w.m}?`, `Who suits ${w.en}?`];
+    }
+    case 'texture':
+      return FREE_TEXTURE_HINTS[p.id] ?? TEXTURE_HINTS[p.id];
+    case 'shape':
+      return [`Komu dasz ${SHAPE_WORDS[p.id].acc}?`, `Who gets ${SHAPE_WORDS[p.id].en}?`];
+    case 'shadow':
+      return SHADOW_HINTS[k % SHADOW_HINTS.length];
+    case 'item': {
+      const at = ITEM_ATTRS[p.id];
+      if (theme === 'eat') return [`Co zje ${at.pl}?`, `What would the ${at.en} eat?`];
+      if (theme === 'live' || theme === 'wear' || theme === 'play') return FREE_LINES[theme][k % 3];
+      const lines: [string, string][] = [
+        ['Komu to pasuje?', 'Who does this suit?'],
+        [`Kto chce ${need(at.acc, p.id + '.acc')}?`, `Who wants the ${at.en}?`],
+        ['Komu to dasz?', 'Who will you give it to?'],
+      ];
+      return lines[k % lines.length];
     }
   }
+}
+
+function hintFor(rule: MatchRule, p: Prompt, theme: FreeTheme, k: number): [string, string] {
+  if (rule === 'free') return freeHint(theme, p, k);
   switch (p.kind) {
     case 'color':
       return [`Co jest ${COLOR_WORDS[p.id].n}?`, `What is ${COLOR_WORDS[p.id].en}?`];
@@ -150,6 +186,8 @@ function hintFor(rule: MatchRule, p: Prompt, freeIdx: number): [string, string] 
       return [`Co wygląda jak ${SHAPE_WORDS[p.id].pl}?`, `What looks like ${SHAPE_WORDS[p.id].en}?`];
     case 'texture':
       return TEXTURE_HINTS[p.id];
+    case 'shadow':
+      return SHADOW_HINTS[k % SHADOW_HINTS.length];
     case 'item': {
       const at = ITEM_ATTRS[p.id];
       switch (rule) {
@@ -174,20 +212,22 @@ function hintFor(rule: MatchRule, p: Prompt, freeIdx: number): [string, string] 
 
 // ── level specs ───────────────────────────────────────────────────────────────────────────────
 /**
- * easy   – distractors from another category and of another, clearly different colour (never a
- *          confusable hue) than the answer: obviously wrong.
+ * easy   – distractors from another category / silhouette family and of another, clearly different
+ *          colour (never a confusable hue) than the answer: obviously wrong.
  * medium – distractors of a different colour than the answer, same domain allowed.
- * hard   – lures: distractors preferably share the answer's colour (or a confusable hue in colour
- *          rounds), so the child has to use the rule, not the colour.
+ * hard   – lures: distractors preferably share the answer's colour (a confusable hue in colour rounds,
+ *          the same silhouette family in shadow rounds), so the child has to use the rule.
  */
 type Diff = 'easy' | 'medium' | 'hard';
-type RoundSpec = { rule: MatchRule; prompt: Prompt; answer?: ItemId };
+/** `prompt` omitted = 'shadow' round whose item is picked by the generator (from SILHOUETTE_CLEAR). */
+type RoundSpec = { rule: MatchRule; prompt?: Prompt; answer?: ItemId };
 type LevelSpec = {
   title_pl: string;
   title_en: string;
   age: Level['age'];
   active: 2 | 3 | 4;
   diff: Diff;
+  theme?: FreeTheme;
   rounds: RoundSpec[];
 };
 type WorldSpec = { title_pl: string; title_en: string; tint: string; levels: LevelSpec[] };
@@ -204,127 +244,169 @@ const textures = (...ids: (TextureId | [TextureId, ItemId])[]): RoundSpec[] =>
   ids.map((x) => (Array.isArray(x) ? { rule: 'texture', prompt: tex(x[0]), answer: x[1] } : { rule: 'texture', prompt: tex(x) }));
 const rel = (rule: MatchRule, ...ids: (ItemId | [ItemId, ItemId])[]): RoundSpec[] =>
   ids.map((x) => (Array.isArray(x) ? { rule, prompt: it(x[0]), answer: x[1] } : { rule, prompt: it(x) }));
+const shadows = (n: number): RoundSpec[] => Array.from({ length: n }, () => ({ rule: 'shadow' as const }));
 const free = (...ps: Prompt[]): RoundSpec[] => ps.map((prompt) => ({ rule: 'free', prompt }));
+const freeItems = (...ids: ItemId[]): RoundSpec[] => free(...ids.map(it));
+
+type LvlOpts = Omit<LevelSpec, 'title_pl' | 'title_en' | 'rounds'>;
+const L = (title_pl: string, title_en: string, o: LvlOpts, rounds: RoundSpec[]): LevelSpec => ({ title_pl, title_en, ...o, rounds });
 
 const WORLD_SPECS: WorldSpec[] = [
   // ── W1: identical picture (2+) ───────────────────────────────────────────────────────────────
   {
     title_pl: 'Takie same', title_en: 'The same', tint: WORLD_TINTS[0],
     levels: [
-      { title_pl: 'Pierwsze kroki', title_en: 'First steps', age: '2+', active: 2, diff: 'easy',
-        rounds: same('cat', 'ball', 'banana', 'car', 'duck', 'sun') },
-      { title_pl: 'Gdzie jest drugi?', title_en: 'Where is the other one?', age: '2+', active: 2, diff: 'easy',
-        rounds: same('dog', 'strawberry', 'fish', 'star', 'teddy', 'boat') },
-      { title_pl: 'Trzy okienka', title_en: 'Three windows', age: '2+', active: 3, diff: 'easy',
-        rounds: same('pig', 'frog', 'apple', 'umbrella', 'flower', 'train') },
-      { title_pl: 'Co tu mamy?', title_en: 'What do we have here?', age: '2+', active: 3, diff: 'medium',
-        rounds: same('rabbit', 'carrot', 'airplane', 'bee', 'balloon', 'cup') },
-      { title_pl: 'Cztery okienka', title_en: 'Four windows', age: '2+', active: 4, diff: 'medium',
-        rounds: same('elephant', 'lion', 'pear', 'drum', 'moon', 'sock') },
+      L('Pierwsze kroki', 'First steps', { age: '2+', active: 2, diff: 'easy' }, same('cat', 'ball', 'banana', 'car', 'duck', 'sun')),
+      L('Gdzie jest drugi?', 'Where is the other one?', { age: '2+', active: 2, diff: 'easy' }, same('dog', 'strawberry', 'fish', 'star', 'teddy', 'boat')),
+      L('Para do pary', 'Find the twin', { age: '2+', active: 2, diff: 'easy' }, same('pig', 'apple', 'umbrella', 'flower', 'train', 'frog')),
+      L('Trzy okienka', 'Three windows', { age: '2+', active: 3, diff: 'easy' }, same('rabbit', 'carrot', 'airplane', 'bee', 'balloon', 'cup')),
+      L('Co tu mamy?', 'What do we have here?', { age: '2+', active: 3, diff: 'easy' }, same('elephant', 'pear', 'drum', 'moon', 'sock', 'kite')),
+      L('Zgadnij!', 'Guess!', { age: '2+', active: 3, diff: 'medium' }, same('lion', 'cake', 'bucket', 'hat', 'snail', 'gift')),
+      L('Cztery okienka', 'Four windows', { age: '2+', active: 4, diff: 'medium' }, same('giraffe', 'block', 'mushroom', 'owl', 'bicycle', 'cherry')),
+      L('Bystre oczka', 'Bright eyes', { age: '2+', active: 4, diff: 'medium' }, same('hedgehog', 'fox', 'shovel', 'key', 'rainbow', 'octopus')),
     ],
   },
-  // ── W2: colours (2.5+ → 3+) ──────────────────────────────────────────────────────────────────
+  // ── W2: colours (2.5+ → 4+) ──────────────────────────────────────────────────────────────────
   {
     title_pl: 'Kolory', title_en: 'Colours', tint: WORLD_TINTS[1],
     levels: [
-      { title_pl: 'Pierwsze kolory', title_en: 'First colours', age: '2+', active: 2, diff: 'easy',
-        rounds: colors('red', 'yellow', 'red', 'yellow', 'blue', 'blue') },
-      { title_pl: 'Niebieskie i zielone', title_en: 'Blue and green', age: '2+', active: 2, diff: 'easy',
-        rounds: colors('green', 'blue', 'green', 'red', 'yellow', 'blue') },
-      { title_pl: 'Tęcza', title_en: 'Rainbow', age: '3+', active: 3, diff: 'easy',
-        rounds: colors('red', 'yellow', 'blue', 'green', 'orange', 'orange') },
-      { title_pl: 'Nowe kolory', title_en: 'New colours', age: '3+', active: 3, diff: 'medium',
-        rounds: colors('orange', 'pink', 'purple', 'brown', 'white', 'red') },
-      { title_pl: 'Wszystkie kolory', title_en: 'All the colours', age: '3+', active: 4, diff: 'medium',
-        rounds: colors('pink', 'purple', 'brown', 'black', 'grey', 'white') },
+      L('Pierwsze kolory', 'First colours', { age: '2+', active: 2, diff: 'easy' }, colors('red', 'yellow', 'blue', 'green', 'orange', 'white')),
+      L('Kolorowy dzień', 'A colourful day', { age: '2+', active: 2, diff: 'easy' }, colors('blue', 'green', 'red', 'yellow', 'pink', 'brown')),
+      L('Tęcza', 'Rainbow', { age: '2+', active: 3, diff: 'easy' }, colors('red', 'yellow', 'blue', 'green', 'purple', 'orange')),
+      L('Nowe kolory', 'New colours', { age: '3+', active: 3, diff: 'easy' }, colors('orange', 'pink', 'brown', 'white', 'grey', 'blue')),
+      L('Ciemne i jasne', 'Dark and light', { age: '3+', active: 3, diff: 'medium' }, colors('purple', 'pink', 'brown', 'black', 'grey', 'yellow')),
+      L('Cztery kolory', 'Four colours', { age: '3+', active: 4, diff: 'medium' }, colors('red', 'green', 'orange', 'white', 'purple', 'black')),
+      L('Wszystkie kolory', 'All the colours', { age: '3+', active: 4, diff: 'medium' }, colors('pink', 'grey', 'brown', 'yellow', 'blue', 'purple')),
+      L('Podobne kolory', 'Look-alike colours', { age: '4+', active: 4, diff: 'hard' }, colors('red', 'pink', 'orange', 'purple', 'grey', 'white')),
     ],
   },
-  // ── W3: shapes (3+) ──────────────────────────────────────────────────────────────────────────
+  // ── W3: shapes (3+ → 4+) ─────────────────────────────────────────────────────────────────────
   {
     title_pl: 'Kształty', title_en: 'Shapes', tint: WORLD_TINTS[2],
     levels: [
-      { title_pl: 'Kółko i gwiazdka', title_en: 'Circle and star', age: '3+', active: 2, diff: 'easy',
-        rounds: shapes('circle', 'star', 'heart', 'circle', 'star', 'heart') },
-      { title_pl: 'Trójkąt i rogalik', title_en: 'Triangle and crescent', age: '3+', active: 3, diff: 'easy',
-        rounds: shapes('circle', 'star', 'heart', 'triangle', 'crescent', 'triangle') },
-      { title_pl: 'Jajeczko', title_en: 'Oval', age: '3+', active: 3, diff: 'medium',
-        rounds: shapes('oval', 'rectangle', 'crescent', 'circle', 'triangle', 'oval') },
-      { title_pl: 'Wszystkie kształty', title_en: 'All the shapes', age: '4+', active: 4, diff: 'hard',
-        rounds: shapes('circle', 'triangle', 'star', 'oval', 'rectangle', 'crescent') },
+      L('Kółko i gwiazdka', 'Circle and star', { age: '3+', active: 2, diff: 'easy' }, shapes('circle', 'star', 'heart', 'square', 'triangle', 'crescent')),
+      L('Kwadrat i serduszko', 'Square and heart', { age: '3+', active: 2, diff: 'easy' }, shapes('circle', 'square', 'heart', 'oval', 'crescent', 'triangle')),
+      L('Trójkąt i rogalik', 'Triangle and crescent', { age: '3+', active: 3, diff: 'easy' }, shapes('triangle', 'circle', 'star', 'oval', 'rectangle', 'square')),
+      L('Jajeczko', 'Oval', { age: '3+', active: 3, diff: 'medium' }, shapes('square', 'crescent', 'oval', 'circle', 'triangle', 'heart')),
+      L('Prostokąt', 'Rectangle', { age: '3+', active: 3, diff: 'medium' }, shapes('star', 'rectangle', 'circle', 'square', 'crescent', 'oval')),
+      L('Cztery kształty', 'Four shapes', { age: '4+', active: 4, diff: 'medium' }, shapes('heart', 'triangle', 'oval', 'square', 'circle', 'crescent')),
+      L('Wszystkie kształty', 'All the shapes', { age: '4+', active: 4, diff: 'hard' }, shapes('circle', 'square', 'triangle', 'star', 'oval', 'rectangle')),
     ],
   },
-  // ── W4: textures / patterns (3+ → 4+) ────────────────────────────────────────────────────────
+  // ── W4: shadows (3+ → 4+) ────────────────────────────────────────────────────────────────────
+  {
+    title_pl: 'Cienie', title_en: 'Shadows', tint: '#ECEEF6',
+    levels: [
+      L('Czyj to cień?', 'Whose shadow?', { age: '3+', active: 2, diff: 'easy' }, shadows(6)),
+      L('Schowani w cieniu', 'Hiding in the shadow', { age: '3+', active: 3, diff: 'easy' }, shadows(6)),
+      L('Cienie na ścianie', 'Shadows on the wall', { age: '3+', active: 3, diff: 'medium' }, shadows(6)),
+      L('Cztery cienie', 'Four shadows', { age: '4+', active: 4, diff: 'medium' }, shadows(6)),
+      L('Podobne cienie', 'Look-alike shadows', { age: '4+', active: 4, diff: 'hard' }, shadows(6)),
+      L('Mistrz cieni', 'Shadow champion', { age: '4+', active: 4, diff: 'hard' }, shadows(6)),
+    ],
+  },
+  // ── W5: textures / patterns (3+ → 4+) ────────────────────────────────────────────────────────
   {
     title_pl: 'Wzorki', title_en: 'Patterns', tint: WORLD_TINTS[3],
     levels: [
-      { title_pl: 'Paski i kropki', title_en: 'Stripes and spots', age: '3+', active: 2, diff: 'easy',
-        rounds: textures('stripes_bw', 'spots_red_black', ['wool', 'sheep'], 'stripes_orange', 'spots_giraffe', 'scales') },
-      { title_pl: 'Futerko i piórka', title_en: 'Fur and feathers', age: '3+', active: 3, diff: 'easy',
-        rounds: textures(['feathers', 'hen'], ['fur_brown', 'bear'], ['wool', 'lamb'], 'stripes_bw', 'spots_giraffe', ['feathers', 'parrot']) },
-      { title_pl: 'Z czego to jest?', title_en: 'What is it made of?', age: '3+', active: 4, diff: 'medium',
-        rounds: textures('scales', ['wood', 'tree'], 'waves', 'bricks', 'ice', 'honeycomb') },
-      { title_pl: 'Uważne oczka', title_en: 'Sharp eyes', age: '4+', active: 4, diff: 'hard',
-        rounds: textures('stripes_orange', 'spots_giraffe', ['wool', 'sheep'], 'spots_red_black', ['fur_brown', 'bear'], ['feathers', 'duck']) },
+      L('Paski i kropki', 'Stripes and spots', { age: '3+', active: 2, diff: 'easy' },
+        textures('stripes_bw', 'spots_red_black', ['wool', 'sheep'], 'scales', ['feathers', 'hen'], ['fur_brown', 'bear'])),
+      L('Futerko i piórka', 'Fur and feathers', { age: '3+', active: 2, diff: 'easy' },
+        textures('stripes_orange', 'spots_giraffe', ['feathers', 'parrot'], ['wool', 'lamb'], ['fur_brown', 'monkey'], 'honeycomb')),
+      L('Kto to ma?', 'Who has it?', { age: '3+', active: 3, diff: 'easy' },
+        textures('stripes_bw', 'scales', ['wood', 'tree'], ['feathers', 'owl'], ['fur_brown', 'horse'], 'spots_red_black')),
+      L('Z czego to jest?', 'What is it made of?', { age: '3+', active: 3, diff: 'medium' },
+        textures('waves', 'bricks', 'ice', ['wood', 'doghouse'], 'honeycomb', 'stripes_orange')),
+      L('Miękkie i twarde', 'Soft and hard', { age: '3+', active: 3, diff: 'medium' },
+        textures('spots_giraffe', ['wool', 'sheep'], ['feathers', 'flamingo'], ['fur_brown', 'dog'], 'stripes_bw', 'scales')),
+      L('Cztery wzorki', 'Four patterns', { age: '3+', active: 4, diff: 'medium' },
+        textures('spots_red_black', 'stripes_orange', 'waves', ['wood', 'barn'], 'bricks', ['feathers', 'crow'])),
+      L('Uważne oczka', 'Sharp eyes', { age: '4+', active: 4, diff: 'hard' },
+        textures('spots_giraffe', ['wool', 'lamb'], ['fur_brown', 'bear'], ['feathers', 'duck'], 'stripes_bw', 'ice')),
+      L('Mistrz wzorków', 'Pattern champion', { age: '4+', active: 4, diff: 'hard' },
+        textures('honeycomb', 'waves', 'scales', 'stripes_orange', ['wood', 'hutch'], 'spots_red_black')),
     ],
   },
-  // ── W5: mother & baby, food, homes (3+ → 4+) ─────────────────────────────────────────────────
+  // ── W6: mother & baby, food, homes (3+ → 4+) ─────────────────────────────────────────────────
   {
     title_pl: 'Kto z kim?', title_en: 'Who goes with whom?', tint: WORLD_TINTS[4],
     levels: [
-      { title_pl: 'Mama i maluszek', title_en: 'Mummy and baby', age: '3+', active: 3, diff: 'easy',
-        rounds: rel('baby', 'chick', 'kitten', 'puppy', 'lamb', 'calf', 'duckling') },
-      { title_pl: 'Kto co je?', title_en: 'Who eats what?', age: '3+', active: 3, diff: 'easy',
-        rounds: rel('food', ['carrot', 'rabbit'], ['bone', 'dog'], ['cheese', 'mouse'], ['banana', 'monkey'], ['acorn', 'squirrel'], ['honey', 'bear']) },
-      { title_pl: 'Gdzie mieszka?', title_en: 'Where does it live?', age: '3+', active: 3, diff: 'easy',
-        rounds: rel('home', ['dog', 'doghouse'], ['bee', 'beehive'], ['fish', 'pond'], ['penguin', 'iceberg'], ['squirrel', 'tree'], ['rabbit', 'hutch']) },
-      { title_pl: 'Wszystkie mamy', title_en: 'All the mummies', age: '4+', active: 4, diff: 'medium',
-        rounds: rel('baby', 'duckling', 'calf', 'chick', 'puppy', 'kitten', 'lamb') },
-      { title_pl: 'Smacznego!', title_en: 'Enjoy your meal!', age: '4+', active: 4, diff: 'medium',
-        rounds: rel('food', ['milk', 'cat'], ['leaf', 'giraffe'], ['corn', 'hen'], ['flower', 'butterfly'], ['bread', 'duck'], ['fish', 'penguin']) },
-      { title_pl: 'Domki', title_en: 'Homes', age: '4+', active: 4, diff: 'medium',
-        rounds: rel('home', ['whale', 'sea'], ['frog', 'pond'], ['cow', 'barn'], ['hen', 'nest'], ['owl', 'tree'], ['duck', 'pond']) },
+      L('Mama i maluszek', 'Mummy and baby', { age: '3+', active: 3, diff: 'easy' },
+        [...rel('baby', 'chick', 'kitten', 'lamb'), ...rel('food', ['carrot', 'rabbit'], ['banana', 'monkey'], ['honey', 'bear'])]),
+      L('Kto co je?', 'Who eats what?', { age: '3+', active: 3, diff: 'easy' },
+        [...rel('food', ['cheese', 'mouse'], ['acorn', 'squirrel'], ['bone', 'dog'], ['hay', 'horse']), ...rel('baby', 'duckling', 'calf')]),
+      L('Gdzie mieszka?', 'Where does it live?', { age: '3+', active: 3, diff: 'easy' },
+        [...rel('home', ['bee', 'beehive'], ['fish', 'pond'], ['penguin', 'iceberg'], ['rabbit', 'hutch']), ...rel('baby', 'puppy'), ...rel('food', ['milk', 'cat'])]),
+      L('Domki i smakołyki', 'Homes and treats', { age: '3+', active: 3, diff: 'easy' },
+        [...rel('home', ['squirrel', 'tree'], ['cow', 'barn']), ...rel('food', ['mushroom', 'hedgehog'], ['worm', 'bird']), ...rel('baby', 'chick', 'lamb')]),
+      L('Smacznego!', 'Enjoy your meal!', { age: '3+', active: 3, diff: 'medium' },
+        [...rel('food', ['fish', 'penguin'], ['leaf', 'giraffe'], ['apple', 'horse']), ...rel('baby', 'kitten', 'calf'), ...rel('home', ['whale', 'sea'])]),
+      L('Kto gdzie mieszka?', 'Who lives where?', { age: '3+', active: 3, diff: 'medium' },
+        [...rel('home', ['frog', 'pond'], ['hen', 'nest'], ['owl', 'tree']), ...rel('food', ['flower', 'butterfly'], ['carrot', 'rabbit']), ...rel('baby', 'puppy')]),
+      L('Wszystkie mamy', 'All the mummies', { age: '4+', active: 4, diff: 'medium' },
+        [...rel('baby', 'lamb', 'chick', 'duckling'), ...rel('food', ['honey', 'bear'], ['bread', 'mouse']), ...rel('home', ['octopus', 'sea'])]),
+      L('Leśni przyjaciele', 'Forest friends', { age: '4+', active: 4, diff: 'medium' },
+        [...rel('baby', 'kitten', 'calf'), ...rel('food', ['egg', 'fox'], ['acorn', 'squirrel'], ['mushroom', 'hedgehog']), ...rel('home', ['monkey', 'tree'])]),
+      L('Na łące i w stawie', 'In the meadow and the pond', { age: '4+', active: 4, diff: 'medium' },
+        [...rel('home', ['bird', 'nest'], ['pig', 'barn'], ['flamingo', 'pond']), ...rel('food', ['blueberries', 'bear'], ['hay', 'cow']), ...rel('baby', 'puppy')]),
+      L('Uważaj!', 'Careful!', { age: '4+', active: 4, diff: 'hard' },
+        [...rel('baby', 'chick', 'kitten'), ...rel('food', ['carrot', 'rabbit'], ['cheese', 'mouse']), ...rel('home', ['penguin', 'iceberg'], ['squirrel', 'tree'])]),
+      L('Podobni', 'Look-alikes', { age: '4+', active: 4, diff: 'hard' },
+        [...rel('baby', 'lamb', 'duckling'), ...rel('food', ['hay', 'horse'], ['worm', 'bird']), ...rel('home', ['bee', 'beehive'], ['fish', 'pond'])]),
+      L('Mistrz zwierzaków', 'Animal champion', { age: '4+', active: 4, diff: 'hard' },
+        [...rel('baby', 'calf', 'puppy'), ...rel('food', ['acorn', 'squirrel'], ['milk', 'cat']), ...rel('home', ['rabbit', 'hutch'], ['whale', 'sea'])]),
     ],
   },
-  // ── W6: weather & pairs, then lures (4+ → 5+) ────────────────────────────────────────────────
+  // ── W7: weather & pairs, then lures (4+ → 5+) ────────────────────────────────────────────────
   {
     title_pl: 'Pogoda i pary', title_en: 'Weather and pairs', tint: WORLD_TINTS[5],
     levels: [
-      { title_pl: 'Jaka pogoda?', title_en: "What's the weather?", age: '4+', active: 3, diff: 'easy',
-        rounds: rel('weather', 'sun', ['raindrop', 'umbrella'], ['snowflake', 'scarf'], ['cloud', 'boot'], 'sun', ['snowflake', 'mitten']) },
-      { title_pl: 'Co się przyda?', title_en: 'What do we need?', age: '4+', active: 4, diff: 'medium',
-        rounds: rel('weather', 'sun', ['raindrop', 'boot'], ['snowflake', 'hat'], ['cloud', 'umbrella'], ['snowflake', 'mitten'], ['raindrop', 'umbrella']) },
-      { title_pl: 'Co do pary?', title_en: 'What makes a pair?', age: '4+', active: 3, diff: 'easy',
-        rounds: rel('pair', ['sock', 'shoe'], ['toothbrush', 'cup'], ['pillow', 'bed'], ['spoon', 'cup'], ['key', 'house'], ['crayon', 'book']) },
-      { title_pl: 'Pary', title_en: 'Pairs', age: '4+', active: 4, diff: 'medium',
-        rounds: rel('pair', ['shoe', 'sock'], ['mitten', 'scarf'], ['bed', 'pillow'], ['house', 'key'], ['book', 'crayon'], ['moon', 'star']) },
-      { title_pl: 'Uważaj na kolory', title_en: 'Mind the colours', age: '5+', active: 4, diff: 'hard',
-        rounds: [
-          ...rel('weather', ['raindrop', 'umbrella'], ['snowflake', 'scarf'], 'sun'),
-          ...rel('pair', ['sock', 'shoe'], ['toothbrush', 'soap'], ['star', 'moon']),
-        ] },
-      { title_pl: 'Mistrz pasowania', title_en: 'Matching champion', age: '5+', active: 4, diff: 'hard',
-        rounds: [
-          ...colors('purple'),
-          ...shapes('circle'),
-          ...textures('stripes_orange'),
-          ...rel('food', ['carrot', 'rabbit']),
-          ...rel('baby', 'kitten'),
-          ...rel('pair', ['bone', 'dog']),
-        ] },
+      L('Jaka pogoda?', "What's the weather?", { age: '4+', active: 3, diff: 'easy' },
+        [...rel('weather', 'sun', ['raindrop', 'umbrella'], ['snowflake', 'scarf']), ...rel('pair', ['sock', 'shoe'], ['spoon', 'cup'], ['key', 'house'])]),
+      L('Co się przyda?', 'What do we need?', { age: '4+', active: 3, diff: 'easy' },
+        [...rel('weather', ['cloud', 'boot'], ['snowflake', 'mitten']), ...rel('pair', ['pillow', 'bed'], ['crayon', 'book'], ['bucket', 'shovel'], ['moon', 'star'])]),
+      L('Co do pary?', 'What makes a pair?', { age: '4+', active: 3, diff: 'easy' },
+        [...rel('weather', ['raindrop', 'umbrella'], 'sun'), ...rel('pair', ['toothbrush', 'soap'], ['cake', 'party_hat'], ['bone', 'kennel_bowl'], ['egg', 'nest'])]),
+      L('Pary', 'Pairs', { age: '4+', active: 3, diff: 'medium' },
+        [...rel('weather', ['snowflake', 'hat'], ['cloud', 'boot']), ...rel('pair', ['mitten', 'scarf'], ['flower', 'bee'], ['lamp', 'book'], ['gift', 'balloon'])]),
+      L('Deszcz i śnieg', 'Rain and snow', { age: '4+', active: 4, diff: 'medium' },
+        [...rel('weather', 'sun', ['raindrop', 'umbrella'], ['snowflake', 'mitten']), ...rel('pair', ['milk', 'cup'], ['star', 'moon'], ['shovel', 'bucket'])]),
+      L('Urodziny', 'Birthday', { age: '4+', active: 4, diff: 'medium' },
+        [...rel('weather', ['cloud', 'boot'], ['snowflake', 'scarf']), ...rel('pair', ['sock', 'shoe'], ['toothbrush', 'cup'], ['party_hat', 'gift'], ['honey', 'bee'])]),
+      L('Co jest czyje?', 'What belongs where?', { age: '4+', active: 4, diff: 'medium' },
+        [...rel('weather', ['raindrop', 'umbrella'], 'sun'), ...rel('pair', ['bed', 'teddy'], ['egg', 'hen'], ['key', 'house'], ['cheese', 'sandwich'])]),
+      L('Uważaj na kolory', 'Mind the colours', { age: '5+', active: 4, diff: 'hard' },
+        [...rel('weather', ['raindrop', 'boot'], ['snowflake', 'scarf'], 'sun'), ...rel('pair', ['sock', 'shoe'], ['toothbrush', 'soap'], ['star', 'moon'])]),
+      L('Podchwytliwe pary', 'Tricky pairs', { age: '5+', active: 4, diff: 'hard' },
+        [...rel('weather', ['cloud', 'umbrella'], ['snowflake', 'mitten']), ...rel('pair', ['bucket', 'shovel'], ['cake', 'party_hat'], ['spoon', 'cup'], ['pillow', 'bed'])]),
+      L('Mistrz pasowania', 'Matching champion', { age: '5+', active: 4, diff: 'hard' }, [
+        ...colors('purple'), ...shapes('square'), ...textures('stripes_orange'),
+        ...rel('food', ['carrot', 'rabbit']), ...rel('baby', 'kitten'), ...rel('pair', ['bone', 'dog']),
+      ]),
     ],
   },
-  // ── W7: abstract "Wymyślanki" – nothing truly fits, every choice is celebrated ───────────────
+  // ── W8: abstract "Wymyślanki" – nothing truly fits, every choice is celebrated ───────────────
   {
     title_pl: 'Wymyślanki', title_en: 'Make-believe', tint: '#FDEFE3',
     levels: [
-      { title_pl: 'Kto lubi ten kolor?', title_en: 'Who likes this colour?', age: '3+', active: 4, diff: 'easy',
-        rounds: free(col('purple'), col('pink'), col('blue'), col('green'), col('orange'), col('black')) },
-      { title_pl: 'Czyje wzorki?', title_en: 'Whose patterns?', age: '3+', active: 4, diff: 'easy',
-        rounds: free(tex('polka'), tex('checks'), tex('bricks'), tex('stripes_bw'), tex('waves'), tex('honeycomb')) },
-      { title_pl: 'Komu prezent?', title_en: 'A present for whom?', age: '3+', active: 4, diff: 'easy',
-        rounds: free(it('balloon'), it('drum'), it('heart_toy'), it('teddy'), it('banana'), it('flower')) },
-      { title_pl: 'Wymyśl sam', title_en: 'Your own idea', age: '3+', active: 4, diff: 'easy',
-        rounds: free(shp('heart'), shp('star'), col('yellow'), tex('wool'), shp('square'), it('apple')) },
+      L('Kto lubi ten kolor?', 'Who likes this colour?', { age: '3+', active: 4, diff: 'easy' },
+        free(col('purple'), col('pink'), col('blue'), col('green'), col('orange'), col('black'))),
+      L('Czyje wzorki?', 'Whose patterns?', { age: '3+', active: 4, diff: 'easy' },
+        free(tex('polka'), tex('checks'), tex('bricks'), tex('stripes_bw'), tex('waves'), tex('honeycomb'))),
+      L('Komu prezent?', 'A present for whom?', { age: '3+', active: 4, diff: 'easy', theme: 'gift' },
+        freeItems('balloon', 'drum', 'heart_toy', 'teddy', 'gift', 'kite')),
+      L('Co zje dinozaur?', 'What would a dinosaur eat?', { age: '3+', active: 4, diff: 'easy', theme: 'eat' },
+        freeItems('dinosaur', 'octopus', 'lion', 'tiger', 'snowman', 'teddy')),
+      L('Kto by tu zamieszkał?', 'Who would live here?', { age: '3+', active: 4, diff: 'easy', theme: 'live' },
+        freeItems('iceberg', 'beehive', 'doghouse', 'hutch', 'nest', 'pond')),
+      L('Wymyśl sam', 'Your own idea', { age: '3+', active: 4, diff: 'easy', theme: 'gift' },
+        free(shp('heart'), shp('star'), col('yellow'), tex('wool'), shp('square'), it('apple'))),
+      L('Co założymy?', 'What shall we wear?', { age: '3+', active: 4, diff: 'easy', theme: 'wear' },
+        freeItems('sunglasses', 'scarf', 'hat', 'boot', 'sock', 'party_hat')),
+      L('Komu ten kolor?', 'Whose colour is it?', { age: '3+', active: 4, diff: 'easy' },
+        free(col('red'), col('yellow'), col('white'), col('brown'), col('grey'), col('blue'))),
+      L('Pobawmy się!', "Let's play!", { age: '3+', active: 4, diff: 'easy', theme: 'play' },
+        freeItems('ball', 'bucket', 'block', 'rainbow', 'shovel', 'bicycle')),
     ],
   },
 ];
@@ -332,8 +414,10 @@ const WORLD_SPECS: WorldSpec[] = [
 // ── generator ─────────────────────────────────────────────────────────────────────────────────
 const has = (i: ItemId, t: string) => (ITEM_ATTRS[i].tags as string[]).includes(t);
 const ANIMALS = ITEM_IDS.filter((i) => has(i, 'animal') && !has(i, 'baby'));
+const FOODS = ITEM_IDS.filter((i) => has(i, 'food') && !has(i, 'animal'));
 const HOMES = ITEM_IDS.filter((i) => has(i, 'home'));
 const THINGS = ITEM_IDS.filter((i) => !has(i, 'animal'));
+const SIL_OK = ITEM_IDS.filter((i) => (SILHOUETTE_CLEAR as readonly ItemId[]).includes(i));
 const MOTHERS = new Set<ItemId>(Object.values(BABY_OF) as ItemId[]);
 const WEATHER_STUFF = new Set<ItemId>(Object.values(WEATHER_NEEDS).flat() as ItemId[]);
 const PAIR_STUFF = new Set<ItemId>(Object.keys(PAIRS) as ItemId[]);
@@ -346,96 +430,133 @@ export const CONFUSABLE: Record<ColorId, ColorId[]> = {
 };
 
 const colorOf = (i: ItemId) => ITEM_ATTRS[i].color;
+const kin = (x: ItemId, y: ItemId) => BABY_OF[x] === y || BABY_OF[y] === x;
+const promptItem = (p: Prompt): ItemId | null => (p.kind === 'item' || p.kind === 'shadow' ? p.id : null);
+const promptKey = (p: Prompt) => `${p.kind}:${p.id}${p.kind === 'shape' && p.color ? ':' + p.color : ''}`;
 
-function answerCandidates(s: RoundSpec): ItemId[] {
+/** Per-world memory: how often each item was shown, and the previous level's answers. */
+type WorldState = { seen: Map<ItemId, number>; prevAnswers: Set<ItemId> };
+/** Per-level memory. */
+type LevelState = { count: Map<ItemId, number>; answers: Set<ItemId>; recent: Set<ItemId> };
+
+const MAX_PER_LEVEL = 2;
+const roomFor = (ls: LevelState, i: ItemId) => (ls.count.get(i) ?? 0) < MAX_PER_LEVEL;
+
+/** Order by "least seen in this world", ties broken by the seeded shuffle. */
+function byFreshness(items: readonly ItemId[], ws: WorldState, rng: Rng): ItemId[] {
+  return shuffle(items, rng).sort((a, b) => (ws.seen.get(a) ?? 0) - (ws.seen.get(b) ?? 0));
+}
+
+function answerCandidates(s: RoundSpec, p: Prompt): ItemId[] {
   if (s.answer) return [s.answer];
-  const p = s.prompt;
   switch (s.rule) {
     case 'same':
-      return p.kind === 'item' ? [p.id] : [];
+    case 'shadow':
+      return [promptItem(p)!];
     case 'baby':
       return p.kind === 'item' && BABY_OF[p.id] ? [BABY_OF[p.id]!] : [];
     case 'home':
       return p.kind === 'item' ? (LIVES_IN[p.id] ?? []).slice(0, 1) : [];
     case 'food':
-      // prompt is a food; the answer is an animal (not a baby) that eats it
       return ANIMALS.filter((i) => satisfies('food', p, i));
     default:
-      return ITEM_IDS.filter((i) => satisfies(s.rule, p, i) && !(p.kind === 'item' && p.id === i));
+      return ITEM_IDS.filter((i) => satisfies(s.rule, p, i) && i !== promptItem(p));
   }
 }
 
 /** Which items may sit in a corner of this round at all, before difficulty filtering. */
-function domain(s: RoundSpec, answer: ItemId): readonly ItemId[] {
-  switch (s.rule) {
+function domain(rule: MatchRule, answer: ItemId): readonly ItemId[] {
+  switch (rule) {
     case 'color':
       return ITEM_IDS.filter((i) => ITEM_ATTRS[i].colorFair);
     case 'texture':
       return has(answer, 'animal') ? ANIMALS : THINGS.filter((i) => !has(i, 'food'));
     case 'food':
     case 'baby':
-    case 'free':
       return ANIMALS;
     case 'home':
       return HOMES;
     case 'weather':
-    case 'pair':
       return THINGS;
+    case 'pair':
+      return THINGS.filter((i) => !has(i, 'food')); // food next to food/kitchen prompts reads as "goes together"
+    case 'shadow':
+      return SIL_OK;
     default:
       return ITEM_IDS;
   }
 }
 
-function pickDistractors(s: RoundSpec, answer: ItemId | null, n: number, diff: Diff, rng: Rng, recent: Set<ItemId>): ItemId[] {
-  const p = s.prompt;
-  const promptItem = p.kind === 'item' ? p.id : null;
-  const kin = (x: ItemId, y: ItemId) => BABY_OF[x] === y || BABY_OF[y] === x;
-  let pool: ItemId[];
+function pickDistractors(
+  s: RoundSpec, p: Prompt, answer: ItemId | null, n: number, diff: Diff, theme: FreeTheme,
+  rng: Rng, ls: LevelState, ws: WorldState,
+): ItemId[] {
+  const pItem = promptItem(p);
+  const ok = (i: ItemId) => roomFor(ls, i) && i !== answer && i !== pItem;
+  let preferred: ItemId[];
+  let fallback: ItemId[];
 
   if (s.rule === 'free' || answer === null) {
-    pool = ANIMALS.filter((i) => !relatesUnderAnyRule(p, i));
+    const base = theme === 'eat' ? FOODS : ANIMALS;
+    preferred = base.filter((i) => ok(i) && !relatesUnderAnyRule(p, i) && !(pItem && kin(i, pItem)));
+    fallback = preferred;
   } else {
     const ans = answer;
-    pool = domain(s, ans).filter((i) => i !== ans && i !== promptItem && !plausible(s.rule, p, i) && !kin(i, ans));
-    if (promptItem) pool = pool.filter((i) => !kin(i, promptItem));
-
+    const legal = domain(s.rule, ans).filter(
+      (i) => ok(i) && !plausible(s.rule, p, i) && !kin(i, ans) && !(pItem && kin(i, pItem)),
+    );
+    fallback = legal.filter((i) => s.rule !== 'color' || (colorOf(i) !== colorOf(ans) && !CONFUSABLE[colorOf(ans)].includes(colorOf(i))) || diff === 'hard');
+    let pool = legal;
     switch (s.rule) {
       case 'shape':
         if (diff === 'hard') pool = pool.filter((i) => ITEM_ATTRS[i].outline !== null); // other clear shapes
-        else if (diff === 'easy') pool = pool.filter((i) => ITEM_ATTRS[i].outline === null); // shapeless animals/things
+        else if (diff === 'easy') pool = pool.filter((i) => ITEM_ATTRS[i].outline === null); // shapeless things
+        break;
+      case 'shadow':
+        if (diff === 'easy') pool = pool.filter((i) => SIL_FAMILY[i] !== SIL_FAMILY[ans]);
         break;
       case 'baby':
-        pool = diff === 'easy' ? pool.filter((i) => !MOTHERS.has(i) && has(i, 'wild')) : pool.filter((i) => MOTHERS.has(i));
+        pool = diff === 'easy' ? pool.filter((i) => !MOTHERS.has(i) && has(i, 'wild') && SIL_FAMILY[i] !== SIL_FAMILY[ans]) : pool.filter((i) => has(i, 'farm') || has(i, 'pet'));
         break;
       case 'weather':
         if (diff === 'easy') pool = pool.filter((i) => has(i, 'toy') || has(i, 'food'));
         if (diff === 'medium') pool = pool.filter((i) => WEATHER_STUFF.has(i) || has(i, 'clothing') || has(i, 'toy'));
         break;
       case 'pair':
-        if (diff === 'easy') pool = ANIMALS.filter((i) => !plausible('pair', p, i) && !kin(i, ans));
+        if (diff === 'easy') pool = ANIMALS.filter((i) => ok(i) && !plausible('pair', p, i) && !kin(i, ans));
         if (diff === 'medium') pool = pool.filter((i) => PAIR_STUFF.has(i));
         break;
       case 'same':
         if (diff === 'easy') pool = pool.filter((i) => ITEM_ATTRS[i].tags[0] !== ITEM_ATTRS[ans].tags[0]);
         break;
     }
-    if (diff !== 'hard') {
+    if (diff !== 'hard' && s.rule !== 'shadow') {
       // never a colour lure: a different colour from the answer; in easy rounds (and in every
       // colour round) also no confusable hue
       const c = colorOf(ans);
       const strict = diff === 'easy' || s.rule === 'color';
       pool = pool.filter((i) => colorOf(i) !== c && !(strict && CONFUSABLE[c].includes(colorOf(i))));
     }
+    preferred = pool;
   }
 
-  // prefer items not shown in the previous round, then shuffle; hard rounds put colour lures first
-  const fresh = pool.filter((i) => !recent.has(i));
-  let ordered = shuffle(fresh.length >= n + 2 ? fresh : pool, rng);
+  // freshest first (least seen in this world, not in the previous round); hard rounds: lures first
+  const notRecent = (xs: ItemId[]) => xs.filter((i) => !ls.recent.has(i));
+  let ordered = [
+    ...byFreshness(notRecent(preferred), ws, rng),
+    ...byFreshness(preferred.filter((i) => ls.recent.has(i)), ws, rng),
+  ];
   if (diff === 'hard' && answer) {
-    const lureColors: ColorId[] = p.kind === 'color' ? CONFUSABLE[p.id] : [colorOf(answer)];
-    const lures = ordered.filter((i) => lureColors.includes(colorOf(i))).slice(0, Math.min(2, n));
+    const isLure =
+      s.rule === 'shadow'
+        ? (i: ItemId) => SIL_FAMILY[i] === SIL_FAMILY[answer]
+        : p.kind === 'color'
+          ? (i: ItemId) => CONFUSABLE[p.id].includes(colorOf(i))
+          : (i: ItemId) => colorOf(i) === colorOf(answer);
+    const lures = ordered.filter(isLure).slice(0, Math.min(2, n));
     ordered = [...lures, ...ordered.filter((i) => !lures.includes(i))];
   }
+  ordered = [...ordered, ...byFreshness(fallback.filter((i) => !ordered.includes(i)), ws, rng)];
 
   // colour & free rounds (and easy ones): every corner a different colour, no confusable neighbours
   const distinct = s.rule === 'color' || s.rule === 'free' || diff === 'easy';
@@ -443,14 +564,16 @@ function pickDistractors(s: RoundSpec, answer: ItemId | null, n: number, diff: D
   const used: ColorId[] = answer ? [colorOf(answer)] : [];
   for (const i of ordered) {
     if (chosen.length === n) break;
+    if (chosen.includes(i)) continue;
+    if (s.rule === 'shadow' && chosen.some((c) => plausible('shadow', { kind: 'shadow', id: c }, i))) continue;
     const c = colorOf(i);
-    if (distinct && used.includes(c)) continue;
-    if (distinct && diff === 'easy' && used.some((u) => CONFUSABLE[u].includes(c))) continue;
+    if (distinct && s.rule !== 'shadow' && used.includes(c)) continue;
+    if (distinct && diff === 'easy' && s.rule !== 'shadow' && used.some((u) => CONFUSABLE[u].includes(c))) continue;
     chosen.push(i);
     used.push(c);
   }
   if (chosen.length < n) {
-    throw new Error(`levels: not enough distractors for ${s.rule}/${JSON.stringify(p)} (got ${chosen.length}/${n})`);
+    throw new Error(`levels: not enough distractors for ${s.rule}/${promptKey(p)} (got ${chosen.length}/${n})`);
   }
   return chosen;
 }
@@ -466,62 +589,91 @@ function quadrantPlan(n: number, rng: Rng): (0 | 1 | 2 | 3)[] {
   throw new Error('levels: no quadrant plan');
 }
 
-const promptKey = (p: Prompt) => `${p.kind}:${p.id}`;
+/** Pick the items for auto 'shadow' rounds: clear silhouettes, least seen, not last level's answers. */
+function resolvePrompts(specs: RoundSpec[], rng: Rng, ws: WorldState): { s: RoundSpec; p: Prompt }[] {
+  const taken = new Set<ItemId>(specs.map((s) => (s.prompt ? promptItem(s.prompt) : null)).filter((x): x is ItemId => !!x));
+  return specs.map((s) => {
+    if (s.prompt) return { s, p: s.prompt };
+    const cands = byFreshness(SIL_OK.filter((i) => !taken.has(i) && !ws.prevAnswers.has(i)), ws, rng);
+    // keep the shadows of one level visually distinct from each other
+    const pick = cands.find((i) => ![...taken].some((t) => plausible('shadow', { kind: 'shadow', id: t }, i)));
+    if (!pick) throw new Error('levels: not enough clear silhouettes (src/art/silhouette-ok.ts)');
+    taken.add(pick);
+    return { s, p: { kind: 'shadow', id: pick } };
+  });
+}
 
-function orderRounds(specs: RoundSpec[], rng: Rng): RoundSpec[] {
+function orderRounds<T extends { s: RoundSpec; p: Prompt }>(rs: T[], rng: Rng): T[] {
   for (let attempt = 0; attempt < 500; attempt++) {
-    const o = shuffle(specs, rng);
-    const ok = o.every(
-      (s, k) => k === 0 || (promptKey(s.prompt) !== promptKey(o[k - 1].prompt) && (!s.answer || s.answer !== o[k - 1].answer)),
+    const o = shuffle(rs, rng);
+    const okOrder = o.every(
+      (r, k) => k === 0 || (promptKey(r.p) !== promptKey(o[k - 1].p) && (!r.s.answer || r.s.answer !== o[k - 1].s.answer)),
     );
-    if (ok) return o;
+    if (okOrder) return o;
   }
   throw new Error('levels: cannot order rounds without repeats');
 }
 
-function buildLevel(world: number, idx: number, spec: LevelSpec): Level {
+function buildLevel(world: number, idx: number, spec: LevelSpec, ws: WorldState): Level {
   const id = `w${world}-l${idx + 1}`;
   const rng = rngFor(id);
-  const specs = orderRounds(spec.rounds, rng);
-  const plan = quadrantPlan(Math.max(specs.filter((s) => s.rule !== 'free').length, 1), rng);
-  const usedAnswers = new Map<ItemId, number>();
-  const recent = new Set<ItemId>();
-  let prevAnswer: ItemId | null = null;
+  const theme = spec.theme ?? 'default';
+  const rs = orderRounds(resolvePrompts(spec.rounds, rng, ws), rng);
+  const plan = quadrantPlan(Math.max(rs.filter((r) => r.s.rule !== 'free').length, 1), rng);
+  const ls: LevelState = { count: new Map(), answers: new Set(), recent: new Set() };
+  const bump = (i: ItemId) => ls.count.set(i, (ls.count.get(i) ?? 0) + 1);
+  for (const r of rs) {
+    const pi = promptItem(r.p);
+    if (pi) bump(pi);
+    if (pi && (r.s.rule === 'same' || r.s.rule === 'shadow')) bump(pi); // its answer corner
+    else if (r.s.answer) bump(r.s.answer); // reserve pinned answers so distractors can't use up their slots
+  }
   let g = 0;
-  let freeIdx = 0;
+  let k = 0;
 
-  const rounds: Round[] = specs.map((s) => {
+  const rounds: Round[] = rs.map(({ s, p }) => {
     const targets: Target[] = [null, null, null, null];
     let answer: Round['answer'] = null;
     if (s.rule === 'free') {
-      pickDistractors(s, null, 4, spec.diff, rng, recent).forEach((d, k) => (targets[k] = { id: d }));
+      pickDistractors(s, p, null, 4, spec.diff, theme, rng, ls, ws).forEach((d, j) => (targets[j] = { id: d }));
     } else {
-      const cands = answerCandidates(s);
-      if (!cands.length) throw new Error(`levels: no answer for ${id} ${s.rule}/${promptKey(s.prompt)}`);
-      const sorted = shuffle(cands, rng).sort((x, y) => (usedAnswers.get(x) ?? 0) - (usedAnswers.get(y) ?? 0));
-      const ans = sorted.find((c) => c !== prevAnswer) ?? sorted[0];
-      usedAnswers.set(ans, (usedAnswers.get(ans) ?? 0) + 1);
-      prevAnswer = ans;
+      const self = s.rule === 'same' || s.rule === 'shadow';
+      const pinned = !!s.answer;
+      const cands = answerCandidates(s, p).filter((c) => pinned || (!ls.answers.has(c) && (self || roomFor(ls, c))));
+      if (!cands.length) throw new Error(`levels: no answer for ${id} ${s.rule}/${promptKey(p)}`);
+      const sorted = byFreshness(cands, ws, rng).sort((x, y) => Number(ws.prevAnswers.has(x)) - Number(ws.prevAnswers.has(y)));
+      const ans = sorted[0];
+      ls.answers.add(ans);
+      if (!pinned && !self) bump(ans);
       const q = plan[g++];
       answer = q;
       targets[q] = { id: ans };
-      const corners = shuffle(([0, 1, 2, 3] as const).filter((k) => k !== q), rng).slice(0, spec.active - 1);
-      const ds = pickDistractors(s, ans, spec.active - 1, spec.diff, rng, recent);
-      corners.forEach((k, j) => (targets[k] = { id: ds[j] }));
+      const corners = shuffle(([0, 1, 2, 3] as const).filter((c) => c !== q), rng).slice(0, spec.active - 1);
+      const ds = pickDistractors(s, p, ans, spec.active - 1, spec.diff, theme, rng, ls, ws);
+      corners.forEach((c, j) => (targets[c] = { id: ds[j] }));
+      ds.forEach(bump);
     }
-    recent.clear();
-    for (const t of targets) if (t) recent.add(t.id);
-    const [hint_pl, hint_en] = hintFor(s.rule, s.prompt, s.rule === 'free' ? freeIdx++ : 0);
-    return { prompt: s.prompt, targets: targets as Round['targets'], answer, rule: s.rule, hint_pl, hint_en };
+    if (s.rule === 'free') targets.forEach((t) => t && bump(t.id));
+    ls.recent.clear();
+    for (const t of targets) if (t) ls.recent.add(t.id);
+    const [hint_pl, hint_en] = hintFor(s.rule, p, theme, k++);
+    return { prompt: p, targets: targets as Round['targets'], answer, rule: s.rule, hint_pl, hint_en };
   });
+
+  // world memory
+  for (const [i, c] of ls.count) ws.seen.set(i, (ws.seen.get(i) ?? 0) + c);
+  ws.prevAnswers = new Set(rounds.filter((r) => r.answer !== null).map((r) => r.targets[r.answer!]!.id));
 
   return { id, world, title_pl: spec.title_pl, title_en: spec.title_en, age: spec.age, rounds };
 }
 
-export const WORLDS: World[] = WORLD_SPECS.map((w, wi) => ({
-  id: wi + 1,
-  title_pl: w.title_pl,
-  title_en: w.title_en,
-  tint: w.tint,
-  levels: w.levels.map((l, li) => buildLevel(wi + 1, li, l)),
-}));
+export const WORLDS: World[] = WORLD_SPECS.map((w, wi) => {
+  const ws: WorldState = { seen: new Map(), prevAnswers: new Set() };
+  return {
+    id: wi + 1,
+    title_pl: w.title_pl,
+    title_en: w.title_en,
+    tint: w.tint,
+    levels: w.levels.map((l, li) => buildLevel(wi + 1, li, l, ws)),
+  };
+});

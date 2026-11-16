@@ -31,5 +31,7 @@ export function PromptArt({ prompt, size }: { prompt: Prompt; size: number }) {
       return <ShapeArt id={prompt.id} size={size} color={prompt.color} />;
     case 'color':
       return <ColorBlob id={prompt.id} size={size} />;
+    case 'shadow':
+      return <ItemArt id={prompt.id} size={size} silhouette />;
   }
 }

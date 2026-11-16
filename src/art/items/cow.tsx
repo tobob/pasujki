@@ -1,31 +1,35 @@
 import { Ellipse, Path } from 'react-native-svg';
 
-import { Art, COLORS, Eyes, L3, OUT, S, Smile, tone, type ArtProps } from '../kit';
+import { Art, COLORS, Cheeks, Eyes, OUT, S, Smile, tone, type ArtProps } from '../kit';
 
 const C = COLORS.white;
 const SPOT = COLORS.black;
 
+/** Cow: big round friendly head, little horns, black spots, soft muzzle. */
 export default function Cow({ size }: ArtProps) {
   return (
     <Art size={size}>
       {/* horns */}
-      <Path d="M30 26 C24 20 24 12 28 8 C32 14 36 18 38 22 Z" fill={COLORS.yellow} {...S} />
-      <Path d="M70 26 C76 20 76 12 72 8 C68 14 64 18 62 22 Z" fill={COLORS.yellow} {...S} />
+      <Path d="M32 24 C26 18 26 10 30 6 C34 11 38 15 40 20 Z" fill={tone(COLORS.yellow, 0.35)} {...S} />
+      <Path d="M68 24 C74 18 74 10 70 6 C66 11 62 15 60 20 Z" fill={tone(COLORS.yellow, 0.35)} {...S} />
       {/* ears */}
-      <Ellipse cx={16} cy={36} rx={12} ry={7} fill={C} {...S} transform="rotate(-20 16 36)" />
-      <Ellipse cx={84} cy={36} rx={12} ry={7} fill={C} {...S} transform="rotate(20 84 36)" />
+      <Ellipse cx={15} cy={38} rx={12} ry={7} fill={C} {...S} transform="rotate(-20 15 38)" />
+      <Ellipse cx={85} cy={38} rx={12} ry={7} fill={C} {...S} transform="rotate(20 85 38)" />
+      <Ellipse cx={15} cy={38} rx={6} ry={3} fill={tone(COLORS.pink, 0.45)} transform="rotate(-20 15 38)" />
+      <Ellipse cx={85} cy={38} rx={6} ry={3} fill={tone(COLORS.pink, 0.45)} transform="rotate(20 85 38)" />
       {/* head */}
-      <Path d="M24 40 C24 24 36 18 50 18 C64 18 76 24 76 40 C76 52 74 60 72 66 L28 66 C26 60 24 52 24 40 Z" fill={C} {...S} />
+      <Path d="M22 44 C22 26 34 16 50 16 C66 16 78 26 78 44 C78 56 76 62 74 68 L26 68 C24 62 22 56 22 44 Z" fill={C} {...S} />
       {/* spots */}
-      <Path d="M28 30 C34 24 44 26 42 34 C40 40 30 42 27 38 Z" fill={SPOT} />
-      <Path d="M66 22 C72 24 75 30 74 36 C68 36 62 30 66 22 Z" fill={SPOT} />
+      <Path d="M26 34 C30 26 40 26 40 34 C40 41 30 44 25 41 Z" fill={SPOT} />
+      <Path d="M64 19 C71 21 76 28 76 34 C69 34 62 28 64 19 Z" fill={SPOT} />
       {/* muzzle */}
-      <Ellipse cx={50} cy={72} rx={24} ry={17} fill={tone(COLORS.pink, 0.35)} {...S} />
+      <Ellipse cx={50} cy={72} rx={24} ry={16} fill={tone(COLORS.pink, 0.45)} {...S} />
+      <Path d="M32 66 C36 62 42 61 46 61" fill="none" stroke={tone(COLORS.pink, 0.7)} strokeWidth={3.5} strokeLinecap="round" />
       <Ellipse cx={41} cy={70} rx={3} ry={4} fill={OUT} />
       <Ellipse cx={59} cy={70} rx={3} ry={4} fill={OUT} />
-      <Smile cx={50} cy={80} w={6} />
-      <Eyes x1={40} x2={60} y={44} r={3.8} />
-      <Path d="M48 30 L50 26 L52 30" {...L3} stroke={C} />
+      <Smile cx={50} cy={79} w={6} d={2.6} />
+      <Cheeks x1={29} x2={71} y={54} r={4.2} />
+      <Eyes x1={39} x2={61} y={46} r={4.6} />
     </Art>
   );
 }

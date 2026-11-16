@@ -24,7 +24,8 @@ export default function Tiger({ size }: ArtProps) {
       <Ellipse cx={41} cy={68} rx={12} ry={10} fill={W} />
       <Ellipse cx={59} cy={68} rx={12} ry={10} fill={W} />
       <Cheeks x1={27} x2={73} y={60} />
-      <Eyes x1={38} x2={62} y={48} r={4} />
+      <Eyes x1={37} x2={63} y={49} r={4.6} />
+      <Path d="M22 40 C26 32 32 27 40 25" fill="none" stroke={tone(C, 0.4)} strokeWidth={4} strokeLinecap="round" />
       <Path d="M45 60 H55 L50 65 Z" fill={tone(COLORS.pink, -0.1)} {...S3} />
       <Path d="M50 65 V68 M44 70 Q50 74 50 68 Q50 74 56 70" {...L3} />
     </Art>

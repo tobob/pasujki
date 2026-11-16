@@ -4,12 +4,18 @@ import { Art, COLORS, S, tone, type ArtProps } from '../kit';
 
 const C = COLORS.white;
 
+/** A soft, puffy pillow. */
 export default function Pillow({ size }: ArtProps) {
   return (
     <Art size={size}>
-      <Path d="M10 26 C30 32 70 32 90 26 C86 42 86 58 90 74 C70 68 30 68 10 74 C14 58 14 42 10 26 Z" fill={C} {...S} />
-      <Path d="M30 40 C40 44 60 44 70 40" fill="none" stroke={tone(COLORS.blue, 0.75)} strokeWidth={4} strokeLinecap="round" />
-      <Path d="M30 60 C40 56 60 56 70 60" fill="none" stroke={tone(COLORS.blue, 0.75)} strokeWidth={4} strokeLinecap="round" />
+      <Path
+        d="M14 24 C12 20 16 18 20 20 C38 26 62 26 80 20 C84 18 88 20 86 24 C82 40 82 60 86 76 C88 80 84 82 80 80 C62 74 38 74 20 80 C16 82 12 80 14 76 C18 60 18 40 14 24 Z"
+        fill={C}
+        {...S}
+      />
+      {/* one soft shade + one highlight for puffiness */}
+      <Path d="M24 66 C40 62 60 62 76 66" fill="none" stroke={tone(COLORS.grey, 0.6)} strokeWidth={5} strokeLinecap="round" />
+      <Path d="M26 34 C34 36 42 36 50 35" fill="none" stroke="#FFFFFF" strokeWidth={5} strokeLinecap="round" />
     </Art>
   );
 }

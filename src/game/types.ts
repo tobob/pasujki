@@ -22,6 +22,9 @@ export const ITEM_IDS = [
   'sunglasses', 'boot', 'hat', 'mitten', 'cup', 'spoon', 'toothbrush', 'soap', 'bed', 'pillow',
   'car', 'boat', 'airplane', 'train', 'bicycle', 'flower', 'house', 'key', 'drum', 'balloon',
   'book', 'crayon', 'sock', 'shoe', 'teddy', 'clock', 'lamp', 'tomato', 'pumpkin', 'heart_toy',
+  // v0.2 additions: clean square/triangle/black items, more food & animals for variety
+  'gift', 'block', 'party_hat', 'crow', 'hay', 'bird', 'kite', 'rainbow', 'sandwich', 'cake',
+  'bucket', 'shovel', 'mushroom', 'cherry', 'plum', 'peas', 'fox', 'hedgehog', 'octopus', 'dinosaur',
 ] as const;
 export type ItemId = (typeof ITEM_IDS)[number];
 
@@ -45,7 +48,9 @@ export type Prompt =
   | { kind: 'item'; id: ItemId }
   | { kind: 'color'; id: ColorId }
   | { kind: 'texture'; id: TextureId }
-  | { kind: 'shape'; id: ShapeId; color?: ColorId };
+  | { kind: 'shape'; id: ShapeId; color?: ColorId }
+  /** Dark silhouette of an item (ItemArt with `silhouette`); matched to the same item in colour. */
+  | { kind: 'shadow'; id: ItemId };
 
 /** One quadrant target. `null` = an empty, sleeping corner (used in the easiest levels: fewer choices). */
 export type Target = { id: ItemId } | null;
@@ -61,6 +66,7 @@ export type MatchRule =
   | 'baby'        // mother → baby
   | 'weather'     // weather → thing you need (rain → umbrella)
   | 'pair'        // things that go together (toothbrush → cup, sock → shoe)
+  | 'shadow'      // silhouette → the item it belongs to
   | 'free';       // ABSTRACT: no right answer — every choice is celebrated
 
 export type Round = {

@@ -33,3 +33,4 @@ Spokojna gra w dopasowywanie dla dzieci 2–4 lat. Ekran podzielony na 4 ćwiart
 
 ## Historia
 - 2026-11-16 — v0.1: 6 agentów równolegle (poziomy, grafika, audio, silnik, zgodność ze sklepami, badania spokojnego designu + biblioteki); działa na symulatorze iPhone i iPad
+- 2026-11-16 — v0.2: 68 poziomów / 8 światów (nowy świat „Cienie”, sylwetki), reguły różnorodności w walidatorze, 20 nowych obrazków, przyjaźniejsze proporcje zwierząt; fix bramki rodzica (porównanie z iloczynem)

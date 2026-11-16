@@ -1,25 +1,26 @@
 import { Circle, Path } from 'react-native-svg';
 
-import { Art, COLORS, L, OUT, type ArtProps } from '../kit';
+import { Art, COLORS, OUT, S, tone, type ArtProps } from '../kit';
 
 const C = COLORS.green;
-const frame = 'M26 68 L42 42 H70 L74 68 M42 42 L54 68 H26 M54 68 L70 42';
+const frame = 'M21 68 L40 40 H68 L79 68 M40 40 L50 68 H21 M50 68 L68 40';
 
 export default function Bicycle({ size }: ArtProps) {
   return (
     <Art size={size}>
-      <Circle cx={24} cy={68} r={17} fill="none" stroke={OUT} strokeWidth={6} />
-      <Circle cx={76} cy={68} r={17} fill="none" stroke={OUT} strokeWidth={6} />
-      <Circle cx={24} cy={68} r={13} fill={COLORS.white} opacity={0.6} />
-      <Circle cx={76} cy={68} r={13} fill={COLORS.white} opacity={0.6} />
-      <Path d={frame} fill="none" stroke={OUT} strokeWidth={15} strokeLinecap="round" strokeLinejoin="round" />
+      {/* wheels: soft pale-green fill so the bike reads green, chunky tyres */}
+      <Circle cx={21} cy={68} r={16} fill={tone(C, 0.7)} stroke={OUT} strokeWidth={6} />
+      <Circle cx={79} cy={68} r={16} fill={tone(C, 0.7)} stroke={OUT} strokeWidth={6} />
+      <Circle cx={21} cy={68} r={4} fill={OUT} />
+      <Circle cx={79} cy={68} r={4} fill={OUT} />
+      {/* thick frame */}
+      <Path d={frame} fill="none" stroke={OUT} strokeWidth={14} strokeLinecap="round" strokeLinejoin="round" />
       <Path d={frame} fill="none" stroke={C} strokeWidth={8} strokeLinecap="round" strokeLinejoin="round" />
-      <Path d="M42 42 L38 32" fill="none" stroke={OUT} strokeWidth={5} strokeLinecap="round" />
-      <Path d="M30 30 H44" {...L} strokeWidth={7} />
-      <Path d="M70 42 L66 28 H76" {...L} strokeWidth={5} />
-      <Circle cx={54} cy={68} r={7} fill={C} stroke={OUT} strokeWidth={3} />
-      <Circle cx={24} cy={68} r={3.5} fill={OUT} />
-      <Circle cx={76} cy={68} r={3.5} fill={OUT} />
+            {/* seat post + seat, handlebars */}
+      <Path d="M40 38 L37 30" fill="none" stroke={OUT} strokeWidth={6} strokeLinecap="round" />
+      <Path d="M29 28 C33 24 43 24 47 28 C43 31 33 31 29 28 Z" fill={OUT} {...S} strokeWidth={3} />
+      <Path d="M67 40 L64 26 C68 23 74 23 78 26" fill="none" stroke={OUT} strokeWidth={6} strokeLinecap="round" strokeLinejoin="round" />
+      <Circle cx={50} cy={68} r={7} fill={C} {...S} strokeWidth={3} />
     </Art>
   );
 }

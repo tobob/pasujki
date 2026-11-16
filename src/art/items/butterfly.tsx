@@ -1,30 +1,39 @@
 import { Circle, Ellipse, Path } from 'react-native-svg';
 
-import { Art, COLORS, Eyes, L, S, Smile, tone, type ArtProps } from '../kit';
+import { Art, Cheeks, COLORS, L, S, tone, type ArtProps } from '../kit';
 
 const C = COLORS.purple;
+const K = COLORS.black;
 
+/** Butterfly: big rounded purple wings, chubby body, big friendly head. */
 export default function Butterfly({ size }: ArtProps) {
   return (
     <Art size={size}>
       {/* upper wings */}
-      <Path d="M48 46 C40 22 26 10 14 14 C4 18 6 40 20 50 C30 56 42 54 48 52 Z" fill={C} {...S} />
-      <Path d="M52 46 C60 22 74 10 86 14 C96 18 94 40 80 50 C70 56 58 54 52 52 Z" fill={C} {...S} />
+      <Path d="M47 50 C40 26 26 14 14 18 C4 22 6 44 20 54 C30 60 42 58 47 56 Z" fill={C} {...S} />
+      <Path d="M53 50 C60 26 74 14 86 18 C96 22 94 44 80 54 C70 60 58 58 53 56 Z" fill={C} {...S} />
       {/* lower wings */}
-      <Path d="M48 54 C36 56 22 62 22 76 C22 88 38 88 48 70 Z" fill={tone(C, 0.25)} {...S} />
-      <Path d="M52 54 C64 56 78 62 78 76 C78 88 62 88 52 70 Z" fill={tone(C, 0.25)} {...S} />
-      {/* wing dots */}
-      <Circle cx={24} cy={30} r={6} fill={tone(C, 0.55)} />
-      <Circle cx={76} cy={30} r={6} fill={tone(C, 0.55)} />
-      <Circle cx={34} cy={74} r={4} fill={COLORS.yellow} />
-      <Circle cx={66} cy={74} r={4} fill={COLORS.yellow} />
+      <Path d="M47 58 C36 60 22 66 22 79 C22 91 38 91 47 74 Z" fill={tone(C, 0.25)} {...S} />
+      <Path d="M53 58 C64 60 78 66 78 79 C78 91 62 91 53 74 Z" fill={tone(C, 0.25)} {...S} />
+      {/* soft wing spots */}
+      <Circle cx={24} cy={34} r={6} fill={tone(C, 0.5)} />
+      <Circle cx={76} cy={34} r={6} fill={tone(C, 0.5)} />
       {/* body */}
-      <Ellipse cx={50} cy={58} rx={6} ry={24} fill={COLORS.black} {...S} />
-      {/* head */}
-      <Path d="M46 28 C42 18 38 14 34 12 M54 28 C58 18 62 14 66 12" {...L} strokeWidth={3} />
-      <Circle cx={50} cy={30} r={9} fill={COLORS.black} {...S} />
-      <Eyes x1={46.5} x2={53.5} y={29} r={1.8} />
-      <Smile cx={50} cy={33} w={2.5} d={2} />
+      <Ellipse cx={50} cy={64} rx={7} ry={22} fill={K} {...S} />
+      {/* antennae */}
+      <Path d="M45 20 C42 12 38 8 34 7 M55 20 C58 12 62 8 66 7" {...L} strokeWidth={3} />
+      <Circle cx={34} cy={7} r={3} fill={K} />
+      <Circle cx={66} cy={7} r={3} fill={K} />
+      {/* big head */}
+      <Circle cx={50} cy={32} r={14} fill={K} {...S} />
+      <Circle cx={44.5} cy={30} r={4.4} fill={COLORS.white} />
+      <Circle cx={55.5} cy={30} r={4.4} fill={COLORS.white} />
+      <Circle cx={45.2} cy={30.8} r={2.6} fill={K} />
+      <Circle cx={56.2} cy={30.8} r={2.6} fill={K} />
+      <Circle cx={46} cy={30} r={0.9} fill="#FFFFFF" />
+      <Circle cx={57} cy={30} r={0.9} fill="#FFFFFF" />
+      <Cheeks x1={41} x2={59} y={38} r={2.6} />
+      <Path d="M47 38 Q50 40.5 53 38" fill="none" stroke={COLORS.white} strokeWidth={2} strokeLinecap="round" />
     </Art>
   );
 }

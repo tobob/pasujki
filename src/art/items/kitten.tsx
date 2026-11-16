@@ -4,28 +4,31 @@ import { Art, COLORS, Face, L3, OUT, S, tone, type ArtProps } from '../kit';
 
 const C = COLORS.orange;
 
+/** Kitten: like the cat but rounder, with an even bigger head and tiny body. */
 export default function Kitten({ size }: ArtProps) {
   return (
     <Art size={size}>
-      {/* tail curled round */}
-      <Path d="M66 86 C84 88 90 74 82 68" fill="none" stroke={OUT} strokeWidth={10} strokeLinecap="round" />
-      <Path d="M66 86 C84 88 90 74 82 68" fill="none" stroke={C} strokeWidth={3.5} strokeLinecap="round" />
-      {/* small sitting body */}
-      <Ellipse cx={50} cy={80} rx={18} ry={13} fill={C} {...S} />
-      <Ellipse cx={42} cy={90} rx={6} ry={4} fill={tone(C, 0.45)} {...S} strokeWidth={3} />
-      <Ellipse cx={58} cy={90} rx={6} ry={4} fill={tone(C, 0.45)} {...S} strokeWidth={3} />
-      {/* big head with small ears */}
+      {/* tail */}
+      <Path d="M64 86 C80 88 86 78 82 70" fill="none" stroke={OUT} strokeWidth={11} strokeLinecap="round" />
+      <Path d="M64 86 C80 88 86 78 82 70" fill="none" stroke={C} strokeWidth={4} strokeLinecap="round" />
+      {/* tiny body */}
+      <Ellipse cx={50} cy={82} rx={17} ry={11} fill={C} {...S} />
+      <Ellipse cx={42} cy={91} rx={6} ry={4} fill={C} {...S} strokeWidth={3} />
+      <Ellipse cx={58} cy={91} rx={6} ry={4} fill={C} {...S} strokeWidth={3} />
+      {/* big round head, small rounded ears */}
       <Path
-        d="M18 46 C18 34 20 24 24 14 C30 18 36 22 40 24 C46 23 54 23 60 24 C64 22 70 18 76 14 C80 24 82 34 82 46 C82 62 68 70 50 70 C32 70 18 62 18 46 Z"
+        d="M12 46 C12 34 16 24 22 16 C29 17 35 21 39 25 C46 23 54 23 61 25 C65 21 71 17 78 16 C84 24 88 34 88 46 C88 62 72 72 50 72 C28 72 12 62 12 46 Z"
         fill={C}
         {...S}
       />
-      <Path d="M26 21 L28 29 L34 26 Z" fill={tone(C, 0.45)} />
-      <Path d="M74 21 L72 29 L66 26 Z" fill={tone(C, 0.45)} />
-      <Path d="M50 28 V33" {...L3} stroke={tone(C, -0.25)} />
-      <Face cx={50} cy={44} gap={22} eyeR={4.4} mouthDy={10} />
-      <Path d="M47.5 50 H52.5 L50 52.5 Z" {...L3} fill={OUT} />
-      <Path d="M28 52 H18 M29 57 L20 60 M72 52 H82 M71 57 L80 60" {...L3} strokeWidth={2} />
+      <Path d="M23 23 L26 31 L32 27 Z" fill={tone(C, 0.5)} />
+      <Path d="M77 23 L74 31 L68 27 Z" fill={tone(C, 0.5)} />
+      <Path d="M18 54 C22 64 36 69 50 69 C64 69 78 64 82 54" fill="none" stroke={tone(C, -0.1)} strokeWidth={5} strokeLinecap="round" />
+      <Path d="M20 38 C21 33 23 30 26 28" fill="none" stroke={tone(C, 0.4)} strokeWidth={4} strokeLinecap="round" />
+      <Path d="M50 29 V34 M44 30 L45 34 M56 30 L55 34" {...L3} stroke={tone(C, -0.22)} />
+      <Face cx={50} cy={47} gap={24} eyeR={5} mouthDy={9} />
+      <Path d="M47.5 52 H52.5 L50 54.5 Z" {...L3} fill={OUT} strokeWidth={2} />
+      <Path d="M24 54 H16 M25 59 L18 62 M76 54 H84 M75 59 L82 62" {...L3} strokeWidth={2} />
     </Art>
   );
 }

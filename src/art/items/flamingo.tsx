@@ -1,26 +1,29 @@
 import { Circle, Path } from 'react-native-svg';
 
-import { Art, COLORS, Cheeks, Eyes, L, OUT, S, tone, type ArtProps } from '../kit';
+import { Art, COLORS, Face, L, OUT, S, tone, type ArtProps } from '../kit';
 
 const C = COLORS.pink;
+const LEG = tone(C, -0.25);
 
+/** Flamingo: round fluffy body on one leg, curvy neck, big round head. */
 export default function Flamingo({ size }: ArtProps) {
   return (
     <Art size={size}>
       {/* one leg + tucked leg */}
-      <Path d="M52 64 V94 M46 94 H58" {...L} stroke={tone(C, -0.25)} />
-      <Path d="M56 64 L66 74 L56 78" {...L} stroke={tone(C, -0.25)} />
+      <Path d="M56 66 V93 M50 93 H62" {...L} stroke={LEG} strokeWidth={5} />
+      <Path d="M60 66 L70 75 L60 79" {...L} stroke={LEG} strokeWidth={5} />
       {/* body */}
-      <Path d="M30 50 C30 38 44 34 60 36 C76 38 90 46 88 54 C84 66 64 70 50 66 C38 64 30 60 30 50 Z" fill={C} {...S} />
-      <Path d="M50 46 C58 44 70 46 76 52" {...L} strokeWidth={3} stroke={tone(C, -0.2)} />
+      <Path d="M32 50 C32 36 46 32 62 34 C80 36 92 44 90 54 C86 68 66 72 52 68 C40 66 32 62 32 50 Z" fill={C} {...S} />
+      <Path d="M52 46 C60 43 72 45 78 51" fill="none" stroke={tone(C, -0.15)} strokeWidth={3} strokeLinecap="round" />
+      <Path d="M44 40 C50 37 56 36 62 37" fill="none" stroke={tone(C, 0.4)} strokeWidth={4} strokeLinecap="round" />
       {/* S-neck */}
-      <Path d="M36 46 C26 38 22 30 28 22 C34 14 26 8 22 10" fill="none" stroke={OUT} strokeWidth={14} strokeLinecap="round" />
-      <Path d="M36 46 C26 38 22 30 28 22 C34 14 26 8 22 10" fill="none" stroke={C} strokeWidth={6} strokeLinecap="round" />
-      {/* head + beak */}
-      <Circle cx={24} cy={14} r={9} fill={C} {...S} />
-      <Path d="M16 12 C10 14 8 18 10 24 L16 18 Z" fill={COLORS.black} {...S} strokeWidth={3} />
-      <Cheeks x1={28} x2={28} y={18} r={2.4} />
-      <Eyes x1={25} x2={25} y={12} r={2.6} />
+      <Path d="M38 48 C28 40 24 34 28 26" fill="none" stroke={OUT} strokeWidth={15} strokeLinecap="round" />
+      <Path d="M38 48 C28 40 24 34 28 26" fill="none" stroke={C} strokeWidth={7} strokeLinecap="round" />
+      {/* beak */}
+      <Path d="M14 18 C7 20 6 26 8 31 L16 24 Z" fill={COLORS.black} {...S} strokeWidth={3} />
+      {/* big head */}
+      <Circle cx={26} cy={18} r={13} fill={C} {...S} />
+      <Face cx={28} cy={17} gap={10} eyeR={3.2} mouthDy={6} />
     </Art>
   );
 }

@@ -3,17 +3,19 @@ import { Path } from 'react-native-svg';
 import { Art, COLORS, Face, OUT, tone, type ArtProps } from '../kit';
 
 const C = COLORS.pink;
-const BODY = 'M14 78 C22 58 36 58 42 70 C48 82 60 82 64 66 C66 56 66 46 70 40';
+const BODY = 'M14 80 C22 62 36 62 42 72 C48 82 58 82 62 68 C64 60 64 52 66 46';
 
+/** Worm: chunky wiggly body, big round head. */
 export default function Worm({ size }: ArtProps) {
   return (
     <Art size={size}>
-      <Path d={BODY} fill="none" stroke={OUT} strokeWidth={22} strokeLinecap="round" strokeLinejoin="round" />
-      <Path d={BODY} fill="none" stroke={C} strokeWidth={14} strokeLinecap="round" strokeLinejoin="round" />
-      <Path d="M28 64 L30 72 M50 74 L46 82" stroke={tone(C, -0.2)} strokeWidth={3} strokeLinecap="round" />
-      {/* head */}
-      <Path d="M70 16 C82 16 90 24 90 34 C90 44 82 50 70 50 C58 50 52 44 52 34 C52 24 58 16 70 16 Z" fill={C} stroke={OUT} strokeWidth={4} />
-      <Face cx={71} cy={32} gap={12} eyeR={3} mouthDy={7} />
+      <Path d={BODY} fill="none" stroke={OUT} strokeWidth={24} strokeLinecap="round" strokeLinejoin="round" />
+      <Path d={BODY} fill="none" stroke={C} strokeWidth={16} strokeLinecap="round" strokeLinejoin="round" />
+      <Path d="M28 66 L30 74 M48 76 L45 84" stroke={tone(C, -0.15)} strokeWidth={3} strokeLinecap="round" />
+      {/* big head */}
+      <Path d="M68 10 C82 10 92 20 92 32 C92 44 82 52 68 52 C54 52 46 44 46 32 C46 20 54 10 68 10 Z" fill={C} stroke={OUT} strokeWidth={4} />
+      <Path d="M53 24 C56 18 60 15 65 14" fill="none" stroke={tone(C, 0.4)} strokeWidth={4} strokeLinecap="round" />
+      <Face cx={69} cy={30} gap={15} eyeR={3.8} mouthDy={9} />
     </Art>
   );
 }

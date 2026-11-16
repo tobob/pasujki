@@ -17,14 +17,14 @@ export default function Parrot({ size }: ArtProps) {
       <Path d="M54 44 C66 46 70 62 64 74 C58 78 50 72 50 62 Z" fill={COLORS.yellow} {...S} />
       <Path d="M56 64 C58 70 62 72 64 72" {...L} strokeWidth={3} stroke={COLORS.blue} />
       {/* head */}
-      <Circle cx={42} cy={30} r={16} fill={C} {...S} />
-      <Path d="M34 18 C36 14 40 12 44 12" fill="none" stroke={tone(C, 0.35)} strokeWidth={4} strokeLinecap="round" />
+      <Circle cx={44} cy={30} r={19} fill={C} {...S} />
+      <Path d="M32 18 C35 14 40 12 45 12" fill="none" stroke={tone(C, 0.35)} strokeWidth={4} strokeLinecap="round" />
       {/* beak */}
-      <Path d="M28 28 C20 28 16 34 18 42 C22 40 26 38 30 38 Z" fill={tone(COLORS.yellow, 0.3)} {...S} />
+      <Path d="M28 26 C18 26 14 34 16 43 C21 41 26 39 31 38 Z" fill={tone(COLORS.yellow, 0.3)} {...S} />
       {/* white eye patch */}
-      <Circle cx={42} cy={28} r={7} fill={COLORS.white} />
-      <Cheeks x1={50} x2={50} y={36} r={2.6} />
-      <Eyes x1={42} x2={42} y={28} r={3.4} />
+      <Circle cx={45} cy={28} r={8} fill={COLORS.white} />
+      <Cheeks x1={54} x2={54} y={38} r={3.2} />
+      <Eyes x1={45} x2={45} y={28} r={4.2} />
       {/* feet */}
       <Path d="M44 80 V84 M54 80 V84" {...L} stroke={COLORS.grey} strokeWidth={4} />
     </Art>

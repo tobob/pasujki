@@ -72,7 +72,7 @@ export function continueLevelId(p: Progress, s: Settings): string | undefined {
 /** A representative picture for a level (used on map buttons and the sticker). */
 export function levelPicture(level: Level | undefined): ItemId {
   const round = level?.rounds[0];
-  if (round?.prompt.kind === 'item') return round.prompt.id;
+  if (round?.prompt.kind === 'item' || round?.prompt.kind === 'shadow') return round.prompt.id;
   const t = round?.targets.find((x) => x !== null);
   return t?.id ?? 'star';
 }

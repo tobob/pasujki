@@ -1,26 +1,28 @@
-import { Ellipse, Path } from 'react-native-svg';
+import { Circle, Ellipse, Path } from 'react-native-svg';
 
-import { Art, COLORS, Cheeks, Eyes, S, tone, type ArtProps } from '../kit';
+import { Art, COLORS, Cheeks, Eyes, L3, S, S3, tone, type ArtProps } from '../kit';
 
 const C = COLORS.yellow;
 
+/** Chick: a round fluffy ball with tiny wings, beak and feet. */
 export default function Chick({ size }: ArtProps) {
   return (
     <Art size={size}>
-      {/* legs */}
-      <Path d="M42 82 V92 M37 92 H47 M58 82 V92 M53 92 H63" stroke={COLORS.orange} strokeWidth={4} strokeLinecap="round" />
-      {/* tuft */}
-      <Path d="M48 18 C44 10 48 6 52 10 C54 4 60 8 56 16" fill={C} {...S} />
+      {/* feet */}
+      <Path d="M40 84 V91 M34 91 H46 M60 84 V91 M54 91 H66" {...L3} stroke={COLORS.orange} strokeWidth={4} />
+      {/* wings */}
+      <Ellipse cx={18} cy={58} rx={8} ry={12} fill={C} {...S} transform="rotate(25 18 58)" />
+      <Ellipse cx={82} cy={58} rx={8} ry={12} fill={C} {...S} transform="rotate(-25 82 58)" />
       {/* round body */}
-      <Ellipse cx={50} cy={52} rx={34} ry={33} fill={C} {...S} />
-      <Ellipse cx={38} cy={34} rx={8} ry={5} fill={tone(C, 0.4)} transform="rotate(-30 38 34)" />
-      {/* little wings */}
-      <Path d="M18 52 C10 56 10 66 20 66" fill={tone(C, -0.12)} {...S} />
-      <Path d="M82 52 C90 56 90 66 80 66" fill={tone(C, -0.12)} {...S} />
-      <Cheeks x1={32} x2={68} y={54} r={4.5} />
-      <Eyes x1={39} x2={61} y={44} r={4} />
+      <Circle cx={50} cy={52} r={34} fill={C} {...S} />
+      <Path d="M24 66 C30 80 42 84 50 84 C58 84 70 80 76 66" fill="none" stroke={tone(C, -0.1)} strokeWidth={5} strokeLinecap="round" />
+      <Path d="M28 36 C30 30 35 25 41 23" fill="none" stroke={tone(C, 0.45)} strokeWidth={4} strokeLinecap="round" />
+      {/* tuft */}
+      <Path d="M48 18 C46 11 50 8 52 9 M52 18 C54 12 58 12 59 14" {...L3} />
+      <Cheeks x1={32} x2={68} y={56} r={4.5} />
+      <Eyes x1={39} x2={61} y={46} r={4.8} />
       {/* beak */}
-      <Path d="M43 52 L57 52 L50 61 Z" fill={COLORS.orange} {...S} strokeWidth={3} />
+      <Path d="M44 54 L56 54 L50 63 Z" fill={COLORS.orange} {...S3} />
     </Art>
   );
 }

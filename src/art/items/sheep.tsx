@@ -1,32 +1,49 @@
-import { Ellipse, Path, Rect } from 'react-native-svg';
+import { Circle, Ellipse, Path } from 'react-native-svg';
 
-import { Art, COLORS, Eyes, S, Smile, Cheeks, tone, type ArtProps } from '../kit';
+import { Art, COLORS, Cheeks, Eyes, OUT, S, Smile, tone, type ArtProps } from '../kit';
 
 const C = COLORS.white;
-const FACE = tone(COLORS.black, 0.25);
+const FACE = tone(COLORS.brown, 0.72);
+const LEG = tone(COLORS.black, 0.15);
+/** Puffs around the fleece edge (cx, cy, r). */
+const PUFFS: [number, number, number][] = [
+  [24, 46, 12], [36, 34, 13], [52, 30, 13], [68, 34, 13], [80, 46, 12],
+  [82, 62, 12], [70, 74, 12], [52, 77, 12], [34, 74, 12], [20, 62, 12],
+];
 
-/** Fluffy cloud of wool made of overlapping bumps. */
-export const WOOL_BODY =
-  'M22 50 C14 46 14 34 24 32 C24 22 36 18 42 24 C46 16 60 16 62 24 C70 18 82 24 78 34 C88 36 88 50 80 52 C86 60 80 72 70 70 C66 78 54 80 48 74 C40 80 28 76 28 68 C18 68 14 56 22 50 Z';
-
+/** Sheep: a cloud of wool on four short legs, soft cream face. */
 export default function Sheep({ size }: ArtProps) {
   return (
     <Art size={size}>
       {/* legs */}
-      <Rect x={30} y={70} width={8} height={20} rx={4} fill={FACE} {...S} />
-      <Rect x={62} y={70} width={8} height={20} rx={4} fill={FACE} {...S} />
-      {/* wool */}
-      <Path d={WOOL_BODY} fill={C} {...S} transform="translate(0 6)" />
-      <Path d="M30 46 C30 42 34 40 36 42 M66 62 C70 62 72 58 70 56" fill="none" stroke={tone(C, -0.12)} strokeWidth={3} strokeLinecap="round" />
+      {[32, 44, 58, 70].map((x) => (
+        <Path key={x} d={`M${x} 80 V90`} stroke={OUT} strokeWidth={10} strokeLinecap="round" />
+      ))}
+      {[32, 44, 58, 70].map((x) => (
+        <Path key={`l${x}`} d={`M${x} 80 V90`} stroke={LEG} strokeWidth={4} strokeLinecap="round" />
+      ))}
+      {/* fleece: outlined puffs, then fill over the inner lines */}
+      {PUFFS.map(([x, y, r], i) => (
+        <Circle key={i} cx={x} cy={y} r={r} fill={C} {...S} />
+      ))}
+      {PUFFS.map(([x, y, r], i) => (
+        <Circle key={`f${i}`} cx={x} cy={y} r={r - 2} fill={C} />
+      ))}
+      <Ellipse cx={51} cy={55} rx={30} ry={22} fill={C} />
+      <Path d="M28 42 C30 37 34 33 39 31" fill="none" stroke={tone(COLORS.grey, 0.55)} strokeWidth={3.5} strokeLinecap="round" />
+      {/* ears */}
+      <Ellipse cx={30} cy={50} rx={9} ry={5} fill={FACE} {...S} transform="rotate(25 30 50)" />
+      <Ellipse cx={72} cy={50} rx={9} ry={5} fill={FACE} {...S} transform="rotate(-25 72 50)" />
       {/* face */}
-      <Ellipse cx={20} cy={48} rx={9} ry={5} fill={FACE} {...S} transform="rotate(-25 20 48)" />
-      <Ellipse cx={80} cy={48} rx={9} ry={5} fill={FACE} {...S} transform="rotate(25 80 48)" />
-      <Ellipse cx={50} cy={52} rx={18} ry={20} fill={FACE} {...S} />
-      {/* wool tuft on top of head */}
-      <Path d="M36 38 C34 30 42 26 46 30 C48 24 56 24 56 30 C62 26 68 32 64 38 Z" fill={C} {...S} />
-      <Cheeks x1={39} x2={61} y={60} r={3.2} />
-      <Eyes x1={43} x2={57} y={50} r={3.6} />
-      <Smile cx={50} cy={62} w={4} />
+      <Ellipse cx={51} cy={56} rx={15} ry={17} fill={FACE} {...S} />
+      {/* wool tuft on head */}
+      <Circle cx={45} cy={40} r={6} fill={C} {...S} strokeWidth={3} />
+      <Circle cx={51} cy={38} r={6.5} fill={C} {...S} strokeWidth={3} />
+      <Circle cx={57} cy={40} r={6} fill={C} {...S} strokeWidth={3} />
+      <Ellipse cx={51} cy={43} rx={9} ry={3} fill={C} />
+      <Cheeks x1={42} x2={60} y={62} r={3.2} />
+      <Eyes x1={45} x2={57} y={54} r={3.6} />
+      <Smile cx={51} cy={64} w={3.6} d={2.2} />
     </Art>
   );
 }

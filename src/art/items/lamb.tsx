@@ -1,29 +1,49 @@
-import { Ellipse, Path } from 'react-native-svg';
+import { Circle, Ellipse, Path } from 'react-native-svg';
 
-import { Art, COLORS, Eyes, S, Smile, Cheeks, tone, type ArtProps } from '../kit';
+import { Art, COLORS, Cheeks, Eyes, OUT, S, Smile, tone, type ArtProps } from '../kit';
 
 const C = COLORS.white;
-const FACE = tone(COLORS.pink, 0.72);
-const HOOF = tone(COLORS.black, 0.25);
+const FACE = tone(COLORS.brown, 0.72);
+const LEG = tone(COLORS.black, 0.15);
+const PUFFS: [number, number, number][] = [
+  [30, 70, 10], [42, 64, 10], [58, 64, 10], [70, 70, 10], [64, 82, 9], [36, 82, 9], [50, 84, 9],
+];
 
+/** Lamb: the sheep's baby — big face and woolly cap, small fluffy body. */
 export default function Lamb({ size }: ArtProps) {
   return (
     <Art size={size}>
-      {/* small woolly sitting body */}
-      <Path d="M24 78 C16 74 18 62 28 62 C30 56 40 54 44 58 C50 54 60 56 62 60 C70 56 82 62 78 70 C84 76 78 88 70 86 C64 92 52 92 48 88 C40 92 28 90 28 84 C22 84 20 80 24 78 Z" fill={C} {...S} />
-      <Ellipse cx={36} cy={90} rx={6} ry={4} fill={HOOF} {...S} strokeWidth={3} />
-      <Ellipse cx={64} cy={90} rx={6} ry={4} fill={HOOF} {...S} strokeWidth={3} />
+      {[38, 62].map((x) => (
+        <Path key={x} d={`M${x} 86 V92`} stroke={OUT} strokeWidth={10} strokeLinecap="round" />
+      ))}
+      {[38, 62].map((x) => (
+        <Path key={`l${x}`} d={`M${x} 86 V92`} stroke={LEG} strokeWidth={4} strokeLinecap="round" />
+      ))}
+      {/* fluffy body */}
+      {PUFFS.map(([x, y, r], i) => (
+        <Circle key={i} cx={x} cy={y} r={r} fill={C} {...S} />
+      ))}
+      {PUFFS.map(([x, y, r], i) => (
+        <Circle key={`f${i}`} cx={x} cy={y} r={r - 2} fill={C} />
+      ))}
+      <Ellipse cx={50} cy={74} rx={20} ry={9} fill={C} />
       {/* ears */}
-      <Ellipse cx={22} cy={36} rx={11} ry={6} fill={FACE} {...S} transform="rotate(-20 22 36)" />
-      <Ellipse cx={78} cy={36} rx={11} ry={6} fill={FACE} {...S} transform="rotate(20 78 36)" />
-      {/* big head */}
-      <Ellipse cx={50} cy={42} rx={22} ry={22} fill={FACE} {...S} />
-      {/* wool cap */}
-      <Path d="M30 34 C24 26 32 14 40 18 C42 8 58 8 60 18 C68 14 76 26 70 34 C62 28 38 28 30 34 Z" fill={C} {...S} />
-      <Path d="M44 22 C44 20 47 19 48 21" fill="none" stroke={tone(C, -0.12)} strokeWidth={3} strokeLinecap="round" />
-      <Cheeks x1={36} x2={64} y={50} r={3.6} />
-      <Eyes x1={41} x2={59} y={42} r={4} />
-      <Smile cx={50} cy={53} w={4} />
+      <Ellipse cx={20} cy={40} rx={12} ry={6} fill={FACE} {...S} transform="rotate(20 20 40)" />
+      <Ellipse cx={80} cy={40} rx={12} ry={6} fill={FACE} {...S} transform="rotate(-20 80 40)" />
+      {/* big face */}
+      <Ellipse cx={50} cy={44} rx={24} ry={22} fill={FACE} {...S} />
+      {/* woolly cap */}
+      {[[34, 26, 9], [44, 20, 10], [56, 20, 10], [66, 26, 9]].map(([x, y, r], i) => (
+        <Circle key={`c${i}`} cx={x} cy={y} r={r} fill={C} {...S} />
+      ))}
+      {[[34, 26, 9], [44, 20, 10], [56, 20, 10], [66, 26, 9]].map(([x, y, r], i) => (
+        <Circle key={`cf${i}`} cx={x} cy={y} r={r - 2} fill={C} />
+      ))}
+      <Ellipse cx={50} cy={27} rx={18} ry={6} fill={C} />
+      <Path d="M36 22 C38 18 41 16 44 15" fill="none" stroke={tone(COLORS.grey, 0.55)} strokeWidth={3} strokeLinecap="round" />
+      <Cheeks x1={34} x2={66} y={52} r={4} />
+      <Eyes x1={41} x2={59} y={43} r={4.6} />
+      <Smile cx={50} cy={53} w={4.5} d={2.4} />
     </Art>
   );
 }
