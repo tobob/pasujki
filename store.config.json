@@ -69,7 +69,25 @@
         ],
         "promoText": "Spokojna gra w dopasowywanie dla dzieci od 2 do 5 lat. 68 poziomów w 8 światach. Bez reklam, bez zakupów i bez internetu. Dziecko gra we własnym tempie.",
         "supportUrl": "https://tobob.github.io/pasujki-site/",
-        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/"
+        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/screenshots/pl/iphone69_2colours.png",
+            "store/screenshots/pl/iphone69_3shadows.png",
+            "store/screenshots/pl/iphone69_5who.png",
+            "store/screenshots/pl/iphone69_4patterns.png",
+            "store/screenshots/pl/iphone69_6sticker.png",
+            "store/screenshots/pl/iphone69_1home.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/screenshots/pl/ipad13_2colours.png",
+            "store/screenshots/pl/ipad13_3shadows.png",
+            "store/screenshots/pl/ipad13_5who.png",
+            "store/screenshots/pl/ipad13_4patterns.png",
+            "store/screenshots/pl/ipad13_6sticker.png",
+            "store/screenshots/pl/ipad13_1home.png"
+          ]
+        }
       },
       "en-US": {
         "title": "Pasujki – Toddler Matching",
@@ -92,7 +110,25 @@
         ],
         "promoText": "A calm matching game for children aged 2 to 5. 68 levels across 8 worlds, with no ads, no purchases and no internet needed. Your child plays at their own pace.",
         "supportUrl": "https://tobob.github.io/pasujki-site/",
-        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/"
+        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/screenshots/en/iphone69_2colours.png",
+            "store/screenshots/en/iphone69_3shadows.png",
+            "store/screenshots/en/iphone69_5who.png",
+            "store/screenshots/en/iphone69_4patterns.png",
+            "store/screenshots/en/iphone69_6sticker.png",
+            "store/screenshots/en/iphone69_1home.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/screenshots/en/ipad13_2colours.png",
+            "store/screenshots/en/ipad13_3shadows.png",
+            "store/screenshots/en/ipad13_5who.png",
+            "store/screenshots/en/ipad13_4patterns.png",
+            "store/screenshots/en/ipad13_6sticker.png",
+            "store/screenshots/en/ipad13_1home.png"
+          ]
+        }
       },
       "en-GB": {
         "title": "Pasujki – Toddler Matching",
@@ -115,7 +151,25 @@
         ],
         "promoText": "A calm matching game for children aged 2 to 5. 68 levels across 8 worlds, with no ads, no purchases and no internet needed. Your child plays at their own pace.",
         "supportUrl": "https://tobob.github.io/pasujki-site/",
-        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/"
+        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/screenshots/en/iphone69_2colours.png",
+            "store/screenshots/en/iphone69_3shadows.png",
+            "store/screenshots/en/iphone69_5who.png",
+            "store/screenshots/en/iphone69_4patterns.png",
+            "store/screenshots/en/iphone69_6sticker.png",
+            "store/screenshots/en/iphone69_1home.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/screenshots/en/ipad13_2colours.png",
+            "store/screenshots/en/ipad13_3shadows.png",
+            "store/screenshots/en/ipad13_5who.png",
+            "store/screenshots/en/ipad13_4patterns.png",
+            "store/screenshots/en/ipad13_6sticker.png",
+            "store/screenshots/en/ipad13_1home.png"
+          ]
+        }
       },
       "de-DE": {
         "title": "Pasujki – Kleinkinder-Spiel",
@@ -138,7 +192,25 @@
         ],
         "promoText": "Ein ruhiges Zuordnungsspiel für Kinder von 2 bis 5 Jahren. 68 Level in 8 Welten. Ohne Werbung, ohne Käufe, ohne Internet. Ihr Kind spielt in seinem Tempo.",
         "supportUrl": "https://tobob.github.io/pasujki-site/",
-        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/"
+        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/screenshots/en/iphone69_2colours.png",
+            "store/screenshots/en/iphone69_3shadows.png",
+            "store/screenshots/en/iphone69_5who.png",
+            "store/screenshots/en/iphone69_4patterns.png",
+            "store/screenshots/en/iphone69_6sticker.png",
+            "store/screenshots/en/iphone69_1home.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/screenshots/en/ipad13_2colours.png",
+            "store/screenshots/en/ipad13_3shadows.png",
+            "store/screenshots/en/ipad13_5who.png",
+            "store/screenshots/en/ipad13_4patterns.png",
+            "store/screenshots/en/ipad13_6sticker.png",
+            "store/screenshots/en/ipad13_1home.png"
+          ]
+        }
       },
       "fr-FR": {
         "title": "Pasujki – Jeu pour tout-petits",
@@ -161,7 +233,25 @@
         ],
         "promoText": "Un jeu d'association calme pour les enfants de 2 à 5 ans. 68 niveaux dans 8 mondes. Sans pub, sans achats et sans internet. Votre enfant joue à son rythme.",
         "supportUrl": "https://tobob.github.io/pasujki-site/",
-        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/"
+        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/screenshots/en/iphone69_2colours.png",
+            "store/screenshots/en/iphone69_3shadows.png",
+            "store/screenshots/en/iphone69_5who.png",
+            "store/screenshots/en/iphone69_4patterns.png",
+            "store/screenshots/en/iphone69_6sticker.png",
+            "store/screenshots/en/iphone69_1home.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/screenshots/en/ipad13_2colours.png",
+            "store/screenshots/en/ipad13_3shadows.png",
+            "store/screenshots/en/ipad13_5who.png",
+            "store/screenshots/en/ipad13_4patterns.png",
+            "store/screenshots/en/ipad13_6sticker.png",
+            "store/screenshots/en/ipad13_1home.png"
+          ]
+        }
       },
       "fr-CA": {
         "title": "Pasujki – Jeu pour tout-petits",
@@ -183,7 +273,25 @@
         ],
         "promoText": "Un jeu d'association calme pour les enfants de 2 à 5 ans. 68 niveaux dans 8 mondes. Sans pub, sans achats et sans Internet. Votre enfant joue à son rythme.",
         "supportUrl": "https://tobob.github.io/pasujki-site/",
-        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/"
+        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/screenshots/en/iphone69_2colours.png",
+            "store/screenshots/en/iphone69_3shadows.png",
+            "store/screenshots/en/iphone69_5who.png",
+            "store/screenshots/en/iphone69_4patterns.png",
+            "store/screenshots/en/iphone69_6sticker.png",
+            "store/screenshots/en/iphone69_1home.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/screenshots/en/ipad13_2colours.png",
+            "store/screenshots/en/ipad13_3shadows.png",
+            "store/screenshots/en/ipad13_5who.png",
+            "store/screenshots/en/ipad13_4patterns.png",
+            "store/screenshots/en/ipad13_6sticker.png",
+            "store/screenshots/en/ipad13_1home.png"
+          ]
+        }
       },
       "it": {
         "title": "Pasujki – Gioco per bambini",
@@ -205,7 +313,25 @@
         ],
         "promoText": "Un gioco di abbinamenti tranquillo per bambini dai 2 ai 5 anni. 68 livelli in 8 mondi. Niente pubblicità, acquisti o internet. Ognuno gioca con i suoi tempi.",
         "supportUrl": "https://tobob.github.io/pasujki-site/",
-        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/"
+        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/screenshots/en/iphone69_2colours.png",
+            "store/screenshots/en/iphone69_3shadows.png",
+            "store/screenshots/en/iphone69_5who.png",
+            "store/screenshots/en/iphone69_4patterns.png",
+            "store/screenshots/en/iphone69_6sticker.png",
+            "store/screenshots/en/iphone69_1home.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/screenshots/en/ipad13_2colours.png",
+            "store/screenshots/en/ipad13_3shadows.png",
+            "store/screenshots/en/ipad13_5who.png",
+            "store/screenshots/en/ipad13_4patterns.png",
+            "store/screenshots/en/ipad13_6sticker.png",
+            "store/screenshots/en/ipad13_1home.png"
+          ]
+        }
       },
       "es-ES": {
         "title": "Pasujki – Juego para peques",
@@ -226,7 +352,25 @@
         ],
         "promoText": "Un juego tranquilo de emparejar para niños de 2 a 5 años. 68 niveles en 8 mundos. Sin anuncios, sin compras y sin internet. Tu hijo juega a su ritmo.",
         "supportUrl": "https://tobob.github.io/pasujki-site/",
-        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/"
+        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/screenshots/en/iphone69_2colours.png",
+            "store/screenshots/en/iphone69_3shadows.png",
+            "store/screenshots/en/iphone69_5who.png",
+            "store/screenshots/en/iphone69_4patterns.png",
+            "store/screenshots/en/iphone69_6sticker.png",
+            "store/screenshots/en/iphone69_1home.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/screenshots/en/ipad13_2colours.png",
+            "store/screenshots/en/ipad13_3shadows.png",
+            "store/screenshots/en/ipad13_5who.png",
+            "store/screenshots/en/ipad13_4patterns.png",
+            "store/screenshots/en/ipad13_6sticker.png",
+            "store/screenshots/en/ipad13_1home.png"
+          ]
+        }
       },
       "es-MX": {
         "title": "Pasujki – Juego para niños",
@@ -246,7 +390,25 @@
         ],
         "promoText": "Un juego tranquilo de emparejar para niños de 2 a 5 años. 68 niveles en 8 mundos. Sin anuncios, sin compras y sin internet. Tu hijo juega a su ritmo.",
         "supportUrl": "https://tobob.github.io/pasujki-site/",
-        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/"
+        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/screenshots/en/iphone69_2colours.png",
+            "store/screenshots/en/iphone69_3shadows.png",
+            "store/screenshots/en/iphone69_5who.png",
+            "store/screenshots/en/iphone69_4patterns.png",
+            "store/screenshots/en/iphone69_6sticker.png",
+            "store/screenshots/en/iphone69_1home.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/screenshots/en/ipad13_2colours.png",
+            "store/screenshots/en/ipad13_3shadows.png",
+            "store/screenshots/en/ipad13_5who.png",
+            "store/screenshots/en/ipad13_4patterns.png",
+            "store/screenshots/en/ipad13_6sticker.png",
+            "store/screenshots/en/ipad13_1home.png"
+          ]
+        }
       },
       "pt-BR": {
         "title": "Pasujki – Jogo para crianças",
@@ -266,7 +428,25 @@
         ],
         "promoText": "Um jogo tranquilo de associação para crianças de 2 a 5 anos. 68 fases em 8 mundos. Sem anúncios, sem compras e sem internet. Seu filho joga no próprio ritmo.",
         "supportUrl": "https://tobob.github.io/pasujki-site/",
-        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/"
+        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/screenshots/en/iphone69_2colours.png",
+            "store/screenshots/en/iphone69_3shadows.png",
+            "store/screenshots/en/iphone69_5who.png",
+            "store/screenshots/en/iphone69_4patterns.png",
+            "store/screenshots/en/iphone69_6sticker.png",
+            "store/screenshots/en/iphone69_1home.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/screenshots/en/ipad13_2colours.png",
+            "store/screenshots/en/ipad13_3shadows.png",
+            "store/screenshots/en/ipad13_5who.png",
+            "store/screenshots/en/ipad13_4patterns.png",
+            "store/screenshots/en/ipad13_6sticker.png",
+            "store/screenshots/en/ipad13_1home.png"
+          ]
+        }
       },
       "pt-PT": {
         "title": "Pasujki – Jogo para crianças",
@@ -287,7 +467,25 @@
         ],
         "promoText": "Um jogo calmo de associação para crianças dos 2 aos 5 anos. 68 níveis em 8 mundos. Sem anúncios, sem compras e sem internet. O seu filho joga ao seu ritmo.",
         "supportUrl": "https://tobob.github.io/pasujki-site/",
-        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/"
+        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/screenshots/en/iphone69_2colours.png",
+            "store/screenshots/en/iphone69_3shadows.png",
+            "store/screenshots/en/iphone69_5who.png",
+            "store/screenshots/en/iphone69_4patterns.png",
+            "store/screenshots/en/iphone69_6sticker.png",
+            "store/screenshots/en/iphone69_1home.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/screenshots/en/ipad13_2colours.png",
+            "store/screenshots/en/ipad13_3shadows.png",
+            "store/screenshots/en/ipad13_5who.png",
+            "store/screenshots/en/ipad13_4patterns.png",
+            "store/screenshots/en/ipad13_6sticker.png",
+            "store/screenshots/en/ipad13_1home.png"
+          ]
+        }
       },
       "nl-NL": {
         "title": "Pasujki – Spel voor peuters",
@@ -309,7 +507,25 @@
         ],
         "promoText": "Een rustig matchspel voor kinderen van 2 tot 5 jaar. 68 levels in 8 werelden. Zonder reclame, zonder aankopen en zonder internet. Je kind speelt in eigen tempo.",
         "supportUrl": "https://tobob.github.io/pasujki-site/",
-        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/"
+        "privacyPolicyUrl": "https://tobob.github.io/pasujki-site/privacy/",
+        "screenshots": {
+          "APP_IPHONE_67": [
+            "store/screenshots/en/iphone69_2colours.png",
+            "store/screenshots/en/iphone69_3shadows.png",
+            "store/screenshots/en/iphone69_5who.png",
+            "store/screenshots/en/iphone69_4patterns.png",
+            "store/screenshots/en/iphone69_6sticker.png",
+            "store/screenshots/en/iphone69_1home.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/screenshots/en/ipad13_2colours.png",
+            "store/screenshots/en/ipad13_3shadows.png",
+            "store/screenshots/en/ipad13_5who.png",
+            "store/screenshots/en/ipad13_4patterns.png",
+            "store/screenshots/en/ipad13_6sticker.png",
+            "store/screenshots/en/ipad13_1home.png"
+          ]
+        }
       }
     }
   }
