@@ -32,7 +32,7 @@ export const ITEM_DOMINANT: Record<ItemId, ColorId> = {
   heart_toy: 'pink',
   // v0.2
   gift: 'red', block: 'blue', party_hat: 'purple', crow: 'black', hay: 'yellow', bird: 'blue', kite: 'orange',
-  rainbow: 'red', sandwich: 'brown', cake: 'pink', bucket: 'yellow', shovel: 'red', mushroom: 'red',
+  rainbow: 'red', sandwich: 'brown', cake: 'pink', bucket: 'yellow', shovel: 'red', mushroom: 'brown',
   cherry: 'red', plum: 'purple', peas: 'green', fox: 'orange', hedgehog: 'brown', octopus: 'purple',
   dinosaur: 'green',
 };

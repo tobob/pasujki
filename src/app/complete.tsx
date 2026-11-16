@@ -19,6 +19,7 @@ import { MOTION, SHADOW, TONE } from '@/constants/ui';
 import { findLevel, findWorld, nextLevelId, stickerPicture } from '@/game/engine/progression';
 import { playSfx } from '@/game/engine/sound';
 import { useMusic } from '@/hooks/use-music';
+import { t } from '@/i18n';
 
 function EarnedStar({ index, reduceMotion }: { index: number; reduceMotion: boolean }) {
   const t = useSharedValue(0);
@@ -65,7 +66,7 @@ export default function Complete() {
   return (
     <Screen tint={tint}>
       <View style={styles.center}>
-        <AppText style={styles.bravo}>Brawo!</AppText>
+        <AppText style={styles.bravo}>{t.bravo}</AppText>
         <Animated.View style={[styles.sticker, stickerStyle]}>
           <ItemArt id={stickerPicture(level)} size={170} />
         </Animated.View>
@@ -81,14 +82,14 @@ export default function Complete() {
           <SoftButton
             size={84}
             onPress={() => router.replace({ pathname: '/play/[levelId]', params: { levelId: next } })}
-            accessibilityLabel="Następny poziom"
+            accessibilityLabel={t.next}
           >
             <View style={styles.nudge}>
               <Icon name="next" size={40} color={TONE.muted} />
             </View>
           </SoftButton>
         )}
-        <SoftButton size={120} color={TONE.play} onPress={() => router.dismissTo('/map')} accessibilityLabel="Mapa światów">
+        <SoftButton size={120} color={TONE.play} onPress={() => router.dismissTo('/map')} accessibilityLabel={t.map}>
           <Icon name="map" size={52} color={TONE.card} />
         </SoftButton>
       </View>

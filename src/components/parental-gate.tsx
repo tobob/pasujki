@@ -1,6 +1,6 @@
 /**
- * Parental gate: (1) press and hold for 3 s, then (2) answer a multiplication written out in Polish
- * words, using large number buttons. Pre-readers can't decode the words; the task is new every time.
+ * Parental gate: (1) press and hold for 3 s, then (2) answer a multiplication written out in
+ * words (Polish or English, by device language), using large number buttons. Pre-readers can't decode the words; the task is new every time.
  * A wrong answer leaves the gate (back to the game) with no hint.
  */
 import { useState } from 'react';
@@ -11,9 +11,9 @@ import { scheduleOnRN } from 'react-native-worklets';
 import { AppText } from '@/components/app-text';
 import { devGate } from '@/game/engine/dev';
 import { RADIUS, SHADOW, TONE } from '@/constants/ui';
+import { numberWord, t } from '@/i18n';
 
 const HOLD_MS = 3000;
-const WORDS = ['zero', 'jeden', 'dwa', 'trzy', 'cztery', 'pięć', 'sześć', 'siedem', 'osiem', 'dziewięć'];
 
 type Question = { a: number; b: number; answer: number; options: number[] };
 
@@ -62,12 +62,12 @@ export function ParentalGate({ onPass, onFail }: { onPass: () => void; onFail: (
   if (stage === 'hold') {
     return (
       <View style={styles.box}>
-        <AppText style={styles.title}>Strefa rodzica</AppText>
-        <AppText style={styles.body}>Poproś dorosłego. Przytrzymaj przycisk przez 3 sekundy.</AppText>
-        <Pressable onPressIn={startHold} onPressOut={stopHold} accessibilityRole="button" accessibilityLabel="Przytrzymaj">
+        <AppText style={styles.title}>{t.gateTitle}</AppText>
+        <AppText style={styles.body}>{t.gateHold}</AppText>
+        <Pressable onPressIn={startHold} onPressOut={stopHold} accessibilityRole="button" accessibilityLabel={t.gateHoldButton}>
           <View style={styles.holdButton}>
             <Animated.View style={[styles.holdFill, fillStyle]} />
-            <AppText style={styles.holdText}>Przytrzymaj</AppText>
+            <AppText style={styles.holdText}>{t.gateHoldButton}</AppText>
           </View>
         </Pressable>
       </View>
@@ -76,10 +76,8 @@ export function ParentalGate({ onPass, onFail }: { onPass: () => void; onFail: (
 
   return (
     <View style={styles.box}>
-      <AppText style={styles.title}>Strefa rodzica</AppText>
-      <AppText style={styles.body}>
-        Ile to jest {WORDS[question.a]} razy {WORDS[question.b]}?
-      </AppText>
+      <AppText style={styles.title}>{t.gateTitle}</AppText>
+      <AppText style={styles.body}>{t.gateQuestion(numberWord(question.a), numberWord(question.b))}</AppText>
       <View style={styles.options}>
         {question.options.map((n) => (
           <Pressable

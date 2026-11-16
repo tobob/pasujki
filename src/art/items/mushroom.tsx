@@ -1,23 +1,23 @@
-import { Circle, Ellipse, Path } from 'react-native-svg';
+import { Path } from 'react-native-svg';
 
 import { Art, COLORS, S, tone, type ArtProps } from '../kit';
 
-const C = COLORS.red;
-const STEM = tone(COLORS.yellow, 0.75);
+/**
+ * A friendly brown cep (prawdziwek, an edible mushroom), deliberately NOT a red-and-white fly
+ * agaric: the hedgehog/squirrel "who eats this?" rounds must never present a poisonous mushroom as food.
+ */
+const C = COLORS.brown;
+const STEM = '#F1E6D2';
 
 export default function Mushroom({ size }: ArtProps) {
   return (
     <Art size={size}>
-      {/* stem */}
-      <Path d="M38 56 H62 C64 68 66 80 64 88 C63 92 60 94 56 94 H44 C40 94 37 92 36 88 C34 80 36 68 38 56 Z" fill={STEM} {...S} />
-      <Path d="M56 62 C58 72 58 82 56 90" fill="none" stroke={tone(STEM, -0.1)} strokeWidth={4} strokeLinecap="round" />
-      {/* cap */}
-      <Path d="M8 56 C8 28 28 8 50 8 C72 8 92 28 92 56 C92 62 88 64 82 64 H18 C12 64 8 62 8 56 Z" fill={C} {...S} />
-      <Path d="M20 40 C24 28 32 20 42 16" fill="none" stroke={tone(C, 0.35)} strokeWidth={5} strokeLinecap="round" />
-      <Circle cx={50} cy={26} r={7} fill={COLORS.white} />
-      <Circle cx={28} cy={48} r={6} fill={COLORS.white} />
-      <Circle cx={72} cy={44} r={7.5} fill={COLORS.white} />
-      <Ellipse cx={50} cy={52} rx={5} ry={4} fill={COLORS.white} />
+      {/* chubby stem */}
+      <Path d="M34 54 H66 C72 66 72 82 66 90 C63 94 58 95 50 95 C42 95 37 94 34 90 C28 82 28 66 34 54 Z" fill={STEM} {...S} />
+      <Path d="M60 62 C63 72 63 82 60 89" fill="none" stroke={tone(STEM, -0.12)} strokeWidth={4} strokeLinecap="round" />
+      {/* round cap */}
+      <Path d="M10 56 C10 30 28 12 50 12 C72 12 90 30 90 56 C90 62 86 64 80 64 H20 C14 64 10 62 10 56 Z" fill={C} {...S} />
+      <Path d="M22 40 C26 29 34 22 44 19" fill="none" stroke={tone(C, 0.35)} strokeWidth={5} strokeLinecap="round" />
     </Art>
   );
 }

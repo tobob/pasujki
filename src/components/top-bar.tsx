@@ -5,10 +5,11 @@ import { AppText } from '@/components/app-text';
 import { Icon, type IconName } from '@/components/icons';
 import { SoftButton } from '@/components/soft-button';
 import { TONE } from '@/constants/ui';
+import { t } from '@/i18n';
 
 type Props = { onBack: () => void; icon?: IconName; title?: string; right?: ReactNode; backLabel?: string };
 
-export function TopBar({ onBack, icon = 'back', title, right, backLabel = 'Wróć' }: Props) {
+export function TopBar({ onBack, icon = 'back', title, right, backLabel = t.back }: Props) {
   return (
     <View style={styles.row}>
       <SoftButton size={52} onPress={onBack} accessibilityLabel={backLabel}>

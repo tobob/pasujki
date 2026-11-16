@@ -11,6 +11,7 @@ import { isWorldUnlocked, worldPicture, worldStars } from '@/game/engine/progres
 import { WORLDS } from '@/game/levels';
 import { playSfx } from '@/game/engine/sound';
 import { useMusic } from '@/hooks/use-music';
+import { t, worldTitle } from '@/i18n';
 import { useProgress, useSettings } from '@/storage/store';
 
 export default function WorldMap() {
@@ -20,7 +21,7 @@ export default function WorldMap() {
 
   return (
     <Screen>
-      <TopBar onBack={() => router.back()} icon="home" backLabel="Start" />
+      <TopBar onBack={() => router.back()} icon="home" backLabel={t.start} />
       <ScrollView contentContainerStyle={styles.list}>
         {WORLDS.map((world) => {
           const open = isWorldUnlocked(world, progress, settings);
@@ -29,7 +30,7 @@ export default function WorldMap() {
             <Pressable
               key={world.id}
               accessibilityRole="button"
-              accessibilityLabel={world.title_pl}
+              accessibilityLabel={worldTitle(world)}
               accessibilityState={{ disabled: !open }}
               disabled={!open}
               onPress={() => {
@@ -47,8 +48,8 @@ export default function WorldMap() {
                 <ItemArt id={worldPicture(world)} size={84} />
               </View>
               <View style={styles.info}>
-                <AppText style={styles.name} numberOfLines={1}>
-                  {world.title_pl}
+                <AppText style={styles.name} numberOfLines={2} adjustsFontSizeToFit minimumFontScale={0.8}>
+                  {worldTitle(world)}
                 </AppText>
                 <View style={styles.stars}>
                   <StarIcon size={22} color={earned > 0 ? TONE.star : TONE.dot} />
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
   pressed: { transform: [{ scale: 0.98 }] },
   art: { width: 100, height: 100, borderRadius: 50, backgroundColor: TONE.card, alignItems: 'center', justifyContent: 'center' },
   info: { flex: 1, gap: 8 },
-  name: { fontSize: 22, fontWeight: '600' },
+  name: { fontSize: 22, lineHeight: 27, fontWeight: '600' },
   stars: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   count: { fontSize: 17, color: TONE.muted },
 });

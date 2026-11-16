@@ -8,6 +8,7 @@ import { SoftButton } from '@/components/soft-button';
 import { TONE } from '@/constants/ui';
 import { findLevel, findWorld, starsFor } from '@/game/engine/progression';
 import { useMusic } from '@/hooks/use-music';
+import { t } from '@/i18n';
 import { saveLevelResult, useSettings } from '@/storage/store';
 
 export default function PlayScreen() {
@@ -31,7 +32,7 @@ export default function PlayScreen() {
       <View style={styles.wrap}>
         <View style={styles.back}>
           {/* One tap always leaves, no confirmation (R7). */}
-          <SoftButton size={64} onPress={() => router.back()} accessibilityLabel="Wyjdź" color="rgba(255,255,255,0.75)">
+          <SoftButton size={64} onPress={() => router.back()} accessibilityLabel={t.exit} color="rgba(255,255,255,0.75)">
             <Icon name="home" size={30} color={TONE.muted} />
           </SoftButton>
         </View>

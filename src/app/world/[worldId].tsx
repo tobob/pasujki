@@ -9,6 +9,7 @@ import { SHADOW, TONE } from '@/constants/ui';
 import { findWorld, isLevelUnlocked, levelPicture } from '@/game/engine/progression';
 import { playSfx } from '@/game/engine/sound';
 import { useMusic } from '@/hooks/use-music';
+import { levelTitle, worldTitle } from '@/i18n';
 import { useProgress, useSettings } from '@/storage/store';
 
 export default function WorldScreen() {
@@ -21,7 +22,7 @@ export default function WorldScreen() {
 
   return (
     <Screen tint={world.tint}>
-      <TopBar onBack={() => router.back()} title={world.title_pl} />
+      <TopBar onBack={() => router.back()} title={worldTitle(world)} />
       <ScrollView contentContainerStyle={styles.grid}>
         {world.levels.map((level) => {
           const open = isLevelUnlocked(level, progress, settings);
@@ -30,7 +31,7 @@ export default function WorldScreen() {
             <Pressable
               key={level.id}
               accessibilityRole="button"
-              accessibilityLabel={level.title_pl}
+              accessibilityLabel={levelTitle(level)}
               disabled={!open}
               onPress={() => {
                 playSfx('tap');

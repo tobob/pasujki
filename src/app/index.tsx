@@ -20,6 +20,7 @@ import { continueLevelId } from '@/game/engine/progression';
 import { UI } from '@/game/palette';
 import type { ItemId } from '@/game/types';
 import { useMusic } from '@/hooks/use-music';
+import { t } from '@/i18n';
 import { useProgress, useSettings } from '@/storage/store';
 
 const FRIENDS: ItemId[] = ['cat', 'sun', 'strawberry', 'duck'];
@@ -46,7 +47,7 @@ export default function Home() {
   return (
     <Screen style={styles.screen}>
       <View style={styles.corner}>
-        <SoftButton size={48} onPress={() => router.push('/parents')} accessibilityLabel="Dla rodziców" color={TONE.bgAlt}>
+        <SoftButton size={48} onPress={() => router.push('/parents')} accessibilityLabel={t.parents} color={TONE.bgAlt}>
           <Icon name="parents" size={26} color={TONE.muted} />
         </SoftButton>
       </View>
@@ -62,14 +63,14 @@ export default function Home() {
         </View>
 
         <Animated.View style={breathStyle}>
-          <SoftButton size={168} color={TONE.play} onPress={play} accessibilityLabel="Graj">
+          <SoftButton size={168} color={TONE.play} onPress={play} accessibilityLabel={t.play}>
             <View style={styles.playNudge}>
               <Icon name="play" size={84} color={TONE.card} />
             </View>
           </SoftButton>
         </Animated.View>
 
-        <SoftButton size={84} onPress={() => router.push('/map')} accessibilityLabel="Mapa światów">
+        <SoftButton size={84} onPress={() => router.push('/map')} accessibilityLabel={t.map}>
           <Icon name="map" size={40} color={TONE.muted} />
         </SoftButton>
       </View>

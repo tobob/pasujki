@@ -12,7 +12,18 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.tobob.pasujki",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "CFBundleAllowMixedLocalizations": true,
+        "CFBundleLocalizations": [
+          "pl",
+          "en",
+          "de",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "nl"
+        ]
       },
       "privacyManifests": {
         "NSPrivacyTracking": false,
@@ -47,7 +58,8 @@
             ]
           }
         ]
-      }
+      },
+      "requireFullScreen": true
     },
     "android": {
       "adaptiveIcon": {
@@ -97,7 +109,8 @@
           "enableBackgroundRecording": false
         }
       ],
-      "expo-sqlite"
+      "expo-sqlite",
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true,

@@ -23,6 +23,7 @@ import Animated, {
 import { scheduleOnRN } from 'react-native-worklets';
 
 import { AppText } from '@/components/app-text';
+import { hintText } from '@/i18n';
 import { PromptArt } from '@/components/prompt-art';
 import { ProgressDots } from '@/components/progress-dots';
 import { Quadrant, type Rect } from '@/components/quadrant';
@@ -302,7 +303,7 @@ export function GameBoard({ level, showHints, onFinished }: Props) {
         <ProgressDots total={level.rounds.length} current={roundIndex} />
         {showHints && (
           <AppText style={styles.hint} numberOfLines={2}>
-            {round.hint_pl}
+            {hintText(round)}
           </AppText>
         )}
       </View>

@@ -40,12 +40,19 @@ export function nextLevelId(id: string): string | undefined {
 
 const isDone = (p: Progress, levelId: string) => (p.stars[levelId] ?? 0) > 0;
 
-/** World 1 is always open; world N opens once world N-1 is fully completed. */
+const isFreeWorld = (world: World) => world.levels.every((l) => l.rounds.every((r) => r.rule === 'free'));
+
+/**
+ * World 1 and the abstract "make-believe" world are always open. Any other world opens once HALF of
+ * the previous world is done: a 4-year-old shouldn't have to finish every 2-year-old level first.
+ */
 export function isWorldUnlocked(world: World, p: Progress, s: Settings): boolean {
-  if (s.unlockAll) return true;
+  if (s.unlockAll || isFreeWorld(world)) return true;
   const idx = WORLDS.findIndex((w) => w.id === world.id);
   if (idx <= 0) return true;
-  return WORLDS[idx - 1].levels.every((l) => isDone(p, l.id));
+  const prev = WORLDS[idx - 1];
+  const done = prev.levels.filter((l) => isDone(p, l.id)).length;
+  return done >= Math.ceil(prev.levels.length / 2);
 }
 
 /** Every level in world 1 is open; elsewhere a level opens after the previous one in its world. */

@@ -10,7 +10,7 @@
  * │ palette colour (COLORS in src/game/palette.ts). Agreed with src/art/dominant.ts.              │
  * │                                                                                              │
  * │ red     ladybug, parrot, strawberry, apple, watermelon*, doghouse, barn, scarf, car, drum,     │
- * │         balloon, tomato, gift, rainbow*, shovel, mushroom, cherry                            │
+ * │         balloon, tomato, gift, rainbow*, shovel, cherry                                      │
  * │ yellow  duck, lion, giraffe, bee, chick, duckling, banana, lemon, cheese, corn, beehive, sun,  │
  * │         moon, star, boot, house*, hay, bucket                                                │
  * │ blue    whale, blueberries, pond, sea, kennel_bowl, ball, raindrop, snowflake, hat, cup, bed,  │
@@ -21,7 +21,7 @@
  * │ purple  butterfly, grapes, umbrella, mitten, crayon, party_hat, plum, octopus                │
  * │ pink    pig, flamingo, worm, soap, flower, heart_toy, cake                                   │
  * │ brown   dog, horse, bear, owl, monkey, puppy, acorn, bread, nest, hutch, teddy, sandwich,      │
- * │         hedgehog                                                                             │
+ * │         hedgehog, mushroom                                                                      │
  * │ white   cow*, sheep, hen, zebra*, lamb, calf*, bone, milk, egg, iceberg, cloud, snowman,       │
  * │         pillow                                                                               │
  * │ black   penguin*, sunglasses, crow                                                           │
@@ -210,7 +210,7 @@ export const ITEM_ATTRS: Record<ItemId, ItemAttr> = {
   cake: a('pink', ['food', 'toy'], 'torcik', 'm', 'cake', { shapeAmbiguous: true, gen: 'torcika', acc: 'torcik' }),
   bucket: a('yellow', ['toy'], 'wiaderko', 'n', 'bucket', { shapeAmbiguous: true, gen: 'wiaderka', acc: 'wiaderko' }),
   shovel: a('red', ['toy'], 'łopatka', 'f', 'spade', { gen: 'łopatki', acc: 'łopatkę' }),
-  mushroom: a('red', ['nature', 'food'], 'grzybek', 'm', 'mushroom', { shapeAmbiguous: true, acc: 'grzybka' }),
+  mushroom: a('brown', ['nature', 'food'], 'grzybek', 'm', 'mushroom', { shapeAmbiguous: true, acc: 'grzybka' }),
   cherry: a('red', ['food', 'fruit'], 'wisienka', 'f', 'cherry', { shapeAmbiguous: true, acc: 'wisienkę' }),
   plum: a('purple', ['food', 'fruit'], 'śliwka', 'f', 'plum', { shapeAmbiguous: true, acc: 'śliwkę' }),
   peas: a('green', ['food', 'vegetable'], 'groszek', 'm', 'peas', { shapeAmbiguous: true, acc: 'groszek' }),
@@ -226,13 +226,14 @@ export const ITEM_ATTRS: Record<ItemId, ItemAttr> = {
 
 /** animal → foods it plausibly eats. */
 export const EATS: Partial<Record<ItemId, ItemId[]>> = {
-  cat: ['milk', 'fish'],
+  // No cow's milk for grown cats (parents and vets object); kittens drink milk.
+  cat: ['fish'],
   kitten: ['milk', 'fish'],
   dog: ['bone', 'kennel_bowl', 'cheese', 'sandwich', 'cake'],
-  puppy: ['bone', 'milk', 'kennel_bowl', 'sandwich'],
+  puppy: ['bone', 'milk', 'kennel_bowl'],
   rabbit: ['carrot', 'leaf', 'apple', 'pear', 'hay', 'peas'],
   horse: ['carrot', 'apple', 'pear', 'corn', 'hay'],
-  pig: ['apple', 'corn', 'pear', 'carrot', 'pumpkin', 'bread', 'tomato', 'watermelon', 'cheese', 'milk', 'banana', 'acorn', 'blueberries', 'cherry', 'plum', 'peas', 'sandwich', 'cake', 'mushroom', 'hay'],
+  pig: ['apple', 'corn', 'pear', 'carrot', 'pumpkin', 'bread', 'tomato', 'watermelon', 'cheese', 'milk', 'banana', 'acorn', 'blueberries', 'cherry', 'plum', 'peas', 'mushroom', 'hay'],
   cow: ['leaf', 'hay'],
   sheep: ['leaf', 'hay'],
   mouse: ['cheese', 'corn', 'bread', 'acorn', 'sandwich', 'cake', 'peas'],
@@ -325,7 +326,7 @@ export const BABY_OF: Partial<Record<ItemId, ItemId>> = {
 export const TEXTURE_OF: Record<TextureId, { owners: ItemId[]; alsoHas: ItemId[] }> = {
   stripes_bw: { owners: ['zebra'], alsoHas: ['bee', 'tiger', 'penguin', 'cow', 'calf'] },
   stripes_orange: { owners: ['tiger'], alsoHas: ['bee', 'fish', 'cat', 'kitten', 'zebra', 'fox'] },
-  spots_red_black: { owners: ['ladybug'], alsoHas: ['strawberry', 'watermelon', 'cow', 'calf', 'giraffe', 'mushroom'] },
+  spots_red_black: { owners: ['ladybug'], alsoHas: ['strawberry', 'watermelon', 'cow', 'calf', 'giraffe'] },
   spots_giraffe: { owners: ['giraffe'], alsoHas: ['cow', 'calf', 'ladybug', 'lion', 'tiger'] },
   wool: { owners: ['sheep', 'lamb'], alsoHas: ['cloud', 'snowman', 'scarf', 'mitten', 'hat', 'sock', 'teddy'] },
   feathers: { owners: ['hen', 'duck', 'owl', 'parrot', 'flamingo', 'chick', 'duckling', 'penguin', 'crow', 'bird'], alsoHas: ['nest', 'pillow', 'party_hat'] },
@@ -340,7 +341,7 @@ export const TEXTURE_OF: Record<TextureId, { owners: ItemId[]; alsoHas: ItemId[]
     alsoHas: ['squirrel', 'calf', 'cow', 'mouse', 'rabbit', 'cat', 'kitten', 'lion', 'tiger', 'owl', 'hutch', 'nest', 'hedgehog', 'fox', 'sandwich', 'bread'],
   },
   // only used in the abstract world (no owner); alsoHas keeps those rounds truly "nothing fits"
-  polka: { owners: [], alsoHas: ['ladybug', 'giraffe', 'cow', 'calf', 'strawberry', 'dog', 'puppy', 'ball', 'mushroom', 'gift', 'cake', 'party_hat'] },
+  polka: { owners: [], alsoHas: ['ladybug', 'giraffe', 'cow', 'calf', 'strawberry', 'dog', 'puppy', 'ball', 'gift', 'cake', 'party_hat'] },
   checks: { owners: [], alsoHas: ['scarf', 'gift'] },
   grass: { owners: [], alsoHas: ['cow', 'calf', 'sheep', 'lamb', 'horse', 'rabbit', 'snail', 'frog', 'ladybug', 'giraffe', 'turtle', 'pond', 'leaf', 'tree', 'hay', 'dinosaur', 'hedgehog', 'mushroom'] },
 };
@@ -365,7 +366,7 @@ const PAIR_LIST: [ItemId, ItemId][] = [
   ['sock', 'shoe'], ['sock', 'boot'],
   ['scarf', 'mitten'], ['scarf', 'hat'], ['hat', 'mitten'],
   ['bed', 'pillow'], ['bed', 'teddy'], ['pillow', 'teddy'],
-  ['spoon', 'cup'], ['toothbrush', 'cup'], ['toothbrush', 'soap'], ['milk', 'cup'],
+  ['spoon', 'cup'], ['toothbrush', 'cup'], ['milk', 'cup'],
   ['key', 'house'], ['lamp', 'house'], ['crayon', 'book'], ['lamp', 'book'], ['lamp', 'bed'],
   ['moon', 'star'], ['moon', 'sun'], ['sun', 'star'],
   ['bee', 'flower'], ['bee', 'honey'], ['umbrella', 'raindrop'], ['umbrella', 'boot'], ['umbrella', 'cloud'],
