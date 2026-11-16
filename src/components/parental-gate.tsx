@@ -15,9 +15,9 @@ import { RADIUS, SHADOW, TONE } from '@/constants/ui';
 const HOLD_MS = 3000;
 const WORDS = ['zero', 'jeden', 'dwa', 'trzy', 'cztery', 'pięć', 'sześć', 'siedem', 'osiem', 'dziewięć'];
 
-type Question = { a: number; b: number; options: number[] };
+type Question = { a: number; b: number; answer: number; options: number[] };
 
-function makeQuestion(): Question {
+export function makeQuestion(): Question {
   const a = 3 + Math.floor(Math.random() * 7); // 3..9
   const b = 2 + Math.floor(Math.random() * 8); // 2..9
   const answer = a * b;
@@ -28,7 +28,7 @@ function makeQuestion(): Question {
     if (options.size >= 4) break;
     options.add(n);
   }
-  return { a, b, options: [...options].sort(() => Math.random() - 0.5) };
+  return { a, b, answer, options: [...options].sort(() => Math.random() - 0.5) };
 }
 
 export function ParentalGate({ onPass, onFail }: { onPass: () => void; onFail: () => void }) {
@@ -51,7 +51,8 @@ export function ParentalGate({ onPass, onFail }: { onPass: () => void; onFail: (
   const fillStyle = useAnimatedStyle(() => ({ width: `${hold.value * 100}%` }));
 
   const choose = (n: number) => {
-    if (n === question.a + question.b) {
+    // The question is a MULTIPLICATION; compare with the stored product (was a + b → never passed).
+    if (n === question.answer) {
       onPass();
       return;
     }
