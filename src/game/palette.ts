@@ -29,7 +29,10 @@ export const UI = {
   muted: '#9C94A3',
   success: '#7BC47F',
   gentleNo: '#F2B880',    // "try again" — warm, never red
-  quadrant: ['#FDE7E4', '#E3F1FB', '#E6F5E4', '#FFF2D6'] as const, // TL, TR, BL, BR pastel tiles
+  // TL, TR, BL, BR tiles — deliberately IDENTICAL and neutral: tinted tiles would compete with the
+  // prompt colour in colour rounds (docs/CALM_DESIGN_RESEARCH.md, rule R5).
+  quadrant: ['#FFFDF8', '#FFFDF8', '#FFFDF8', '#FFFDF8'] as const,
+  quadrantBorder: '#EDE4D6',
 };
 
 /** World background tints (pastel). */
