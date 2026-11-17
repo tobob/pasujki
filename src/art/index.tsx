@@ -4,6 +4,7 @@
  * Each renders a square `size`×`size` react-native-svg drawing (viewBox 0 0 100 100).
  */
 import { SilhouetteContext } from './kit';
+import { libraryArt } from './library';
 import { ITEMS, TEXTURES } from './registry';
 import type { ItemId, TextureId } from '@/game/types';
 
@@ -15,6 +16,8 @@ type P = { size: number };
 
 /** `silhouette`: flat soft-charcoal shadow of the item (no face/details) for shadow rounds. */
 export function ItemArt({ id, size, silhouette = false }: P & { id: ItemId; silhouette?: boolean }) {
+  const synced = libraryArt(id, size, silhouette);
+  if (synced) return synced;
   const C = ITEMS[id];
   if (!silhouette) return <C size={size} />;
   return (
