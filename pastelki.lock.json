@@ -3,9 +3,9 @@
   "items": {
     "acorn": {
       "slug": "acorn",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "843f1aed9b1d50de6c90bc7ed4b08e022623cf8df33cd93332a4fcf9ae90bcb9",
+      "synced": true
     },
     "airplane": {
       "slug": "airplane",
@@ -15,27 +15,27 @@
     },
     "apple": {
       "slug": "apple",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "9631f7857c77abbc46c9e2fbe4e924a9454fbc43677af78aba3da22405ca4ba1",
+      "synced": true
     },
     "ball": {
       "slug": "ball",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "ec7cb426b6e858180ca8792bc33e45167301076e901f69fed63065065fce9d01",
+      "synced": true
     },
     "balloon": {
       "slug": "balloon",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "4229e09b700db18361ce3aa5e4251c3300b2aec9185f8cec5331342e130d95b4",
+      "synced": true
     },
     "banana": {
       "slug": "banana",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "985428bad05623873e5198a9e4772c1b466346b936fbb4c1a99ac921e3583e66",
+      "synced": true
     },
     "barn": {
       "slug": "barn",
@@ -45,8 +45,8 @@
     },
     "bear": {
       "slug": "bear",
-      "version": 2,
-      "sha256": "89eb1e4339084935a703b0afc1ad239240d72f9d13d609c760cadbbfd01d7979",
+      "version": 4,
+      "sha256": "a496e1735a92a8cf394c519f55e5a3aca55b92edf92a09dde0c3569b57170bf4",
       "synced": true
     },
     "bed": {
@@ -57,8 +57,8 @@
     },
     "bee": {
       "slug": "bee",
-      "version": 2,
-      "sha256": "7ece29e9785063298849636c84a880e55d75de78810f76de6fa730a0196d134c",
+      "version": 4,
+      "sha256": "25625d04313d504baaec6b031b908492546e18c2e498f06221b16dedb7479810",
       "synced": true
     },
     "beehive": {
@@ -75,8 +75,8 @@
     },
     "bird": {
       "slug": "bird",
-      "version": 2,
-      "sha256": "3fbc9e8d309951a8385476189bd3c66a14e8efb47ad858e575fe8371e2624ff7",
+      "version": 4,
+      "sha256": "6d05c75f7a06dcfa991cc7d13377960b487ed83260ef68cab328f054599ea1fc",
       "synced": true
     },
     "block": {
@@ -87,9 +87,9 @@
     },
     "blueberries": {
       "slug": "blueberries",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "eeba3f6a0f3ec3afc5ace4e28c30dd5f7b68724939e7a341319870b4d7aa86fd",
+      "synced": true
     },
     "boat": {
       "slug": "boat",
@@ -117,9 +117,9 @@
     },
     "bread": {
       "slug": "bread",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "8740be1bc9da0b96807c296384eb4f608fae0269c482ad289551e5bae93ddada",
+      "synced": true
     },
     "bucket": {
       "slug": "bucket",
@@ -135,9 +135,9 @@
     },
     "cake": {
       "slug": "cake",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "28b0b2b2cf32545d51ffd6b18ca89c0c1d848b0a3e494c2e9af300d0fd54d20f",
+      "synced": true
     },
     "calf": {
       "slug": "calf",
@@ -159,8 +159,8 @@
     },
     "cat": {
       "slug": "cat",
-      "version": 2,
-      "sha256": "ba3267f67f3939a00767e439ce7b3e32af74d543997f16d7132768e06875ca82",
+      "version": 4,
+      "sha256": "cfaa23b4af4582e547313a24dd730662e40e3b6a80e4fa7b4ee045ceb87068d4",
       "synced": true
     },
     "cheese": {
@@ -171,14 +171,14 @@
     },
     "cherry": {
       "slug": "cherry",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "79aa0ea43d7dd5adeda3a9e2128805ce3ebc5432a6e3f4f6e44a95001bae055d",
+      "synced": true
     },
     "chick": {
       "slug": "chick",
-      "version": 2,
-      "sha256": "807e89e8f69d1cc6a0d3550334492b635b70b93f847b55c799c36d7c0f9d0e50",
+      "version": 4,
+      "sha256": "cec6c74a61c43dea8197dc54bcdaa6c90f48a818195d3fc90d76d336779b784f",
       "synced": true
     },
     "clock": {
@@ -189,9 +189,9 @@
     },
     "cloud": {
       "slug": "cloud",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "346558e6e15fd0cf59be556b0ec1c4e4fc4582d95ef9e492d2d7a350cfe0799c",
+      "synced": true
     },
     "corn": {
       "slug": "corn",
@@ -201,8 +201,8 @@
     },
     "cow": {
       "slug": "cow",
-      "version": 2,
-      "sha256": "20369f6b78701dfc8ef6554f27b593d0f8b7b76f0102abab19922f2a9f540dd6",
+      "version": 4,
+      "sha256": "c296d9750beb67dd55673f274ad0d144f1dbd876adb670704abde301f4c9f19b",
       "synced": true
     },
     "crayon": {
@@ -225,14 +225,14 @@
     },
     "dinosaur": {
       "slug": "dinosaur",
-      "version": 2,
-      "sha256": "94e815c6f3b1668b8c51e4ccf7cc82c8622f5511f501201c49ea4690eccfa4ed",
+      "version": 4,
+      "sha256": "082929b7ab84198c261f81a006f9166e7c0821dd1180c643e4f0505fe2251b0b",
       "synced": true
     },
     "dog": {
       "slug": "dog",
-      "version": 2,
-      "sha256": "669bff171e0e2a830eed474c06cbfc325ecb3ab68d05dd5a8b45b67ff0d23346",
+      "version": 4,
+      "sha256": "0d2c03fa80b726a1b317a2b2f2756a897713c61636f894f307b5f98732466a71",
       "synced": true
     },
     "doghouse": {
@@ -249,38 +249,38 @@
     },
     "duck": {
       "slug": "duck",
-      "version": 2,
-      "sha256": "8c7d51ff1cd112f8e37de6c5eeb462d49227e4120c67d1030c7824a8e96f05cb",
+      "version": 4,
+      "sha256": "73c745d979ee5211a63df85618214062c3304e060d719737615be1c3ceed74e8",
       "synced": true
     },
     "duckling": {
       "slug": "duckling",
-      "version": 2,
-      "sha256": "9d32e28a4a64abbd98b24fa67bdb7a34c11993340c6bddd9ee4b2fdad9fb526c",
+      "version": 4,
+      "sha256": "6b269c20e66ce9da8339f283da46e478bc2180915b875893cef324bb80d33d48",
       "synced": true
     },
     "egg": {
       "slug": "egg",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "4443062dddc84904e0c874d8a5a3d328fbb1f6d67b83b059f493b003e2d95d15",
+      "synced": true
     },
     "elephant": {
       "slug": "elephant",
-      "version": 2,
-      "sha256": "9907bf8daf117951ef5d7f938319561d579591e77515f850d3c020cb7dced291",
+      "version": 4,
+      "sha256": "ba4e3fdf0ec32db589d16511d906e187e11c626daba029067e6aae860053e725",
       "synced": true
     },
     "fish": {
       "slug": "fish",
-      "version": 2,
-      "sha256": "acfb48f6623f536a8af6fe6c814b0b1b52f37091e4ae5c65ad4a72928bb07c87",
+      "version": 4,
+      "sha256": "b9dc3d5c51d78cd0642ff6e09fb164369f3cebeee7732103ef97e470e116bee6",
       "synced": true
     },
     "flamingo": {
       "slug": "flamingo",
-      "version": 2,
-      "sha256": "c8f5377f5ebacbdfa69a2efa20d1efcdff07fa923cfa955d9835936fc48fcdb2",
+      "version": 4,
+      "sha256": "d684ac1eab8d76a1affe5901018bed08d2ff38e651452c56ce60095e046a163c",
       "synced": true
     },
     "flower": {
@@ -291,14 +291,14 @@
     },
     "fox": {
       "slug": "fox",
-      "version": 2,
-      "sha256": "5ecaaebe6379f3284b0e6235db0ca7aa5f8f5f0afe4f8bc91a5610b99ab76328",
+      "version": 4,
+      "sha256": "75d5f24fca51fa4f82d6412b5d5fb24599c539f3356aeec2b9513f29e8c98ab2",
       "synced": true
     },
     "frog": {
       "slug": "frog",
-      "version": 2,
-      "sha256": "3f8615bd7b9d4b3839b6afa53a1f97ebb0ef32db0df4ff1f2eb5d1c757844a52",
+      "version": 4,
+      "sha256": "9e23a079172ebf3f7ec8f3f7207cc4432d15ac44df0dc6c4ae87730083e264eb",
       "synced": true
     },
     "gift": {
@@ -309,15 +309,15 @@
     },
     "giraffe": {
       "slug": "giraffe",
-      "version": 2,
-      "sha256": "4624b6df8730dbb6fc77b24dd2eaca836e8fd4f8acd7e0e5ad589ca0a3529161",
+      "version": 4,
+      "sha256": "3740523158fde8c9790a7076899a53beb7a1497807c2c2defc1d45b6c821bc12",
       "synced": true
     },
     "grapes": {
       "slug": "grapes",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "3aca1776e6929274e06174e3ce4d4602a0d628133066b4da7e1fee9b851da642",
+      "synced": true
     },
     "hat": {
       "slug": "hat",
@@ -327,38 +327,38 @@
     },
     "hay": {
       "slug": "hay",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "287c5ad25e7b3796fff62b2433b3417ad4e9b51b5acc1d0706ffd11690d818a6",
+      "synced": true
     },
     "heart_toy": {
       "slug": "heart-toy",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "937cb75f6697c30b8e03a1bcf22b000e0861ab9d53bbb61a2b8acbe59af0893e",
+      "synced": true
     },
     "hedgehog": {
       "slug": "hedgehog",
-      "version": 2,
-      "sha256": "707fb6a1297e5c411726de20afdb6c4d8b22102e5ca6a019f5dbed9e86d6427b",
+      "version": 4,
+      "sha256": "cdd5d91eca733a611875409a42ced1ba8b4a409a7c2efdad15bcd675d2a7bcfe",
       "synced": true
     },
     "hen": {
       "slug": "hen",
-      "version": 2,
-      "sha256": "20f9366d1c2fa7263aa726e487eeda224ea6d87eb31c826a6b81e5b225e65520",
+      "version": 4,
+      "sha256": "fbaba376316c822586f0c513565465df0b72effd8ca1453ab815cfb3cf39557a",
       "synced": true
     },
     "honey": {
       "slug": "honey",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "b32a69f9832cca293641540708ffe00d12b2fbc9dfe3c81d620fe9de59ed3c85",
+      "synced": true
     },
     "horse": {
       "slug": "horse",
-      "version": 2,
-      "sha256": "b3ee3a812304cb8b3a56c18ffd2f32795d7593f05eab5b00f5596c2082dbc8a2",
+      "version": 4,
+      "sha256": "5ebae7eabb527745bebe566d09edb197815c1cbfae0dc5b518e46a0246029db0",
       "synced": true
     },
     "house": {
@@ -381,15 +381,15 @@
     },
     "kennel_bowl": {
       "slug": "kennel-bowl",
-      "version": 3,
-      "sha256": "4b0dd567332186457245cfc81b9a2cc3713ae3d9642863856ef2d5baca80aebd",
+      "version": 5,
+      "sha256": "e1d99ecc8d8897b934dba2680ef097dac08d0a0f4f8224177ae8bce04caa91d1",
       "synced": true
     },
     "key": {
       "slug": "key",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "d6b55330fffd73adee312762a3b06f5caf2b98e4e5e2670bb0a636490106058f",
+      "synced": true
     },
     "kite": {
       "slug": "kite",
@@ -399,14 +399,14 @@
     },
     "kitten": {
       "slug": "kitten",
-      "version": 2,
-      "sha256": "7d93b520ad8ce5649fec1aad524d18d324966c8143c6d782ca379150c36da9e1",
+      "version": 4,
+      "sha256": "8947e403d790cf889abc4da8b395e4ab0ceead7513a6869bea9fcc62d3e00b67",
       "synced": true
     },
     "ladybug": {
       "slug": "ladybug",
-      "version": 3,
-      "sha256": "e0c34a6e08934b4a3c478a8b048066809e6638a3ff1c5fc1f9a3c93cc74bcab4",
+      "version": 5,
+      "sha256": "06a8add2f3e86f159627514fecd6e26ec6ddf6b5941d7e0b6756d893fbdf678d",
       "synced": true
     },
     "lamb": {
@@ -429,14 +429,14 @@
     },
     "lemon": {
       "slug": "lemon",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "9ac539e07db49aab2c84dd5c34bb940e423c8fbc94344fb47d5532bd17f5874f",
+      "synced": true
     },
     "lion": {
       "slug": "lion",
-      "version": 2,
-      "sha256": "89d4398cea298e223de9d88ea91d99ea6ce838491e16bd6ac56c763b6abc50ef",
+      "version": 4,
+      "sha256": "a6d51881915c72ed7f92e1a49a78bcdf6d3b21679d71759be98302b8602fc961",
       "synced": true
     },
     "milk": {
@@ -453,27 +453,27 @@
     },
     "monkey": {
       "slug": "monkey",
-      "version": 2,
-      "sha256": "b81bcc1f9c964cd10735b787749e8ce1bd51d9cfa8eb128941d9c47758f2c57e",
+      "version": 4,
+      "sha256": "bc36b20fb803e728f4ade73768067b464c7f1816382673c59cc99507d1b8b726",
       "synced": true
     },
     "moon": {
       "slug": "moon",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "5fca63f93330610fa55ecc42c24c4d0d9725f1e37de9346fdd9ac6d6d6c248d2",
+      "synced": true
     },
     "mouse": {
       "slug": "mouse",
-      "version": 2,
-      "sha256": "33c7259996a451b18ccfd0625d87175809bb0e04f65eb33128b671bd02cce1bc",
+      "version": 4,
+      "sha256": "4d13fc6e485359e44d39e81f2896b2f861db9f55efb391e79ece4ed7527ce563",
       "synced": true
     },
     "mushroom": {
       "slug": "mushroom",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "0f8b0c5744e1a05860032a2e78e7dfc9cabb17ae17d7ad033021c452798583b6",
+      "synced": true
     },
     "nest": {
       "slug": "nest",
@@ -483,26 +483,26 @@
     },
     "octopus": {
       "slug": "octopus",
-      "version": 3,
-      "sha256": "e1f725b4cdf503882f3abde02b29d6111b25533d73924e22cfca6412b6cd0380",
+      "version": 5,
+      "sha256": "6b4b65ed153a9f2929d28d6b3bbba8a35c3362c64140dd89d51eee0995cc383b",
       "synced": true
     },
     "orange": {
       "slug": "orange",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "4a9c52d33fc1b7b3e7e7502591511027463fc7f2fe13e776b0aa43e6f50dcc1e",
+      "synced": true
     },
     "owl": {
       "slug": "owl",
-      "version": 2,
-      "sha256": "773e8000343185283127461aec1ea17362110eec5081eee083330ecc1cb00b53",
+      "version": 4,
+      "sha256": "6ea23b25741f2839d0cd2e73016869d65266770a2d52adafcfadebd732468c97",
       "synced": true
     },
     "parrot": {
       "slug": "parrot",
-      "version": 2,
-      "sha256": "e86828ccc0327d8ccdf9fdb1d4a60f373d95cf4eda5a1a83113c66eaeef2cb85",
+      "version": 4,
+      "sha256": "fd5d7998a417fd27e5ba094474e072d388d3135ceb541acaa39cbb13fc47cc5b",
       "synced": true
     },
     "party_hat": {
@@ -513,9 +513,9 @@
     },
     "pear": {
       "slug": "pear",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "40291e5ea6cbc95a3512fe331bf1a53bda86b8bec2d601197a08cb0ddbd0866f",
+      "synced": true
     },
     "peas": {
       "slug": "peas",
@@ -531,21 +531,21 @@
     },
     "pig": {
       "slug": "pig",
-      "version": 2,
-      "sha256": "0deb83063fa6ebf66bd9105806bb14f15d4e3b783cd2ae4200c8f29603a4ba4c",
+      "version": 4,
+      "sha256": "6829a6a2ea65b7d4213e4b21b71a5a46238d8a444498bb739235a0330b643837",
       "synced": true
     },
     "pillow": {
       "slug": "pillow",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "a354068727e88f4138223fa25814a58532c502d910d59675c9a5f92abcfcc1a6",
+      "synced": true
     },
     "plum": {
       "slug": "plum",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "6089b9f042ba1098707be0f88629ce11c782987721e0efd3cedbe47e4b03d429",
+      "synced": true
     },
     "pond": {
       "slug": "pond",
@@ -555,20 +555,20 @@
     },
     "pumpkin": {
       "slug": "pumpkin",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "abe37ca54508be59455005d50aaefb3f35bb6a2219ac5179661dfb7afc264cb4",
+      "synced": true
     },
     "puppy": {
       "slug": "puppy",
-      "version": 2,
-      "sha256": "b37eac9066bdc4ab00465881ee5f67419e7a7cf423d6ba5568e9949935588457",
+      "version": 4,
+      "sha256": "c1e502081b367191048ec8e834d63750b687fad2fa0df0d26f50413a2e05fefb",
       "synced": true
     },
     "rabbit": {
       "slug": "rabbit",
-      "version": 2,
-      "sha256": "70f68563e3892505b2446b4f279b9d114c2b8fb7acddfaf0ae35c1198420532c",
+      "version": 4,
+      "sha256": "6001728b047043cd6cbe15cf9fc95e42d87b2a09a302c40bf7789203aba082c3",
       "synced": true
     },
     "rainbow": {
@@ -579,9 +579,9 @@
     },
     "raindrop": {
       "slug": "raindrop",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "4205dc2e19e04125e3c0cdf0df9ed20f0fda4f04ba4cd7ded0ea935a3ea9e2af",
+      "synced": true
     },
     "scarf": {
       "slug": "scarf",
@@ -591,9 +591,9 @@
     },
     "sea": {
       "slug": "sea",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "041883dbcfe846e1b9a04de358fd619bae624cea07ae76394ee5fd8775171ad7",
+      "synced": true
     },
     "sheep": {
       "slug": "sheep",
@@ -609,14 +609,14 @@
     },
     "shovel": {
       "slug": "shovel",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "023bba628740a0b4c2f0f7cfd89d02da56b750bb72096f38423d4ad07a6f7f27",
+      "synced": true
     },
     "snail": {
       "slug": "snail",
-      "version": 2,
-      "sha256": "553ada4477ff312bca48403de3ff42d93707e52246bf77be8a744700cbf6b60c",
+      "version": 4,
+      "sha256": "e2a977de0724b8c96f34be614042091808e28b2d81f3226e67a29d6990c11b4d",
       "synced": true
     },
     "snowflake": {
@@ -627,15 +627,15 @@
     },
     "snowman": {
       "slug": "snowman",
-      "version": 2,
-      "sha256": "6bbf4fc92a074fe6fe47c9973bc64000aba98bd8ada1cce08ad78850b763921c",
+      "version": 4,
+      "sha256": "b2985d1d6d4f14c1b8cda92b3ec670b5064f4a44014d7da776e6435d448c75a5",
       "synced": true
     },
     "soap": {
       "slug": "soap",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "d4d67c1e4ffa6e8352b47f589a1ecfc4dd67f3cff8d9d3cabba00fee6206a17b",
+      "synced": true
     },
     "sock": {
       "slug": "sock",
@@ -651,8 +651,8 @@
     },
     "squirrel": {
       "slug": "squirrel",
-      "version": 2,
-      "sha256": "d39e1a6de5efb7e145888f3b27e36ae527ead274b755e4ce7f71cbb2554aba07",
+      "version": 4,
+      "sha256": "907aeec49103413dc0fddd2ad702c827a128ff2da7f0dbcc28b5d3a55a916214",
       "synced": true
     },
     "star": {
@@ -663,15 +663,15 @@
     },
     "strawberry": {
       "slug": "strawberry",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "9bf89679042904780702e6673f5944fe978aedcbfe603f6bdc9f01ab64d08608",
+      "synced": true
     },
     "sun": {
       "slug": "sun",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "c0ffe40b5a760b687a4d61a768b6513369adf58e36a9a8fb725b7eae4bdad03e",
+      "synced": true
     },
     "sunglasses": {
       "slug": "sunglasses",
@@ -681,21 +681,21 @@
     },
     "teddy": {
       "slug": "teddy",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "d7c75068b3d6513208fcfc5c1c985f41d9affb73bfc9d4ae09f503fa2bdf09e2",
+      "synced": true
     },
     "tiger": {
       "slug": "tiger",
-      "version": 2,
-      "sha256": "bc3d6a38d0d08c7bb5aeaba2f906f3f00a033bb7295869e715f810c5fa95ffff",
+      "version": 4,
+      "sha256": "f7deab0a1a6241e668be7b16d556ba5b1e7198cca4a0bd2c4fffd34ffbba38bc",
       "synced": true
     },
     "tomato": {
       "slug": "tomato",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "9a3a497fd2f9c73e347aefe75059f234f4223dfb600669b61b57c35bd337af71",
+      "synced": true
     },
     "toothbrush": {
       "slug": "toothbrush",
@@ -711,21 +711,21 @@
     },
     "tree": {
       "slug": "tree",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "53d684857311831aabf2edeb70c5a9b778a2bcf807e841aeec28326345b5ef2e",
+      "synced": true
     },
     "turtle": {
       "slug": "turtle",
-      "version": 2,
-      "sha256": "4a6eff91c490694c6f11f3cfff09a6bbc813de1675a7ea20692c1075c559b55c",
+      "version": 4,
+      "sha256": "dbb0f73761ae11ebce0fe878f8378d1476f3e220d4462170e79235b69748dba0",
       "synced": true
     },
     "umbrella": {
       "slug": "umbrella",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "12b12722b5006ec90c6d15ca0d3288263054d39cfa9ecd9667f44a7ddc1a954e",
+      "synced": true
     },
     "watermelon": {
       "slug": "watermelon",
@@ -735,14 +735,14 @@
     },
     "whale": {
       "slug": "whale",
-      "version": 2,
-      "sha256": "33fa4ec3b8ede2545cf56e786dab43e30c2a544207ec0c5bca087c689ca8c5d3",
+      "version": 4,
+      "sha256": "4e47d34aafbbd62e4e124cff0678205dc265cf7ec8678dfb2a70c99514e6e8b5",
       "synced": true
     },
     "worm": {
       "slug": "worm",
-      "version": 2,
-      "sha256": "480c32083f88327eee9712a35f7d70b6ceb1b44f54a7d9546c5aeff1264460ac",
+      "version": 4,
+      "sha256": "cea80b121156826f490ce62814faadb7e6f284eba0617e5b4381b1e395890478",
       "synced": true
     },
     "zebra": {
