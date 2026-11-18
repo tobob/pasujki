@@ -84,7 +84,8 @@
             "store/screenshots/pl/ipad13_1home.png"
           ]
         },
-        "marketingUrl": "https://github.com/tobob/pasujki"
+        "marketingUrl": "https://github.com/tobob/pasujki",
+        "releaseNotes": "Odświeżone obrazki i drobne ulepszenia."
       },
       "en-US": {
         "title": "Pasujki – Toddler Matching",
@@ -126,7 +127,8 @@
             "store/screenshots/en/ipad13_1home.png"
           ]
         },
-        "marketingUrl": "https://github.com/tobob/pasujki"
+        "marketingUrl": "https://github.com/tobob/pasujki",
+        "releaseNotes": "Refreshed pictures and small improvements."
       },
       "en-GB": {
         "title": "Pasujki – Toddler Matching",
@@ -168,7 +170,8 @@
             "store/screenshots/en/ipad13_1home.png"
           ]
         },
-        "marketingUrl": "https://github.com/tobob/pasujki"
+        "marketingUrl": "https://github.com/tobob/pasujki",
+        "releaseNotes": "Refreshed pictures and small improvements."
       },
       "de-DE": {
         "title": "Pasujki – Kleinkinder-Spiel",
@@ -210,7 +213,8 @@
             "store/screenshots/en/ipad13_1home.png"
           ]
         },
-        "marketingUrl": "https://github.com/tobob/pasujki"
+        "marketingUrl": "https://github.com/tobob/pasujki",
+        "releaseNotes": "Aufgefrischte Bilder und kleine Verbesserungen."
       },
       "fr-FR": {
         "title": "Pasujki – Jeu pour tout-petits",
@@ -252,7 +256,8 @@
             "store/screenshots/en/ipad13_1home.png"
           ]
         },
-        "marketingUrl": "https://github.com/tobob/pasujki"
+        "marketingUrl": "https://github.com/tobob/pasujki",
+        "releaseNotes": "Des images rafraîchies et de petites améliorations."
       },
       "fr-CA": {
         "title": "Pasujki – Jeu pour tout-petits",
@@ -293,7 +298,8 @@
             "store/screenshots/en/ipad13_1home.png"
           ]
         },
-        "marketingUrl": "https://github.com/tobob/pasujki"
+        "marketingUrl": "https://github.com/tobob/pasujki",
+        "releaseNotes": "Des images rafraîchies et de petites améliorations."
       },
       "it": {
         "title": "Pasujki – Gioco per bambini",
@@ -334,7 +340,8 @@
             "store/screenshots/en/ipad13_1home.png"
           ]
         },
-        "marketingUrl": "https://github.com/tobob/pasujki"
+        "marketingUrl": "https://github.com/tobob/pasujki",
+        "releaseNotes": "Immagini rinnovate e piccoli miglioramenti."
       },
       "es-ES": {
         "title": "Pasujki – Juego para peques",
@@ -374,7 +381,8 @@
             "store/screenshots/en/ipad13_1home.png"
           ]
         },
-        "marketingUrl": "https://github.com/tobob/pasujki"
+        "marketingUrl": "https://github.com/tobob/pasujki",
+        "releaseNotes": "Imágenes renovadas y pequeñas mejoras."
       },
       "es-MX": {
         "title": "Pasujki – Juego para niños",
@@ -413,7 +421,8 @@
             "store/screenshots/en/ipad13_1home.png"
           ]
         },
-        "marketingUrl": "https://github.com/tobob/pasujki"
+        "marketingUrl": "https://github.com/tobob/pasujki",
+        "releaseNotes": "Imágenes renovadas y pequeñas mejoras."
       },
       "pt-BR": {
         "title": "Pasujki – Jogo para crianças",
@@ -452,7 +461,8 @@
             "store/screenshots/en/ipad13_1home.png"
           ]
         },
-        "marketingUrl": "https://github.com/tobob/pasujki"
+        "marketingUrl": "https://github.com/tobob/pasujki",
+        "releaseNotes": "Imagens renovadas e pequenas melhorias."
       },
       "pt-PT": {
         "title": "Pasujki – Jogo para crianças",
@@ -492,7 +502,8 @@
             "store/screenshots/en/ipad13_1home.png"
           ]
         },
-        "marketingUrl": "https://github.com/tobob/pasujki"
+        "marketingUrl": "https://github.com/tobob/pasujki",
+        "releaseNotes": "Imagens renovadas e pequenas melhorias."
       },
       "nl-NL": {
         "title": "Pasujki – Spel voor peuters",
@@ -533,7 +544,8 @@
             "store/screenshots/en/ipad13_1home.png"
           ]
         },
-        "marketingUrl": "https://github.com/tobob/pasujki"
+        "marketingUrl": "https://github.com/tobob/pasujki",
+        "releaseNotes": "Opgefriste plaatjes en kleine verbeteringen."
       }
     }
   }

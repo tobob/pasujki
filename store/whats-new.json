@@ -1,0 +1,20 @@
+{
+  "_doc": "Store \"What's New\" per store locale (keys = apple.info locales in store.config.json). Edit 'unreleased'; studio build/release moves it to versions[x.y.z] and into store.config.json releaseNotes. Short, friendly, for parents; max 500 characters (Google Play), 4000 (Apple).",
+  "unreleased": {},
+  "versions": {
+    "1.0.2": {
+      "pl": "Odświeżone obrazki i drobne ulepszenia.",
+      "en-US": "Refreshed pictures and small improvements.",
+      "en-GB": "Refreshed pictures and small improvements.",
+      "de-DE": "Aufgefrischte Bilder und kleine Verbesserungen.",
+      "fr-FR": "Des images rafraîchies et de petites améliorations.",
+      "fr-CA": "Des images rafraîchies et de petites améliorations.",
+      "it": "Immagini rinnovate e piccoli miglioramenti.",
+      "es-ES": "Imágenes renovadas y pequeñas mejoras.",
+      "es-MX": "Imágenes renovadas y pequeñas mejoras.",
+      "pt-BR": "Imagens renovadas e pequenas melhorias.",
+      "pt-PT": "Imagens renovadas e pequenas melhorias.",
+      "nl-NL": "Opgefriste plaatjes en kleine verbeteringen."
+    }
+  }
+}
