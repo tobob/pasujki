@@ -1,11 +1,11 @@
 # Pulls newer approved illustrations from Pastelki (https://pastelki.marchew.work) into the app.
-# Runs daily, on demand and on a `pastelki-updated` event (`studio sync-art --dispatch`); commits to master only when something changed and every check passes.
+# Runs hourly, on demand and on a `pastelki-updated` event (`studio sync-art --dispatch`); commits to master only when something changed and every check passes.
 # The pictures reach players with the next store build (see README, "Illustrations from Pastelki").
 name: Sync illustrations from Pastelki
 
 on:
   schedule:
-    - cron: '17 5 * * *'
+    - cron: '17 * * * *'
   workflow_dispatch:
   repository_dispatch:
     types: [pastelki-updated]
