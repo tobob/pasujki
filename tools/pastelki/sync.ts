@@ -1,5 +1,5 @@
 /**
- * Sync illustrations from Pastelki (https://pastelki.marchew.work), the shared picture library, into the app.
+ * Sync illustrations from Pastelki (https://pastelki.club), the shared picture library, into the app.
  *
  *   npm run sync-art            # pull every item whose published Pastelki version is newer than the lock
  *   npm run sync-art -- --init  # first run: record the current Pastelki versions as the baseline, download nothing
@@ -24,7 +24,7 @@ import { COLORS, UI } from '../../src/game/palette';
 const ROOT = join(__dirname, '../..');
 const LOCK = join(ROOT, 'pastelki.lock.json');
 const OUT = join(ROOT, 'src/art/library/svgs.ts');
-const SOURCE = process.env.PASTELKI_URL ?? 'https://pastelki.marchew.work';
+const SOURCE = process.env.PASTELKI_URL ?? 'https://pastelki.club';
 const SIL_FILL = UI.outline;
 const SIL_OPACITY = 0.85; // same as kit.tsx SILHOUETTE_OPACITY
 
