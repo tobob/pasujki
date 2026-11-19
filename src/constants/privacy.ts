@@ -1,5 +1,5 @@
 /**
- * Full privacy policy, shown in-app behind the parental gate (no network, no link out).
+ * Full privacy policy, shown in-app behind the parental gate (no network; the policy itself has no links).
  * Source: docs/STORE_COMPLIANCE.md §2.4. The same text is published at PRIVACY_URL (store listing).
  * The texts live with the other translations in src/i18n/locales/<lang>.ts (field `privacy`).
  */

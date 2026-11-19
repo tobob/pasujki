@@ -2,7 +2,7 @@ import { CONTACT, DEVELOPER } from '../../constants/contact';
 import type { ColorId, ItemId, ShapeId } from '../../game/types';
 import type { HintPack, Locale } from '../types';
 
-const UPDATED = '16 november 2026';
+const UPDATED = '19 november 2026';
 
 // ── hint words ─────────────────────────────────────────────────────────────────────────────────
 /** [noun, article: 'de' | 'het', plural?] */
@@ -153,8 +153,19 @@ const nl: Locale = {
       'Het spel volgt de stilteschakelaar van de iPhone: staat de telefoon op stil, dan zijn muziek en geluiden uit. De muziek is zacht en stopt als je de app verlaat.',
     safetyTitle: 'Veiligheid',
     safety:
-      'Geen reclame, geen aankopen, geen accounts, geen internet en geen gegevensverzameling. Het spel werkt volledig offline. De instellingen en deze pagina zitten achter het ouderslot.',
+      'Geen reclame, geen accounts, geen internetverbindingen en geen gegevensverzameling: het spel werkt volledig offline. De instellingen, deze pagina en de twee links onderaan (beoordelen in de winkel en een feedbackpagina op pastelki.club, die buiten de app openen) zitten achter het ouderslot.',
     version: 'Versie',
+    rateApp: (store: string) => `Beoordeel Pasujki in ${store === 'App Store' ? 'de App Store' : store}`,
+    rateShort: (store: string) => `Beoordelen in ${store === 'App Store' ? 'de App Store' : store}`,
+    feedbackButton: 'Stuur ons je mening',
+    linksNote: 'Beide openen buiten de app: de winkel of een korte feedbackpagina op pastelki.club in je browser.',
+    likeTitle: 'Vind je Pasujki leuk?',
+    likeYes: 'Ja',
+    likeNo: 'Niet echt',
+    notNow: 'Niet nu',
+    noTitle: 'Bedankt voor je eerlijkheid',
+    noBody: 'In je browser opent een korte pagina op pastelki.club waar je kunt vertellen wat beter kan.',
+    tellUs: 'Vertel wat beter kan',
   },
   numbers: ['nul', 'een', 'twee', 'drie', 'vier', 'vijf', 'zes', 'zeven', 'acht', 'negen'],
   worlds: {
@@ -256,6 +267,10 @@ const nl: Locale = {
       {
         heading: 'Toestemmingen',
         body: 'Pasujki vraagt geen toegang tot je camera, microfoon, foto’s, contacten of locatie en stuurt geen meldingen.',
+      },
+      {
+        heading: 'Links voor volwassenen',
+        body: 'Het oudergedeelte, achter het ouderslot, heeft twee links die buiten de app openen: een om Pasujki te beoordelen in de App Store of Google Play, en een naar een feedbackpagina op pastelki.club (onze website), die in je browser opent. De link geeft die pagina de appversie, het buildnummer, het platform, de taal en, als je die vraag hebt beantwoord, of je Pasujki leuk vindt, zodat we weten om welke versie het gaat. De app zelf verstuurt niets; wat je op die pagina schrijft, valt onder het privacybeleid van pastelki.club, en beoordelingen onder dat van Apple of Google. Eén keer, bij een later bezoek aan het oudergedeelte, kan de app vragen ‘Vind je Pasujki leuk?’; het antwoord blijft op het apparaat, tenzij je daarna de feedbackpagina opent. Om dat maar één keer te vragen, telt de app op het apparaat hoe vaak het oudergedeelte is geopend.',
       },
       {
         heading: 'Kinderen',

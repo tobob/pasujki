@@ -15,7 +15,7 @@ export type Support = {
 export const SUPPORT: Record<Lang, Support> = {
   en: {
     title: 'Support',
-    intro: 'Pasujki is a calm matching game for children aged 2–5. It works completely offline, with no ads, no purchases, no accounts and no data collection.',
+    intro: 'Pasujki is a calm matching game for children aged 2–5. It works completely offline, with no ads, no accounts and no data collection.',
     askTitle: 'Questions or problems?',
     ask: 'Open an issue at {link} (GitHub account needed). We answer within a few days.',
     faqTitle: 'Frequently asked',
@@ -29,7 +29,7 @@ export const SUPPORT: Record<Lang, Support> = {
   },
   pl: {
     title: 'Pomoc',
-    intro: 'Pasujki to spokojna gra w dopasowywanie dla dzieci w wieku 2–5 lat. Działa całkowicie offline, bez reklam, zakupów, kont i zbierania danych.',
+    intro: 'Pasujki to spokojna gra w dopasowywanie dla dzieci w wieku 2–5 lat. Działa całkowicie offline, bez reklam, kont i zbierania danych.',
     askTitle: 'Pytania lub problemy?',
     ask: 'Zgłoś je na {link} (wymaga konta GitHub). Odpowiadamy w ciągu kilku dni.',
     faqTitle: 'Częste pytania',
@@ -43,7 +43,7 @@ export const SUPPORT: Record<Lang, Support> = {
   },
   de: {
     title: 'Hilfe',
-    intro: 'Pasujki ist ein ruhiges Zuordnungsspiel für Kinder von 2 bis 5 Jahren. Es funktioniert komplett offline – ohne Werbung, Käufe, Konten und Datenerfassung.',
+    intro: 'Pasujki ist ein ruhiges Zuordnungsspiel für Kinder von 2 bis 5 Jahren. Es funktioniert komplett offline – ohne Werbung, Konten und Datenerfassung.',
     askTitle: 'Fragen oder Probleme?',
     ask: 'Eröffne ein Issue unter {link} (GitHub-Konto nötig). Wir antworten innerhalb weniger Tage.',
     faqTitle: 'Häufige Fragen',
@@ -57,7 +57,7 @@ export const SUPPORT: Record<Lang, Support> = {
   },
   fr: {
     title: 'Aide',
-    intro: "Pasujki est un jeu d'association tout en douceur pour les enfants de 2 à 5 ans. Il fonctionne entièrement hors ligne, sans publicité, sans achats, sans compte et sans collecte de données.",
+    intro: "Pasujki est un jeu d'association tout en douceur pour les enfants de 2 à 5 ans. Il fonctionne entièrement hors ligne, sans publicité, sans compte et sans collecte de données.",
     askTitle: 'Des questions ou un problème ?',
     ask: 'Ouvrez un ticket sur {link} (compte GitHub nécessaire). Nous répondons sous quelques jours.',
     faqTitle: 'Questions fréquentes',
@@ -71,7 +71,7 @@ export const SUPPORT: Record<Lang, Support> = {
   },
   it: {
     title: 'Assistenza',
-    intro: 'Pasujki è un tranquillo gioco di abbinamenti per bambini dai 2 ai 5 anni. Funziona completamente offline, senza pubblicità, acquisti, account né raccolta di dati.',
+    intro: 'Pasujki è un tranquillo gioco di abbinamenti per bambini dai 2 ai 5 anni. Funziona completamente offline, senza pubblicità, account né raccolta di dati.',
     askTitle: 'Domande o problemi?',
     ask: 'Apri una segnalazione su {link} (serve un account GitHub). Rispondiamo entro pochi giorni.',
     faqTitle: 'Domande frequenti',
@@ -85,7 +85,7 @@ export const SUPPORT: Record<Lang, Support> = {
   },
   es: {
     title: 'Ayuda',
-    intro: 'Pasujki es un juego tranquilo de emparejar para niños de 2 a 5 años. Funciona totalmente sin conexión, sin anuncios, compras, cuentas ni recogida de datos.',
+    intro: 'Pasujki es un juego tranquilo de emparejar para niños de 2 a 5 años. Funciona totalmente sin conexión, sin anuncios, cuentas ni recogida de datos.',
     askTitle: '¿Preguntas o problemas?',
     ask: 'Abre una incidencia en {link} (se necesita una cuenta de GitHub). Respondemos en pocos días.',
     faqTitle: 'Preguntas frecuentes',
@@ -99,7 +99,7 @@ export const SUPPORT: Record<Lang, Support> = {
   },
   pt: {
     title: 'Ajuda',
-    intro: 'Pasujki é um jogo calmo de combinar para crianças de 2 a 5 anos. Funciona totalmente offline, sem anúncios, compras, contas ou coleta de dados.',
+    intro: 'Pasujki é um jogo calmo de combinar para crianças de 2 a 5 anos. Funciona totalmente offline, sem anúncios, contas ou coleta de dados.',
     askTitle: 'Dúvidas ou problemas?',
     ask: 'Abra uma issue em {link} (é preciso ter uma conta no GitHub). Respondemos em poucos dias.',
     faqTitle: 'Perguntas frequentes',
@@ -113,7 +113,7 @@ export const SUPPORT: Record<Lang, Support> = {
   },
   nl: {
     title: 'Hulp',
-    intro: 'Pasujki is een rustig koppelspel voor kinderen van 2 tot 5 jaar. Het werkt volledig offline, zonder reclame, aankopen, accounts of gegevensverzameling.',
+    intro: 'Pasujki is een rustig koppelspel voor kinderen van 2 tot 5 jaar. Het werkt volledig offline, zonder reclame, accounts of gegevensverzameling.',
     askTitle: 'Vragen of problemen?',
     ask: 'Maak een issue aan op {link} (GitHub-account nodig). We antwoorden binnen een paar dagen.',
     faqTitle: 'Veelgestelde vragen',

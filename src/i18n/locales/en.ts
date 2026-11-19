@@ -3,7 +3,7 @@ import { ITEM_ATTRS } from '../../game/item-attributes';
 import type { ColorId, ItemId, ShapeId } from '../../game/types';
 import type { HintPack, Locale } from '../types';
 
-const UPDATED = '16 November 2026';
+const UPDATED = '19 November 2026';
 
 const COLOR: Record<ColorId, string> = {
   red: 'red', yellow: 'yellow', blue: 'blue', green: 'green', orange: 'orange', purple: 'purple',
@@ -112,8 +112,19 @@ const en: Locale = {
       "The game respects the iPhone's silent switch: when the phone is muted, music and sounds are off. Music is quiet and stops when you leave the app.",
     safetyTitle: 'Safety',
     safety:
-      'No ads, no purchases, no accounts, no internet and no data collection. The game works completely offline. Settings and this page are behind the parental gate.',
+      'No ads, no accounts, no internet connections and no data collection — the game works completely offline. Settings, this page and the two links at the bottom (rating in the store and a feedback page on pastelki.club, both opening outside the app) are behind the parental gate.',
     version: 'Version',
+    rateApp: (store: string) => `Rate Pasujki on ${store === 'App Store' ? 'the App Store' : store}`,
+    rateShort: (store: string) => `Rate on ${store === 'App Store' ? 'the App Store' : store}`,
+    feedbackButton: 'Send us feedback',
+    linksNote: 'Both open outside the app: the store, or a short feedback page on pastelki.club in your browser.',
+    likeTitle: 'Do you like Pasujki?',
+    likeYes: 'Yes',
+    likeNo: 'Not really',
+    notNow: 'Not now',
+    noTitle: 'Thank you for telling us',
+    noBody: 'A short page on pastelki.club opens in your browser, where you can tell us what could be better.',
+    tellUs: 'Tell us what could be better',
   },
   numbers: ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'],
   hints: HINTS,
@@ -130,11 +141,15 @@ const en: Locale = {
       },
       {
         heading: 'What stays on the device',
-        body: 'To remember game progress (completed levels and stickers) and settings (music and sound on/off), the app saves a small amount of data only on your device. We can\'t access it. It is deleted when you delete the app. If you use your device\'s own backup (for example iCloud or Google backup), that copy is managed by Apple or Google under your account and their privacy policies.',
+        body: "To remember game progress (completed levels and stickers) and settings (music and sound on/off), the app saves a small amount of data only on your device. We can't access it. It is deleted when you delete the app. If you use your device's own backup (for example iCloud or Google backup), that copy is managed by Apple or Google under your account and their privacy policies.",
       },
       {
         heading: 'Permissions',
         body: "Pasujki doesn't ask for access to your camera, microphone, photos, contacts or location, and doesn't send notifications.",
+      },
+      {
+        heading: 'Links for grown-ups',
+        body: "The grown-ups' area, behind the parental gate, has two links that open outside the app: one to rate Pasujki in the App Store or Google Play, and one to a feedback page on pastelki.club (our website), which opens in your web browser. The link tells that page the app version, build number, platform, language and, if you answered it, whether you like Pasujki, so we know which version you mean. The app itself sends nothing; whatever you choose to write on that page is covered by the pastelki.club privacy policy, and ratings by Apple's or Google's policies. Once, on a later visit to the grown-ups' area, the app may ask “Do you like Pasujki?”; your answer stays on the device unless you then open the feedback page. To ask only once, the app counts on the device how often the grown-ups' area has been opened.",
       },
       {
         heading: 'Children',

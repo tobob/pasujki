@@ -37,6 +37,18 @@ export type UiStrings = {
   safetyTitle: string;
   safety: string;
   version: string;
+  /** Grown-ups' area bottom buttons and the one-time "Do you like Pasujki?" card. `store` = 'App Store' | 'Google Play'. */
+  rateApp: (store: string) => string;
+  rateShort: (store: string) => string;
+  feedbackButton: string;
+  linksNote: string;
+  likeTitle: string;
+  likeYes: string;
+  likeNo: string;
+  notNow: string;
+  noTitle: string;
+  noBody: string;
+  tellUs: string;
 };
 
 export type Section = { heading?: string; body: string };

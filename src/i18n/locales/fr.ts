@@ -3,7 +3,7 @@ import type { ColorId, ItemId, ShapeId } from '../../game/types';
 import type { HintPack, Locale } from '../types';
 
 // French typography: a no-break space before ? ! : ; and inside « » (keeps "?" from wrapping alone).
-const UPDATED = '16 novembre 2026';
+const UPDATED = '19 novembre 2026';
 
 // ── hint words ─────────────────────────────────────────────────────────────────────────────────
 /** Name with its definite article (templates never need gender agreement). */
@@ -143,8 +143,19 @@ const fr: Locale = {
       "Le jeu respecte le bouton silencieux de l'iPhone\u00a0: en mode silencieux, la musique et les sons sont coupés. La musique est douce et s'arrête quand vous quittez l'app.",
     safetyTitle: 'Sécurité',
     safety:
-      "Pas de publicité, pas d'achats, pas de compte, pas d'internet et aucune collecte de données. Le jeu fonctionne entièrement hors ligne. Les réglages et cette page sont protégés par le contrôle parental.",
+      "Pas de publicité, pas de compte, pas de connexion à internet et aucune collecte de données\u00a0: le jeu fonctionne entièrement hors ligne. Les réglages, cette page et les deux liens en bas (note sur la boutique et page d'avis sur pastelki.club, qui s'ouvrent en dehors de l'app) sont protégés par le contrôle parental.",
     version: 'Version',
+    rateApp: (store: string) => `Noter Pasujki sur ${store === 'App Store' ? "l'App Store" : store}`,
+    rateShort: (store: string) => `Noter sur ${store === 'App Store' ? "l'App Store" : store}`,
+    feedbackButton: 'Donner votre avis',
+    linksNote: "Les deux s'ouvrent en dehors de l'app\u00a0: la boutique, ou une courte page d'avis sur pastelki.club dans votre navigateur.",
+    likeTitle: 'Vous aimez Pasujki\u00a0?',
+    likeYes: 'Oui',
+    likeNo: 'Pas vraiment',
+    notNow: 'Plus tard',
+    noTitle: 'Merci pour votre franchise',
+    noBody: "Une courte page s'ouvre sur pastelki.club dans votre navigateur\u00a0: vous pourrez nous dire ce qui pourrait être mieux.",
+    tellUs: 'Dire ce qui pourrait être mieux',
   },
   numbers: ['zéro', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six', 'sept', 'huit', 'neuf'],
   worlds: {
@@ -246,6 +257,10 @@ const fr: Locale = {
       {
         heading: 'Autorisations',
         body: "Pasujki ne demande pas l'accès à l'appareil photo, au micro, aux photos, aux contacts ni à la localisation, et n'envoie pas de notifications.",
+      },
+      {
+        heading: 'Liens pour les adultes',
+        body: "L'espace parents, protégé par le contrôle parental, contient deux liens qui s'ouvrent en dehors de l'app\u00a0: l'un pour noter Pasujki sur l'App Store ou Google Play, l'autre vers une page d'avis sur pastelki.club (notre site), qui s'ouvre dans votre navigateur. Le lien indique à cette page la version de l'app, son numéro de build, la plateforme, la langue et, si vous y avez répondu, si vous aimez Pasujki, pour que nous sachions de quelle version il s'agit. L'app elle-même n'envoie rien\u00a0; ce que vous choisissez d'écrire sur cette page relève de la politique de confidentialité de pastelki.club, et les notes de celles d'Apple ou de Google. Une seule fois, lors d'une visite ultérieure de l'espace parents, l'app peut demander «\u00a0Vous aimez Pasujki\u00a0?\u00a0»\u00a0; la réponse reste sur l'appareil, sauf si vous ouvrez ensuite la page d'avis. Pour ne poser la question qu'une fois, l'app compte sur l'appareil combien de fois l'espace parents a été ouvert.",
       },
       {
         heading: 'Enfants',

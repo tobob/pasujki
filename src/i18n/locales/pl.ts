@@ -1,7 +1,7 @@
 import { CONTACT, DEVELOPER } from '../../constants/contact';
 import type { Locale } from '../types';
 
-const UPDATED = '16 listopada 2026';
+const UPDATED = '19 listopada 2026';
 
 /** Polski — the source of tone for every other language. Hint lines: hint_pl on each Round. */
 const pl: Locale = {
@@ -41,8 +41,19 @@ const pl: Locale = {
       'Gra szanuje przełącznik wyciszenia w iPhonie: gdy telefon jest wyciszony, muzyki i dźwięków nie słychać. Muzyka jest cicha i wyłącza się, gdy zamkniesz aplikację.',
     safetyTitle: 'Bezpieczeństwo',
     safety:
-      'Bez reklam, zakupów, kont, internetu i zbierania danych. Gra działa w całości offline. Ustawienia i ta strona są za bramką rodzica.',
+      'Bez reklam, kont, połączeń z internetem i zbierania danych — gra działa w całości offline. Ustawienia, ta strona i dwa linki na dole (ocena w sklepie i strona z opinią na pastelki.club, otwierane poza aplikacją) są za bramką rodzica.',
     version: 'Wersja',
+    rateApp: (store: string) => `Oceń Pasujki w ${store}`,
+    rateShort: (store: string) => `Oceń w ${store}`,
+    feedbackButton: 'Wyślij nam opinię',
+    linksNote: 'Oba otwierają się poza aplikacją: sklep albo krótka strona z opinią na pastelki.club w przeglądarce.',
+    likeTitle: 'Podobają Ci się Pasujki?',
+    likeYes: 'Tak',
+    likeNo: 'Nie bardzo',
+    notNow: 'Nie teraz',
+    noTitle: 'Dziękujemy za szczerość',
+    noBody: 'W przeglądarce otworzy się krótka strona na pastelki.club, na której możesz napisać, co mogłoby być lepsze.',
+    tellUs: 'Napisz, co mogłoby być lepsze',
   },
   numbers: ['zero', 'jeden', 'dwa', 'trzy', 'cztery', 'pięć', 'sześć', 'siedem', 'osiem', 'dziewięć'],
   hints: null,
@@ -64,6 +75,10 @@ const pl: Locale = {
       {
         heading: 'Uprawnienia',
         body: 'Pasujki nie prosi o dostęp do aparatu, mikrofonu, zdjęć, kontaktów ani lokalizacji i nie wysyła powiadomień.',
+      },
+      {
+        heading: 'Linki dla dorosłych',
+        body: 'W strefie dla dorosłych, za bramką rodzicielską, są dwa linki otwierane poza aplikacją: do oceny Pasujek w App Store lub Google Play oraz do strony z opinią na pastelki.club (nasza strona), która otwiera się w przeglądarce. Link przekazuje tej stronie wersję i numer kompilacji aplikacji, system, język oraz — jeśli padła odpowiedź — czy Pasujki Ci się podobają, żebyśmy wiedzieli, o którą wersję chodzi. Sama aplikacja niczego nie wysyła; to, co zdecydujesz się napisać na tej stronie, podlega polityce prywatności pastelki.club, a oceny — politykom Apple lub Google. Raz, przy którejś kolejnej wizycie w strefie dla dorosłych, aplikacja może zapytać „Podobają Ci się Pasujki?”; odpowiedź zostaje na urządzeniu, chyba że potem otworzysz stronę z opinią. Żeby zapytać tylko raz, aplikacja liczy na urządzeniu, ile razy otwarto strefę dla dorosłych.',
       },
       {
         heading: 'Dzieci',

@@ -29,9 +29,11 @@ for (const lang of LANGS) {
   const keys = Object.keys(L.strings).sort();
   if (keys.join() !== enKeys.join()) err(lang, 'strings', `keys differ from en: ${keys.filter((k) => !enKeys.includes(k)).concat(enKeys.filter((k) => !keys.includes(k))).join(', ')}`);
   for (const [k, v] of Object.entries(L.strings)) {
-    const s = typeof v === 'function' ? v('A', 'B') : v;
+    // Functions get one placeholder per declared parameter and must use every one of them.
+    const args = typeof v === 'function' ? ['⟨1⟩', '⟨2⟩'].slice(0, Math.max(1, v.length)) : [];
+    const s = typeof v === 'function' ? (v as (...a: string[]) => string)(...args) : v;
     if (blank(s)) err(lang, `strings.${k}`, 'empty');
-    if (typeof v === 'function' && !(s.includes('A') && s.includes('B'))) err(lang, `strings.${k}`, 'does not use both arguments');
+    if (args.some((a) => !s.includes(a))) err(lang, `strings.${k}`, `does not use all ${args.length} argument(s)`);
   }
   if (L.numbers.length !== 10) err(lang, 'numbers', `expected 10, got ${L.numbers.length}`);
   for (let n = 0; n <= 9; n++) if (blank(numberWordIn(lang, n))) err(lang, `numbers[${n}]`, 'empty');

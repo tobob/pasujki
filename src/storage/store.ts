@@ -89,3 +89,21 @@ export function saveLevelResult(levelId: string, stars: number) {
 export function resetProgress() {
   progressStore.set({ stars: {} });
 }
+
+/**
+ * Grown-ups' area visits and the one-time "Do you like Pasujki?" card (src/feedback/review.ts).
+ * Local only; never sent anywhere.
+ */
+export type ReviewState = {
+  /** Times the grown-ups' area was opened (after the parental gate). */
+  visits: number;
+  /** How many times the card has been shown (at most 2: the 3rd visit and once more after "Not now"). */
+  asks: number;
+  /** Set after "Yes" or "Not really": never ask again. */
+  answered: boolean;
+  /** After "Not now": don't ask before this time (ms since epoch). */
+  snoozedUntil: number;
+};
+
+const REVIEW_KEY = 'pasujki.review.v1';
+export const reviewStore = createStore<ReviewState>(REVIEW_KEY, { visits: 0, asks: 0, answered: false, snoozedUntil: 0 });

@@ -2,7 +2,7 @@ import { CONTACT, DEVELOPER } from '../../constants/contact';
 import type { ColorId, ItemId, ShapeId } from '../../game/types';
 import type { HintPack, Locale } from '../types';
 
-const UPDATED = '16 de noviembre de 2026';
+const UPDATED = '19 de noviembre de 2026';
 
 // ── hint words ─────────────────────────────────────────────────────────────────────────────────
 /** Name with its definite article; gender and number are read off the article (el/la/los/las). */
@@ -149,8 +149,19 @@ const es: Locale = {
       'El juego respeta el interruptor de silencio del iPhone: cuando el teléfono está en silencio, la música y los sonidos no se oyen. La música es suave y se detiene al salir de la app.',
     safetyTitle: 'Seguridad',
     safety:
-      'Sin anuncios, compras, cuentas, internet ni recogida de datos. El juego funciona totalmente sin conexión. Los ajustes y esta página están protegidos por el control parental.',
+      'Sin anuncios, cuentas, conexiones a internet ni recogida de datos: el juego funciona totalmente sin conexión. Los ajustes, esta página y los dos enlaces de abajo (valoración en la tienda y página de opinión en pastelki.club, que se abren fuera de la app) están protegidos por el control parental.',
     version: 'Versión',
+    rateApp: (store: string) => `Valorar Pasujki en ${store === 'App Store' ? 'el App Store' : store}`,
+    rateShort: (store: string) => `Valorar en ${store === 'App Store' ? 'el App Store' : store}`,
+    feedbackButton: 'Envíanos tu opinión',
+    linksNote: 'Ambos se abren fuera de la app: la tienda o una breve página de opinión en pastelki.club en tu navegador.',
+    likeTitle: '¿Te gusta Pasujki?',
+    likeYes: 'Sí',
+    likeNo: 'No mucho',
+    notNow: 'Ahora no',
+    noTitle: 'Gracias por tu sinceridad',
+    noBody: 'Se abrirá en tu navegador una breve página en pastelki.club donde puedes contarnos qué podría mejorar.',
+    tellUs: 'Cuéntanos qué mejorar',
   },
   numbers: ['cero', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve'],
   worlds: {
@@ -252,6 +263,10 @@ const es: Locale = {
       {
         heading: 'Permisos',
         body: 'Pasujki no pide acceso a la cámara, el micrófono, las fotos, los contactos ni la ubicación, y no envía notificaciones.',
+      },
+      {
+        heading: 'Enlaces para adultos',
+        body: 'La zona para padres, protegida por el control parental, tiene dos enlaces que se abren fuera de la app: uno para valorar Pasujki en el App Store o en Google Play y otro a una página de opinión en pastelki.club (nuestra web), que se abre en tu navegador. El enlace indica a esa página la versión de la app, el número de compilación, la plataforma, el idioma y, si respondiste, si te gusta Pasujki, para que sepamos de qué versión se trata. La app en sí no envía nada; lo que decidas escribir en esa página se rige por la política de privacidad de pastelki.club, y las valoraciones por las de Apple o Google. Una sola vez, en una visita posterior a la zona para padres, la app puede preguntar «¿Te gusta Pasujki?»; la respuesta se queda en el dispositivo, salvo que después abras la página de opinión. Para preguntarlo solo una vez, la app cuenta en el dispositivo cuántas veces se ha abierto la zona para padres.',
       },
       {
         heading: 'Niños',

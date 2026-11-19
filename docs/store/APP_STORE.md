@@ -175,7 +175,7 @@ Apple's current flow has 3 steps: (1) in-app controls & capabilities, (2) conten
 |---|---|---|
 | Parental Controls | **No** (not selected) | Apple means controls that *restrict content*. Pasujki's parental gate only protects the settings, so it doesn't count. |
 | Age Assurance | **No** | No age verification of any kind. |
-| Unrestricted Web Access | **No** | No browser, no links, no network at all. |
+| Unrestricted Web Access | **No** | No in-app browser or web view and no network in the app. The parents' area (behind the gate) has two fixed links that leave the app: the App Store write-review page and the pastelki.club feedback page in Safari. |
 | User-Generated Content | **No** | Nothing can be created or shared. |
 | Messaging and Chat | **No** | |
 | Social Media (and "Social Media Disabled for Users Under 13") | **No** | |
@@ -223,6 +223,7 @@ Result: **"Data Not Collected"**.
 
 Justification. Apple's definition: data is "collected" when it is transmitted off the device in a way that you or your third-party partners can access beyond the time needed to service the request. Data processed only on the device is not collected.
 - Pasujki makes **no network requests**. There is no backend, no analytics, no crash reporting, no ads SDK, no remote images or fonts, and no `expo-updates`.
+- Since 2026-11-19 the parents' area has "Rate Pasujki on the App Store" (App Store write-review link), "Send us feedback" (opens `https://pastelki.club/<lang>/feedback?app=pasujki&version&build&platform[&liked]` in Safari, never a web view) and a one-time "Do you like Pasujki?" card (Yes → `SKStoreReviewController` via expo-store-review). The app sends nothing itself: what a grown-up types is typed into a website in Safari, outside the app, and is covered by the pastelki.club privacy policy. The answer stays **"No, we do not collect data"**. If the app ever POSTs feedback itself, revisit: the free-text message would be **Other User Content** (App Functionality, not linked, no tracking) and the server's IP-derived country **Coarse Location**; Apple's optional-disclosure exemption does not apply because the form shows no user name.
 - Progress and settings (stars, unlocked levels, music/sounds/hints/unlock toggles) are stored locally with `expo-sqlite/kv-store` and never leave the device. OS backups (iCloud) are controlled by the user and Apple, not by us.
 - There are no accounts, no sign-in, no permissions requested (no camera, mic, location, photos, contacts or notifications) and no IDFA/ATT.
 - The privacy manifest in `app.json` declares `NSPrivacyTracking: false`, no tracking domains and no collected data types. Only required-reason APIs from RN/Expo are listed: UserDefaults, FileTimestamp, DiskSpace and SystemBootTime.
