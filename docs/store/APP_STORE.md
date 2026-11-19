@@ -9,7 +9,7 @@ Ready to paste. Every count below was measured by script (`python3 -c 'print(len
 | SKU (suggestion) | `pasujki-ios-001` |
 | Version | 1.0.0 (`app.json`) |
 | Primary language | Polish (pl-PL) |
-| Price | Free, no In-App Purchases, no ads |
+| Price | Free; no ads |
 | Devices | iPhone + iPad (`supportsTablet: true`), portrait |
 | Copyright | `2026 tobob` |
 | Privacy Policy URL | https://tobob.github.io/pasujki-site/privacy/ |
@@ -38,7 +38,7 @@ Kolory, kształty i cienie
 
 **Promotional text**: 152 / 170
 ```
-Spokojna gra w dopasowywanie dla dzieci od 2 do 5 lat. 68 poziomów w 8 światach. Bez reklam, bez zakupów i bez internetu. Dziecko gra we własnym tempie.
+Spokojna gra w dopasowywanie dla dzieci od 2 do 5 lat. 68 poziomów w 8 światach. Bez reklam, bez internetu i bez zbierania danych. Dziecko gra we własnym tempie.
 ```
 
 **Keywords**: 95 / 100 bytes (93 characters)
@@ -73,7 +73,7 @@ CO DZIECKO MOŻE ĆWICZYĆ
 Podczas gry dziecko ma okazję ćwiczyć dostrzeganie podobieństw i różnic, rozpoznawanie kolorów i kształtów, łączenie rzeczy w pary i grupy, a przy przeciąganiu także ruchy palca. Do gry nie trzeba umieć czytać.
 
 DLA RODZICÓW
-• Bez reklam i bez zakupów w aplikacji.
+• Bez reklam.
 • Bez internetu: gra działa w całości offline.
 • Nie zbieramy żadnych danych. Postępy zostają tylko na urządzeniu.
 • Strefa rodzica jest zabezpieczona bramką rodzicielską. Znajdziesz w niej ustawienia (muzyka, dźwięki, podpowiedzi tekstowe, odblokowanie wszystkich poziomów, zerowanie postępów) i politykę prywatności.
@@ -101,7 +101,7 @@ Colors, shapes and shadows
 
 **Promotional text**: 159 / 170
 ```
-A calm matching game for children aged 2 to 5. 68 levels across 8 worlds, with no ads, no purchases and no internet needed. Your child plays at their own pace.
+A calm matching game for children aged 2 to 5. 68 levels across 8 worlds, with no ads, no internet needed and no data collected. Your child plays at their own pace.
 ```
 
 **Keywords**: 96 / 100 bytes
@@ -136,7 +136,7 @@ WHAT YOUR CHILD CAN PRACTICE
 While playing, children get to practice noticing what is the same and what is different, recognizing colors and shapes, putting things into pairs and groups, and, when dragging, controlling small finger movements. No reading is needed to play.
 
 FOR PARENTS
-• No ads and no in-app purchases.
+• No ads.
 • No internet needed: the game works fully offline.
 • We collect no data. Progress stays on the device only.
 • The parents' area sits behind a parental gate. It holds the settings (music, sounds, text hints, unlock all levels, reset progress) and the privacy policy.
@@ -246,7 +246,7 @@ Re-check this answer whenever a dependency is added.
 
 **Notes**: 2811 / 4000 bytes
 ```
-Pasujki is a calm, fully offline matching game for children aged 2-5 (Made for Kids, 5 and under). Free, no in-app purchases, no ads, no accounts, no network requests, no data collection, no permission prompts.
+Pasujki is a calm, fully offline matching game for children aged 2-5 (Made for Kids, 5 and under). No ads, no accounts, no network requests, no data collection, no permission prompts.
 
 SCREEN RECORDING (physical iPhone, fresh install): <RECORDING_URL>
 It shows launch, gameplay, a wrong answer, level completion, the map, the parental gate (fail and pass) and the parents' area.
@@ -274,7 +274,7 @@ AUDIO
 Music and sounds follow the ring/silent switch: with the iPhone silenced the app is silent. Music stops when the app goes to the background. No background audio mode, no microphone.
 
 OFFLINE / PRIVACY
-The app works entirely in airplane mode. Progress is stored only on the device. There are no external links, web views, purchases, review prompts or social features anywhere in the app.
+The app works entirely in airplane mode. Progress is stored only on the device. (Superseded: the current review notes live in `store.config.json` → `apple.review.notes`; since 2026-11-19 the parents' area has a rating link, a feedback link and a one-time rating question, see docs/STORE_COMPLIANCE.md §2.8.)
 ```
 
 > Before pasting: (1) replace `<RECORDING_URL>` with an unlisted link that opens without logging in, for example an unlisted YouTube video or a public GitHub release asset; (2) check that the English gate wording matches the shipped build (today `src/components/parental-gate.tsx` still has Polish words only, and the localisation is in progress); (3) check that the home-screen icon is still in the top-right corner.

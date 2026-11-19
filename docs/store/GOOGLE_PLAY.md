@@ -42,7 +42,7 @@ CO DZIECKO MOŻE ĆWICZYĆ
 Podczas gry dziecko ma okazję ćwiczyć dostrzeganie podobieństw i różnic, rozpoznawanie kolorów i kształtów, łączenie rzeczy w pary i grupy, a przy przeciąganiu także ruchy palca. Do gry nie trzeba umieć czytać.
 
 DLA RODZICÓW
-• Bez reklam i bez zakupów w aplikacji.
+• Bez reklam.
 • Bez internetu: gra działa w całości offline.
 • Nie zbieramy żadnych danych. Postępy zostają tylko na urządzeniu.
 • Strefa rodzica jest zabezpieczona bramką rodzicielską. Znajdziesz w niej ustawienia (muzyka, dźwięki, podpowiedzi tekstowe, odblokowanie wszystkich poziomów, zerowanie postępów) i politykę prywatności.
@@ -82,7 +82,7 @@ WHAT YOUR CHILD CAN PRACTISE
 While playing, children get to practise noticing what is the same and what is different, recognising colors and shapes, putting things into pairs and groups, and, when dragging, controlling small finger movements. No reading is needed to play.
 
 FOR PARENTS
-• No ads and no in-app purchases.
+• No ads.
 • No internet needed: the game works fully offline.
 • We collect no data. Progress stays on the device only.
 • The parents' area sits behind a parental gate. It holds the settings (music, sounds, text hints, unlock all levels, reset progress) and the privacy policy.
