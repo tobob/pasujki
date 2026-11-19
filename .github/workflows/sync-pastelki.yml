@@ -1,4 +1,4 @@
-# Pulls newer approved illustrations from Pastelki (https://pastelki.marchew.work) into the app.
+# Pulls newer approved illustrations from Pastelki (https://pastelki.club) into the app.
 # Runs hourly, on demand and on a `pastelki-updated` event (`studio sync-art --dispatch`); commits to master only when something changed and every check passes.
 # The pictures reach players with the next store build (see README, "Illustrations from Pastelki").
 name: Sync illustrations from Pastelki

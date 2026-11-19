@@ -111,7 +111,7 @@ store.config.json           # App Store listing (EAS Metadata)
 
 ## Illustrations from Pastelki
 
-The pictures also live in [Pastelki](https://pastelki.marchew.work), a free (MIT) library of gentle SVG illustrations for small children that was seeded from this app. Pastelki is the source of truth: when a newer version of a picture is approved there, it flows into the app.
+The pictures also live in [Pastelki](https://pastelki.club), a free (MIT) library of gentle SVG illustrations for small children that was seeded from this app. Pastelki is the source of truth: when a newer version of a picture is approved there, it flows into the app.
 
 - `npm run sync-art` downloads every picture whose published Pastelki version is newer than the one recorded in `pastelki.lock.json`, and writes it to `src/art/library/svgs.ts`. From then on `<ItemArt>` draws that SVG instead of the component in `src/art/items/`. The silhouette for Shadows rounds is generated from it.
 - An update is skipped (and reported) unless the SVG is a plain 100×100 drawing with no scripts or external references, and it still contains the item's dominant colour from `src/art/dominant.ts`, so colour rounds stay fair.
