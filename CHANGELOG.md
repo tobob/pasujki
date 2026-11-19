@@ -6,6 +6,9 @@ versions are the store versions (`expo.version`). Store "What's New" texts per l
 
 ## [Unreleased]
 
+### Added
+- Parents' area: links to rate Pasujki and to a short feedback page on pastelki.club (opens in the browser), and a one-time, gentle "Do you like Pasujki?" question for grown-ups. Everything stays behind the parental gate; the app itself still sends nothing.
+
 ## [1.0.2] - 2026-11-18
 
 ### Changed
