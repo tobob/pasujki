@@ -30,7 +30,7 @@ Four pictures sit in the corners of the screen. A prompt appears in the middle: 
 - **Made for kids:**
   - Fully offline, with no network requests, no analytics and no accounts.
   - Settings and the privacy policy sit behind a parental gate: hold for 3 seconds, then answer a multiplication written in words.
-  - The only links out of the app are behind that gate too: rating on the App Store / Google Play and a feedback page on [pastelki.club](https://pastelki.club) that opens in the browser. On the third visit to the parents' area a grown-up is asked once, gently, whether they like Pasujki.
+  - The only links out of the app are behind that gate too: rating on the App Store / Google Play and a feedback page on [pastelki.club](https://pastelki.club) that opens in the browser. On the sixth visit to the parents' area a grown-up is asked once, gently, whether they like Pasujki.
 - **8 languages** for the text parents see: Polish, English, German, French, Italian, Spanish, Portuguese and Dutch. Playing needs no reading.
 - **Everything is made from scratch.** The illustrations are SVG React components and the music and sounds are synthesised in Python. There are no third-party assets.
 

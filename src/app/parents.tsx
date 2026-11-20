@@ -35,7 +35,7 @@ export default function Parents() {
   /** Result of counting this visit (counted once, even if the effect runs twice in dev). */
   const ask = useRef<boolean | null>(null);
 
-  // One visit = one pass through the gate. On the 3rd visit the "Do you like Pasujki?" card appears once,
+  // One visit = one pass through the gate. On the 6th visit the "Do you like Pasujki?" card appears once,
   // a moment after the screen settles (src/feedback/review.ts holds the rules).
   useEffect(() => {
     if (!passed) return;

@@ -97,7 +97,7 @@ export function resetProgress() {
 export type ReviewState = {
   /** Times the grown-ups' area was opened (after the parental gate). */
   visits: number;
-  /** How many times the card has been shown (at most 2: the 3rd visit and once more after "Not now"). */
+  /** How many times the card has been shown (at most 2: the 6th visit and once more after "Not now"). */
   asks: number;
   /** Set after "Yes" or "Not really": never ask again. */
   answered: boolean;

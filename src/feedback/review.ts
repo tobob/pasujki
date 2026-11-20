@@ -21,7 +21,7 @@ export const APP_STORE_ID = '6835474239';
 export const ANDROID_PACKAGE = 'com.tobob.pasujki';
 
 /** Visit on which the card first appears. */
-const ASK_ON_VISIT = 3;
+const ASK_ON_VISIT = 6;
 /** "Not now" → wait this long before asking once more (then never again). */
 const SNOOZE_MS = 180 * 24 * 60 * 60 * 1000;
 const MAX_ASKS = 2;
