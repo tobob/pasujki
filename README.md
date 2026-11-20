@@ -137,7 +137,7 @@ npm run site -- ../pasujki-site
 
 ## Contributing
 
-Bug reports and ideas are welcome as [issues](https://github.com/tobob/pasujki-site/issues). Before you send a change, run `npm run check` and play it in the simulator, and keep the [calm design rules](docs/DESIGN.md) in mind.
+Bug reports and ideas are welcome as [issues](https://github.com/tobob/pasujki/issues). Before you send a change, run `npm run check` and play it in the simulator, and keep the [calm design rules](docs/DESIGN.md) in mind.
 
 ## License
 

@@ -41,3 +41,11 @@ example
 # generated native folders
 /ios
 /android
+
+# secrets (never commit)
+.env
+.env.*
+!.env.example
+credentials.json
+credentials/
+store.push.json
