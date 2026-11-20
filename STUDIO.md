@@ -45,3 +45,6 @@ Spokojna gra w dopasowywanie dla dzieci 2–4 lat. Ekran podzielony na 4 ćwiart
 - 2026-11-18 19:22 — build ios (production) wysłany na EAS
 - 2026-11-19 23:01 — ocena + opinia w strefie dorosłych: przyciski na dole (write-review, link do pastelki.club/<lang>/feedback w przeglądarce), karta „Podobają Ci się Pasujki?” przy 3. wizycie (StoreKit przez expo-store-review); aplikacja dalej bez sieci, App Privacy bez zmian; wymaga nowego buildu (expo-store-review, expo-application)
 - 2026-11-20 10:25 — wersja 1.0.2 → 1.0.3 (każdy upload do sklepu = nowa wersja): The parents' area (behind the parental gate) now has a link to a short page on pastelki.club where you can tell us what could be better.
+- 2026-11-20 10:26 — build ios (production) wysłany na EAS
+- 2026-11-20 10:41 — metadata:push 1.0.3 (bez apple.review)
+- 2026-11-20 10:43 — 1.0.3 (7) wysłane do App Review przez iris (wersja 1.0.3, What's New w 12 językach, notatki z linkami i oceną przy 6. wejściu); automatyczne wydanie po akceptacji.
