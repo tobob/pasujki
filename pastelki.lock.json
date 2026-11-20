@@ -237,9 +237,9 @@
     },
     "doghouse": {
       "slug": "doghouse",
-      "version": 1,
-      "sha256": "",
-      "synced": false
+      "version": 3,
+      "sha256": "f5d40b3d05707d096310eb7b3ef5ab498133376dbbd774a7e19178e949fb90fb",
+      "synced": true
     },
     "drum": {
       "slug": "drum",
