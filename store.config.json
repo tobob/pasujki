@@ -85,7 +85,7 @@
           ]
         },
         "marketingUrl": "https://pastelki.club/?utm_source=pasujki&utm_medium=appstore",
-        "releaseNotes": "- Poprawa obrazków"
+        "releaseNotes": "W strefie dla rodziców (za bramką) jest teraz link do krótkiej strony na pastelki.club, na której możesz napisać, co mogłoby być lepsze."
       },
       "en-US": {
         "title": "Pasujki – Toddler Matching",
@@ -128,7 +128,7 @@
           ]
         },
         "marketingUrl": "https://pastelki.club/?utm_source=pasujki&utm_medium=appstore",
-        "releaseNotes": "Refreshed pictures and small improvements."
+        "releaseNotes": "The parents' area (behind the parental gate) now has a link to a short page on pastelki.club where you can tell us what could be better."
       },
       "en-GB": {
         "title": "Pasujki – Toddler Matching",
@@ -171,7 +171,7 @@
           ]
         },
         "marketingUrl": "https://pastelki.club/?utm_source=pasujki&utm_medium=appstore",
-        "releaseNotes": "Refreshed pictures and small improvements."
+        "releaseNotes": "The parents' area (behind the parental gate) now has a link to a short page on pastelki.club where you can tell us what could be better."
       },
       "de-DE": {
         "title": "Pasujki – Kleinkinder-Spiel",
@@ -214,7 +214,7 @@
           ]
         },
         "marketingUrl": "https://pastelki.club/?utm_source=pasujki&utm_medium=appstore",
-        "releaseNotes": "Aufgefrischte Bilder und kleine Verbesserungen."
+        "releaseNotes": "Im Elternbereich (hinter der Elternsperre) gibt es jetzt einen Link zu einer kurzen Seite auf pastelki.club, auf der du uns sagen kannst, was besser sein könnte."
       },
       "fr-FR": {
         "title": "Pasujki – Jeu pour tout-petits",
@@ -257,7 +257,7 @@
           ]
         },
         "marketingUrl": "https://pastelki.club/?utm_source=pasujki&utm_medium=appstore",
-        "releaseNotes": "Des images rafraîchies et de petites améliorations."
+        "releaseNotes": "L'espace parents (derrière le contrôle parental) propose désormais un lien vers une courte page sur pastelki.club pour nous dire ce qui pourrait être mieux."
       },
       "fr-CA": {
         "title": "Pasujki – Jeu pour tout-petits",
@@ -299,7 +299,7 @@
           ]
         },
         "marketingUrl": "https://pastelki.club/?utm_source=pasujki&utm_medium=appstore",
-        "releaseNotes": "Des images rafraîchies et de petites améliorations."
+        "releaseNotes": "L'espace parents (derrière le contrôle parental) propose désormais un lien vers une courte page sur pastelki.club pour nous dire ce qui pourrait être mieux."
       },
       "it": {
         "title": "Pasujki – Gioco per bambini",
@@ -341,7 +341,7 @@
           ]
         },
         "marketingUrl": "https://pastelki.club/?utm_source=pasujki&utm_medium=appstore",
-        "releaseNotes": "Immagini rinnovate e piccoli miglioramenti."
+        "releaseNotes": "Nell'area per i genitori (dietro il controllo genitori) c'è ora un link a una breve pagina su pastelki.club dove puoi dirci cosa si potrebbe migliorare."
       },
       "es-ES": {
         "title": "Pasujki – Juego para peques",
@@ -382,7 +382,7 @@
           ]
         },
         "marketingUrl": "https://pastelki.club/?utm_source=pasujki&utm_medium=appstore",
-        "releaseNotes": "Imágenes renovadas y pequeñas mejoras."
+        "releaseNotes": "La zona para padres (tras el control parental) tiene ahora un enlace a una breve página en pastelki.club donde puedes contarnos qué podría mejorar."
       },
       "es-MX": {
         "title": "Pasujki – Juego para niños",
@@ -422,7 +422,7 @@
           ]
         },
         "marketingUrl": "https://pastelki.club/?utm_source=pasujki&utm_medium=appstore",
-        "releaseNotes": "Imágenes renovadas y pequeñas mejoras."
+        "releaseNotes": "La zona para padres (tras el control parental) tiene ahora un enlace a una breve página en pastelki.club donde puedes contarnos qué podría mejorar."
       },
       "pt-BR": {
         "title": "Pasujki – Jogo para crianças",
@@ -462,7 +462,7 @@
           ]
         },
         "marketingUrl": "https://pastelki.club/?utm_source=pasujki&utm_medium=appstore",
-        "releaseNotes": "Imagens renovadas e pequenas melhorias."
+        "releaseNotes": "A área para os pais (atrás do bloqueio) agora tem um link para uma página curta em pastelki.club onde você pode contar o que poderia ser melhor."
       },
       "pt-PT": {
         "title": "Pasujki – Jogo para crianças",
@@ -503,7 +503,7 @@
           ]
         },
         "marketingUrl": "https://pastelki.club/?utm_source=pasujki&utm_medium=appstore",
-        "releaseNotes": "Imagens renovadas e pequenas melhorias."
+        "releaseNotes": "A área para os pais (atrás do bloqueio parental) tem agora uma ligação para uma pequena página em pastelki.club onde pode dizer-nos o que poderia ser melhor."
       },
       "nl-NL": {
         "title": "Pasujki – Spel voor peuters",
@@ -545,7 +545,7 @@
           ]
         },
         "marketingUrl": "https://pastelki.club/?utm_source=pasujki&utm_medium=appstore",
-        "releaseNotes": "Opgefriste plaatjes en kleine verbeteringen."
+        "releaseNotes": "Het oudergedeelte (achter het ouderslot) heeft nu een link naar een korte pagina op pastelki.club waar je kunt vertellen wat beter kan."
       }
     }
   }
