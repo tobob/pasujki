@@ -1,6 +1,19 @@
 {
   "_doc": "Store \"What's New\" per store locale (keys = apple.info locales in store.config.json). Edit 'unreleased'; studio build/release moves it to versions[x.y.z] and into store.config.json releaseNotes. Short, friendly, for parents; max 500 characters (Google Play), 4000 (Apple).",
-  "unreleased": {},
+  "unreleased": {
+    "pl": "Drobne ulepszenia i poprawki.",
+    "en-US": "Small improvements and fixes.",
+    "en-GB": "Small improvements and fixes.",
+    "de-DE": "Kleine Verbesserungen und Fehlerbehebungen.",
+    "fr-FR": "Petites améliorations et corrections.",
+    "fr-CA": "Petites améliorations et corrections.",
+    "it": "Piccoli miglioramenti e correzioni.",
+    "es-ES": "Pequeñas mejoras y correcciones.",
+    "es-MX": "Pequeñas mejoras y correcciones.",
+    "pt-BR": "Pequenas melhorias e correções.",
+    "pt-PT": "Pequenas melhorias e correções.",
+    "nl-NL": "Kleine verbeteringen en oplossingen."
+  },
   "versions": {
     "1.0.2": {
       "pl": "- Poprawa obrazków",
@@ -29,20 +42,6 @@
       "pt-BR": "A área para os pais (atrás do bloqueio) agora tem um link para uma página curta em pastelki.club onde você pode contar o que poderia ser melhor.",
       "pt-PT": "A área para os pais (atrás do bloqueio parental) tem agora uma ligação para uma pequena página em pastelki.club onde pode dizer-nos o que poderia ser melhor.",
       "nl-NL": "Het oudergedeelte (achter het ouderslot) heeft nu een link naar een korte pagina op pastelki.club waar je kunt vertellen wat beter kan."
-    },
-    "1.0.4": {
-      "pl": "Drobne ulepszenia i poprawki.",
-      "en-US": "Small improvements and fixes.",
-      "en-GB": "Small improvements and fixes.",
-      "de-DE": "Kleine Verbesserungen und Fehlerbehebungen.",
-      "fr-FR": "Petites améliorations et corrections.",
-      "fr-CA": "Petites améliorations et corrections.",
-      "it": "Piccoli miglioramenti e correzioni.",
-      "es-ES": "Pequeñas mejoras y correcciones.",
-      "es-MX": "Pequeñas mejoras y correcciones.",
-      "pt-BR": "Pequenas melhorias e correções.",
-      "pt-PT": "Pequenas melhorias e correções.",
-      "nl-NL": "Kleine verbeteringen en oplossingen."
     }
   }
 }
