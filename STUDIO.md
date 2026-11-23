@@ -48,3 +48,5 @@ Spokojna gra w dopasowywanie dla dzieci 2–4 lat. Ekran podzielony na 4 ćwiart
 - 2026-11-20 10:26 — build ios (production) wysłany na EAS
 - 2026-11-20 10:41 — metadata:push 1.0.3 (bez apple.review)
 - 2026-11-20 10:43 — 1.0.3 (7) wysłane do App Review przez iris (wersja 1.0.3, What's New w 12 językach, notatki z linkami i oceną przy 6. wejściu); automatyczne wydanie po akceptacji.
+- 2026-11-23 15:17 — wersja 1.0.3 → 1.0.4 (każdy upload do sklepu = nowa wersja): Small improvements and fixes.
+- 2026-11-23 15:18 — release 1.0.4 nieudany: EAS odmówił buildu (limit iOS buildów planu Free wyczerpany do 2026-12-01), nic nie wysłano; commit Release 1.0.4 cofnięty, Unreleased + What's New gotowe na ponowny release
