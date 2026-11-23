@@ -1,6 +1,19 @@
 {
   "_doc": "Store \"What's New\" per store locale (keys = apple.info locales in store.config.json). Edit 'unreleased'; studio build/release moves it to versions[x.y.z] and into store.config.json releaseNotes. Short, friendly, for parents; max 500 characters (Google Play), 4000 (Apple).",
-  "unreleased": {},
+  "unreleased": {
+    "pl": "Drobne ulepszenia i poprawki.",
+    "en-US": "Small improvements and fixes.",
+    "en-GB": "Small improvements and fixes.",
+    "de-DE": "Kleine Verbesserungen und Fehlerbehebungen.",
+    "fr-FR": "Petites améliorations et corrections.",
+    "fr-CA": "Petites améliorations et corrections.",
+    "it": "Piccoli miglioramenti e correzioni.",
+    "es-ES": "Pequeñas mejoras y correcciones.",
+    "es-MX": "Pequeñas mejoras y correcciones.",
+    "pt-BR": "Pequenas melhorias e correções.",
+    "pt-PT": "Pequenas melhorias e correções.",
+    "nl-NL": "Kleine verbeteringen en oplossingen."
+  },
   "versions": {
     "1.0.2": {
       "pl": "- Poprawa obrazków",
