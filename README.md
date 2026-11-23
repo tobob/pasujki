@@ -30,7 +30,7 @@ Four pictures sit in the corners of the screen. A prompt appears in the middle: 
 - **Made for kids:**
   - Fully offline, with no network requests, no analytics and no accounts.
   - Settings and the privacy policy sit behind a parental gate: hold for 3 seconds, then answer a multiplication written in words.
-  - The only links out of the app are behind that gate too: rating on the App Store / Google Play and a feedback page on [pastelki.club](https://pastelki.club) that opens in the browser. On the sixth visit to the parents' area a grown-up is asked once, gently, whether they like Pasujki.
+  - The only links out of the app are behind that gate too: rating on the App Store / Google Play and a feedback page on [pastelki.club](https://pastelki.club/?utm_source=github&utm_medium=readme&utm_campaign=pasujki) that opens in the browser. On the sixth visit to the parents' area a grown-up is asked once, gently, whether they like Pasujki.
 - **8 languages** for the text parents see: Polish, English, German, French, Italian, Spanish, Portuguese and Dutch. Playing needs no reading.
 - **Everything is made from scratch.** The illustrations are SVG React components and the music and sounds are synthesised in Python. There are no third-party assets.
 
@@ -112,7 +112,7 @@ store.config.json           # App Store listing (EAS Metadata)
 
 ## Illustrations from Pastelki
 
-The pictures also live in [Pastelki](https://pastelki.club), a free (MIT) library of gentle SVG illustrations for small children that was seeded from this app. Pastelki is the source of truth: when a newer version of a picture is approved there, it flows into the app.
+The pictures also live in [Pastelki](https://pastelki.club/?utm_source=github&utm_medium=readme&utm_campaign=pasujki), a free (MIT) library of gentle SVG illustrations for small children that was seeded from this app. Pastelki is the source of truth: when a newer version of a picture is approved there, it flows into the app.
 
 - `npm run sync-art` downloads every picture whose published Pastelki version is newer than the one recorded in `pastelki.lock.json`, and writes it to `src/art/library/svgs.ts`. From then on `<ItemArt>` draws that SVG instead of the component in `src/art/items/`. The silhouette for Shadows rounds is generated from it.
 - An update is skipped (and reported) unless the SVG is a plain 100×100 drawing with no scripts or external references, and it still contains the item's dominant colour from `src/art/dominant.ts`, so colour rounds stay fair.
