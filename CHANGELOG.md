@@ -6,6 +6,9 @@ versions are the store versions (`expo.version`). Store "What's New" texts per l
 
 ## [Unreleased]
 
+### Changed
+- Checked against the deduplicated Pastelki library: every picture in the app is still published there, no picture changes.
+
 ## [1.0.3] - 2026-11-20
 
 ### Added
