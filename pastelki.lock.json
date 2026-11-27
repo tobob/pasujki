@@ -129,8 +129,8 @@
     },
     "butterfly": {
       "slug": "butterfly",
-      "version": 2,
-      "sha256": "bad9388fcadb167a03abd72ee864affdd38fee6d792a1a8c1dc0fccf297a289f",
+      "version": 3,
+      "sha256": "695f260b469c8598e4d5aaa0cae9709bfc35aa7a708ab966fe529f264791edc1",
       "synced": true
     },
     "cake": {
